@@ -1,0 +1,457 @@
+"""
+SC-MINIMUM-FREQUENCY Algorithm Implementation
+===========================================
+
+Scores based on achieving a threshold on a minimum number of days within 
+a weekly evaluation period. Success requires meeting criteria on at least X days per week.
+
+Algorithm Type: SC-MINIMUM-FREQUENCY
+Pattern: Minimum Achievement Frequency  
+Evaluation: Weekly (7 days)
+Scoring: Binary (100 or 0)
+"""
+
+from typing import List, Dict, Any, Union
+from dataclasses import dataclass
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+@dataclass
+class MinimumFrequencyConfig:
+    daily_threshold: float
+    daily_comparison: str
+    required_days: int
+    total_days: int = 7
+    description: str = ""
+    # Optional metric comparison mode
+    comparison_mode: str = "threshold"  # "threshold", "metric_equality", or "metric_ratio_with_partial_credit"
+    comparison_metric: str = None  # Second metric for comparison
+    ratio_numerator: str = None  # Numerator for ratio calculations
+    ratio_denominator: str = None  # Denominator for ratio calculations
+
+
+class MinimumFrequencyAlgorithm:
+    """Minimum frequency algorithm implementation with progressive scoring."""
+    
+    def __init__(self, config: MinimumFrequencyConfig):
+        self.config = config
+    
+    def calculate_score(self, daily_values: List[float]) -> float:
+        """Calculate weekly score based on frequency requirement."""
+        result = calculate_minimum_frequency_score(
+            daily_values=daily_values,
+            daily_threshold=self.config.daily_threshold,
+            daily_comparison=self.config.daily_comparison,
+            required_days=self.config.required_days,
+            comparison_mode=getattr(self.config, 'comparison_mode', 'threshold'),
+            ratio_numerator=getattr(self.config, 'ratio_numerator', None),
+            ratio_denominator=getattr(self.config, 'ratio_denominator', None)
+        )
+        return result['score']
+    
+    def calculate_dual_progress(self, daily_values: List[Union[float, int]], current_day: int) -> Dict[str, float]:
+        """
+        Calculate dual progress metrics for the revolutionary tracking system.
+        
+        Returns:
+            progress_towards_goal: Actual achievement relative to weekly target (0-100%)
+            max_potential_adherence: Best possible outcome given remaining time (0-100%)
+        """
+        if current_day > len(daily_values):
+            current_day = len(daily_values)
+            
+        # Calculate achieved days so far
+        successes = 0
+        for day_idx in range(current_day):
+            daily_value = daily_values[day_idx]
+            
+            if self.config.comparison_mode == "metric_equality":
+                # Expect daily_value to be a dict with two metrics
+                if isinstance(daily_value, dict):
+                    metric1 = daily_value.get('primary_metric', 0)
+                    metric2 = daily_value.get('comparison_metric', 0)
+                    day_pass = (metric1 == metric2)
+                else:
+                    day_pass = False
+            elif self.config.comparison_mode == "metric_ratio_with_partial_credit":
+                # Calculate ratio and give partial credit
+                if isinstance(daily_value, dict):
+                    numerator = daily_value.get('comparison_metric', 0)
+                    denominator = daily_value.get('primary_metric', 1)
+                    
+                    if denominator > 0:
+                        ratio_score = numerator / denominator
+                        # For partial credit, we'll accumulate ratio scores instead of binary pass/fail
+                        successes += ratio_score
+                        continue  # Skip the binary increment below
+                    else:
+                        day_pass = False
+                else:
+                    day_pass = False
+            else:
+                # Standard threshold comparison
+                day_pass = self._compare_value(daily_value, self.config.daily_threshold, self.config.daily_comparison)
+                
+            if day_pass:
+                successes += 1
+        
+        # Progress towards goal = (achieved / target) * 100, capped at 100%
+        progress_towards_goal = min(100, (successes / self.config.required_days) * 100)
+        
+        # Max potential = what's possible with remaining days
+        remaining_days = len(daily_values) - current_day
+        max_possible_successes = successes + remaining_days
+        max_potential_adherence = min(100, (max_possible_successes / self.config.required_days) * 100)
+        
+        return {
+            'progress_towards_goal': progress_towards_goal,  # Allow >100% for overachievement
+            'max_potential_adherence': max_potential_adherence,
+            'achieved_days': successes,
+            'remaining_days': remaining_days,
+            'required_days': self.config.required_days
+        }
+    
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        Shows 100% as long as the weekly frequency goal is still achievable.
+        Once impossible to reach 100%, shows the best achievable percentage.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        successes = 0
+        
+        for day_idx, value in enumerate(daily_values):
+            # Check if this day meets threshold using enhanced comparison logic
+            if self.config.comparison_mode == "metric_ratio_with_partial_credit":
+                # For partial credit mode, any ratio > 0 contributes
+                if isinstance(value, dict):
+                    numerator = value.get('comparison_metric', 0)
+                    denominator = value.get('primary_metric', 1)
+                    
+                    if denominator > 0:
+                        ratio_score = numerator / denominator
+                        # For progressive scores, we count it as success if ratio >= threshold
+                        day_pass = ratio_score >= self.config.daily_threshold
+                        if day_pass:
+                            successes += 1
+                    else:
+                        day_pass = False
+                else:
+                    day_pass = False
+            else:
+                # Standard threshold comparison
+                day_pass = self._compare_value(value, self.config.daily_threshold, self.config.daily_comparison)
+                if day_pass:
+                    successes += 1
+            
+            remaining_days = len(daily_values) - (day_idx + 1)
+            max_possible_successes = successes + remaining_days
+            
+            if successes >= self.config.required_days:
+                # Already achieved full goal
+                progressive_scores.append(100)
+            elif max_possible_successes >= self.config.required_days:
+                # Can still achieve 100%
+                progressive_scores.append(100)
+            else:
+                # Calculate best possible achievement percentage
+                best_possible_score = (max_possible_successes / self.config.required_days) * 100
+                progressive_scores.append(min(100, max(0, best_possible_score)))
+        
+        return progressive_scores
+    
+    def _compare_value(self, value: float, threshold: float, comparison: str) -> bool:
+        """Helper method to compare values based on comparison operator."""
+        if comparison == ">=":
+            return value >= threshold
+        elif comparison == "<=":
+            return value <= threshold
+        elif comparison == ">":
+            return value > threshold
+        elif comparison == "<":
+            return value < threshold
+        elif comparison == "==":
+            return value == threshold
+        else:
+            raise ValueError(f"Unsupported comparison operator: {comparison}")
+
+
+def calculate_minimum_frequency_score(
+    daily_values: List[float], 
+    daily_threshold: float,
+    daily_comparison: str,
+    required_days: int,
+    **kwargs
+) -> Dict[str, Any]:
+    """
+    Calculate SC-MINIMUM-FREQUENCY score for weekly data
+    
+    Args:
+        daily_values: List of 7 daily measurements [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+        daily_threshold: The threshold value each day must meet
+        daily_comparison: Comparison operator ("<=", ">=", "==")
+        required_days: Minimum number of days that must meet threshold (e.g., 2, 5)
+        **kwargs: Additional parameters from config schema
+        
+    Returns:
+        Dict with score and calculation details
+        
+    Examples:
+        # Ultra-processed foods: ≤1 serving on at least 2 days/week
+        calculate_minimum_frequency_score(
+            daily_values=[5, 0, 10, 1, 3, 2, 1],
+            daily_threshold=1,
+            daily_comparison="<=", 
+            required_days=2
+        )
+        # Returns: {"score": 100, "successful_days": 3, "details": "3 ≥ 2 days met criteria"}
+        
+        # Water intake: ≥8 cups on at least 5 days/week  
+        calculate_minimum_frequency_score(
+            daily_values=[6, 8, 9, 7, 8, 10, 8],
+            daily_threshold=8,
+            daily_comparison=">=",
+            required_days=5
+        )
+        # Returns: {"score": 100, "successful_days": 5, "details": "5 ≥ 5 days met criteria"}
+    """
+    
+    if len(daily_values) != 7:
+        raise ValueError(f"Expected 7 daily values for weekly calculation, got {len(daily_values)}")
+        
+    if daily_comparison not in ["<=", ">=", "=="]:
+        raise ValueError(f"Unsupported comparison operator: {daily_comparison}")
+        
+    # Extract comparison mode from kwargs
+    comparison_mode = kwargs.get('comparison_mode', 'threshold')
+    
+    # Count days that meet the threshold
+    successful_days = 0
+    daily_results = []
+    
+    for i, daily_value in enumerate(daily_values):
+        day_meets_threshold = False
+        
+        if comparison_mode == "metric_ratio_with_partial_credit":
+            # Handle metric ratio comparison for partial credit
+            if isinstance(daily_value, dict):
+                numerator = daily_value.get('comparison_metric', 0)
+                denominator = daily_value.get('primary_metric', 1)
+                
+                if denominator > 0:
+                    ratio_score = numerator / denominator
+                    # For frequency counting, check if ratio meets threshold
+                    if daily_comparison == ">=":
+                        day_meets_threshold = ratio_score >= daily_threshold
+                    elif daily_comparison == "<=":
+                        day_meets_threshold = ratio_score <= daily_threshold
+                    elif daily_comparison == "==":
+                        day_meets_threshold = ratio_score == daily_threshold
+                    
+                    # For partial credit mode, add the ratio score to successful_days
+                    successful_days += ratio_score
+                    continue  # Skip the binary increment below
+                else:
+                    day_meets_threshold = False
+            else:
+                day_meets_threshold = False
+        else:
+            # Standard threshold comparison
+            if daily_comparison == "<=":
+                day_meets_threshold = daily_value <= daily_threshold
+            elif daily_comparison == ">=":
+                day_meets_threshold = daily_value >= daily_threshold  
+            elif daily_comparison == "==":
+                day_meets_threshold = daily_value == daily_threshold
+            
+        if day_meets_threshold:
+            successful_days += 1
+            
+        daily_results.append({
+            'day': i + 1,
+            'value': daily_value,
+            'meets_threshold': day_meets_threshold,
+            'comparison': f"{daily_value} {daily_comparison} {daily_threshold}"
+        })
+    
+    # Proportional scoring: (actual_days / required_days) * 100, capped at 100%
+    if successful_days >= required_days:
+        score = 100  # Full achievement
+    else:
+        # Partial credit based on achievement ratio
+        score = (successful_days / required_days) * 100
+    
+    # Detailed results
+    result = {
+        'score': score,
+        'successful_days': successful_days,
+        'required_days': required_days, 
+        'total_days': len(daily_values),
+        'success_rate': successful_days / len(daily_values),
+        'threshold_met': successful_days >= required_days,
+        'details': f"{successful_days} {'≥' if successful_days >= required_days else '<'} {required_days} days met criteria",
+        'daily_breakdown': daily_results,
+        'algorithm': 'SC-MINIMUM-FREQUENCY'
+    }
+    
+    logger.info(f"SC-MINIMUM-FREQUENCY: {successful_days}/{len(daily_values)} days met threshold, "
+                f"required {required_days}, score: {score}")
+    
+    return result
+
+
+def calculate_single_day_minimum_frequency_score(
+    daily_value: float,
+    daily_threshold: float, 
+    daily_comparison: str,
+    required_days: int,
+    **kwargs
+) -> Dict[str, Any]:
+    """
+    Calculate contribution of a single day to SC-MINIMUM-FREQUENCY score
+    
+    This is a helper for real-time scoring when you only have one day's data.
+    The full weekly score requires all 7 days.
+    
+    Args:
+        daily_value: Single day's measurement
+        daily_threshold: The threshold this day must meet
+        daily_comparison: Comparison operator
+        required_days: Target minimum days (for reference)
+        
+    Returns:
+        Dict indicating if this day contributes to weekly goal
+    """
+    
+    # Check if this day meets threshold
+    day_meets_threshold = False
+    if daily_comparison == "<=":
+        day_meets_threshold = daily_value <= daily_threshold
+    elif daily_comparison == ">=":
+        day_meets_threshold = daily_value >= daily_threshold
+    elif daily_comparison == "==":
+        day_meets_threshold = daily_value == daily_threshold
+        
+    return {
+        'day_contribution': 100 if day_meets_threshold else 0,
+        'meets_threshold': day_meets_threshold,
+        'comparison_result': f"{daily_value} {daily_comparison} {daily_threshold}",
+        'required_days_target': required_days,
+        'note': f"This day {'contributes to' if day_meets_threshold else 'does not contribute to'} weekly goal of {required_days} days",
+        'algorithm': 'SC-MINIMUM-FREQUENCY (single day)'
+    }
+
+
+def calculate_minimum_frequency_dual_progress(
+    daily_values: List[Union[float, int, Dict]], 
+    current_day: int,
+    **kwargs
+) -> Dict[str, float]:
+    """
+    Calculate dual progress for minimum frequency goals
+    
+    Args:
+        daily_values: List of daily measured values
+        current_day: Current day (1-7)
+        **kwargs: Parameters from config schema including threshold, comparison_operator, required_days
+        
+    Returns:
+        Dict with progress_towards_goal and max_potential_adherence
+    """
+    # Extract parameters from kwargs (from config schema)
+    daily_threshold = kwargs.get('threshold', kwargs.get('daily_threshold', 1))
+    daily_comparison = kwargs.get('comparison_operator', kwargs.get('daily_comparison', '>='))
+    required_days = kwargs.get('required_days', 7)
+    
+    # Create temporary config and algorithm instance
+    config = MinimumFrequencyConfig(
+        daily_threshold=daily_threshold,
+        daily_comparison=daily_comparison,
+        required_days=required_days,
+        comparison_mode=kwargs.get('comparison_mode', 'threshold'),
+        comparison_metric=kwargs.get('comparison_metric'),
+        ratio_numerator=kwargs.get('ratio_numerator'),
+        ratio_denominator=kwargs.get('ratio_denominator')
+    )
+    
+    algorithm = MinimumFrequencyAlgorithm(config)
+    return algorithm.calculate_dual_progress(daily_values, current_day)
+
+
+def validate_minimum_frequency_config(config: Dict[str, Any]) -> List[str]:
+    """
+    Validate SC-MINIMUM-FREQUENCY configuration
+    
+    Args:
+        config: Algorithm configuration dictionary
+        
+    Returns:
+        List of validation error messages (empty if valid)
+    """
+    errors = []
+    
+    required_fields = [
+        'daily_threshold',
+        'daily_comparison', 
+        'required_days'
+    ]
+    
+    for field in required_fields:
+        if field not in config:
+            errors.append(f"Missing required field: {field}")
+            
+    if 'daily_comparison' in config:
+        if config['daily_comparison'] not in ["<=", ">=", "=="]:
+            errors.append(f"Invalid daily_comparison: {config['daily_comparison']}")
+            
+    if 'required_days' in config:
+        if not isinstance(config['required_days'], int) or config['required_days'] < 1:
+            errors.append("required_days must be a positive integer")
+        if config['required_days'] > 7:
+            errors.append("required_days cannot exceed 7 for weekly evaluation")
+            
+    if 'total_days' in config and config.get('total_days', 7) != 7:
+        errors.append("total_days must be 7 for weekly SC-MINIMUM-FREQUENCY")
+        
+    return errors
+
+
+# Example usage and testing
+if __name__ == "__main__":
+    # Example 1: Ultra-processed foods - limit to ≤1 serving on at least 2 days/week
+    ultra_processed_week = [5, 0, 10, 1, 3, 2, 1]  # 3 days meet ≤1 threshold
+    result1 = calculate_minimum_frequency_score(
+        daily_values=ultra_processed_week,
+        daily_threshold=1,
+        daily_comparison="<=", 
+        required_days=2
+    )
+    print("Ultra-processed foods result:", result1)
+    
+    # Example 2: Water intake - ≥8 cups on at least 5 days/week
+    water_week = [6, 8, 9, 7, 8, 10, 8]  # 5 days meet ≥8 threshold
+    result2 = calculate_minimum_frequency_score(
+        daily_values=water_week,
+        daily_threshold=8,
+        daily_comparison=">=",
+        required_days=5
+    )
+    print("Water intake result:", result2)
+    
+    # Example 3: Single day assessment
+    single_day = calculate_single_day_minimum_frequency_score(
+        daily_value=1,
+        daily_threshold=1,
+        daily_comparison="<=",
+        required_days=2
+    )
+    print("Single day assessment:", single_day)
