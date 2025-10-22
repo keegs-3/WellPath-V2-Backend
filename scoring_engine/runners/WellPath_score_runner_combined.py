@@ -26,20 +26,21 @@ def create_comprehensive_patient_file():
     }
     
     # Use relative paths from script location
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    
+    # Base dir is WellPath-V2-Backend root
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
     # Input files with relative paths
-    marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")
-    survey_detailed_file = os.path.join(base_dir, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
+    marker_detailed_file = os.path.join(base_dir, "outputs", "scores", "markers", "scored_markers_with_max.csv")
+    survey_detailed_file = os.path.join(base_dir, "outputs", "scores", "survey", "per_question_scores_full_weighted.csv")
     raw_lab_data = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     raw_survey_data = os.path.join(base_dir, "data", "synthetic_patient_survey.csv")
-    
+
     # Authoritative max scores from runners (source of truth)
-    survey_pillar_summary = os.path.join(base_dir, "WellPath_Score_Survey", "synthetic_patient_pillar_scores_survey_with_max_pct.csv")
-    marker_pillar_summary = os.path.join(base_dir, "WellPath_Score_Markers", "marker_pillar_summary.csv")
-    
+    survey_pillar_summary = os.path.join(base_dir, "outputs", "scores", "survey", "synthetic_patient_pillar_scores_survey_with_max_pct.csv")
+    marker_pillar_summary = os.path.join(base_dir, "outputs", "scores", "markers", "marker_pillar_summary.csv")
+
     # Output directory with relative path
-    combined_output_dir = os.path.join(base_dir, "WellPath_Score_Combined")
+    combined_output_dir = os.path.join(base_dir, "outputs", "scores", "combined")
     os.makedirs(combined_output_dir, exist_ok=True)
     
     # Load all data

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellPath Test UI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 20px; background: #f5f5f7; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { margin-bottom: 30px; color: #1d1d1f; }
+        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .card h3 { margin-bottom: 8px; color: #1d1d1f; }
+        .card p { color: #6e6e73; font-size: 14px; }
+        .back-btn { background: #007aff; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; }
+        .back-btn:hover { background: #0051d5; }
+        .chart-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        canvas { max-height: 400px; }
+        .loading { text-align: center; padding: 40px; color: #6e6e73; }
+        .add-data-form { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #d1d1d6; border-radius: 8px; }
+        .submit-btn { background: #34c759; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; width: 100%; }
+        .submit-btn:hover { background: #248a3d; }
+        .metric-info { color: #6e6e73; font-size: 14px; margin-bottom: 15px; }
+        .hidden { display: none; }
+        .period-selector { display: flex; gap: 5px; margin-bottom: 20px; justify-content: center; background: #2c2c2e; padding: 5px; border-radius: 10px; }
+        .period-btn { background: transparent; border: none; color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; }
+        .period-btn:hover { background: #3a3a3c; }
+        .period-btn.active { background: #007aff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 WellPath Test UI</h1>
+
+        <!-- Pillars View -->
+        <div id="pillars-view">
+            <h2>Select a Pillar</h2>
+            <div id="pillars-list" class="pillar-grid"></div>
+        </div>
+
+        <!-- Screens View -->
+        <div id="screens-view" class="hidden">
+            <button class="back-btn" onclick="showPillars()">← Back to Pillars</button>
+            <h2 id="screens-title"></h2>
+            <div id="screens-list" class="pillar-grid"></div>
+        </div>
+
+        <!-- Metrics View -->
+        <div id="metrics-view" class="hidden">
+            <button class="back-btn" onclick="showScreens()">← Back to Screens</button>
+            <h2 id="metrics-title"></h2>
+            <div class="period-selector">
+                <button class="period-btn" onclick="changePeriod('daily')" data-period="daily">D</button>
+                <button class="period-btn active" onclick="changePeriod('weekly')" data-period="weekly">W</button>
+                <button class="period-btn" onclick="changePeriod('monthly')" data-period="monthly">M</button>
+                <button class="period-btn" onclick="changePeriod('6month')" data-period="6month">6M</button>
+                <button class="period-btn" onclick="changePeriod('yearly')" data-period="yearly">Y</button>
+            </div>
+            <div id="metrics-list"></div>
+            <div id="add-data-section"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const { createClient } = supabase;
+        const supabaseClient = createClient(
+            'https://csotzmardnvrpdhlogjm.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzb3R6bWFyZG52cnBkaGxvZ2ptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzMjQ4MTEsImV4cCI6MjA3NDkwMDgxMX0.Kw5NRNL3uv35HFUaalLMSbXJLBOPXCceexs7Y-4U9S4'
+        );
+
+        // Test user ID
+        const TEST_USER_ID = '02cc8441-5f01-4634-acfc-59e6f6a5705a';
+
+        let currentPillar = null;
+        let currentScreen = null;
+        let currentPeriod = 'weekly';
+        let currentMetrics = [];
+
+        // Load Pillars
+        async function loadPillars() {
+            const pillarsEl = document.getElementById('pillars-list');
+            pillarsEl.innerHTML = '<div class="loading">Loading pillars...</div>';
+
+            const { data, error } = await supabaseClient
+                .from('pillars_base')
+                .select('*')
+                .eq('is_active', true)
+                .order('display_order');
+
+            if (error) {
+                pillarsEl.innerHTML = `<div class="loading">Error: ${error.message}</div>`;
+                return;
+            }
+
+            pillarsEl.innerHTML = data.map(pillar => `
+                <div class="card" onclick="selectPillar('${pillar.pillar_name}')">
+                    <h3>${pillar.icon || '📊'} ${pillar.pillar_name}</h3>
+                    <p>${pillar.description || ''}</p>
+                </div>
+            `).join('');
+        }
+
+        // Select Pillar → Show Screens
+        async function selectPillar(pillarName) {
+            currentPillar = pillarName;
+            document.getElementById('screens-title').textContent = pillarName;
+
+            const screensEl = document.getElementById('screens-list');
+            screensEl.innerHTML = '<div class="loading">Loading screens...</div>';
+
+            const { data, error } = await supabaseClient
+                .from('display_screens')
+                .select('*')
+                .eq('pillar', pillarName)
+                .eq('is_active', true)
+                .order('display_order');
+
+            if (error) {
+                screensEl.innerHTML = `<div class="loading">Error: ${error.message}</div>`;
+                return;
+            }
+
+            screensEl.innerHTML = data.map(screen => `
+                <div class="card" onclick="selectScreen('${screen.screen_id}', '${screen.name}')">
+                    <h3>${screen.icon || '📈'} ${screen.name}</h3>
+                    <p>${screen.overview || ''}</p>
+                </div>
+            `).join('');
+
+            showView('screens');
+        }
+
+        // Select Screen → Show Metrics
+        async function selectScreen(screenId, screenName) {
+            currentScreen = screenId;
+            document.getElementById('metrics-title').textContent = screenName;
+
+            const metricsEl = document.getElementById('metrics-list');
+            metricsEl.innerHTML = '<div class="loading">Loading metrics...</div>';
+
+            // Get metrics for this screen
+            const { data: screenMetrics, error } = await supabaseClient
+                .from('display_screens_display_metrics')
+                .select(`
+                    display_metric,
+                    display_metrics!inner (
+                        display_metric_id,
+                        display_name,
+                        description,
+                        default_period
+                    )
+                `)
+                .eq('display_screen', screenId)
+                .order('display_order');
+
+            if (error) {
+                metricsEl.innerHTML = `<div class="loading">Error: ${error.message}</div>`;
+                return;
+            }
+
+            metricsEl.innerHTML = '';
+
+            // Store metrics for period changes
+            currentMetrics = screenMetrics.map(item => item.display_metrics);
+
+            // Render each metric with chart
+            for (const metric of currentMetrics) {
+                await renderMetric(metric, currentPeriod);
+            }
+
+            showView('metrics');
+        }
+
+        // Change period and re-render
+        async function changePeriod(period) {
+            currentPeriod = period;
+
+            // Update active button
+            document.querySelectorAll('.period-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.period === period);
+            });
+
+            // Re-render all metrics
+            const metricsEl = document.getElementById('metrics-list');
+            metricsEl.innerHTML = '';
+
+            for (const metric of currentMetrics) {
+                await renderMetric(metric, period);
+            }
+        }
+
+        // Render a metric with its chart
+        async function renderMetric(metric, period = 'weekly') {
+            const metricsEl = document.getElementById('metrics-list');
+            const chartId = `chart-${metric.display_metric_id}`;
+
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'chart-container';
+            chartContainer.innerHTML = `
+                <h3>${metric.display_name}</h3>
+                <div class="metric-info">${metric.description || ''}</div>
+                <div id="summary-${chartId}" style="margin-bottom: 15px;"></div>
+                <canvas id="${chartId}"></canvas>
+            `;
+            metricsEl.appendChild(chartContainer);
+
+            // Get aggregation data for this metric (for the selected period)
+            const { data: aggLinks, error: aggError } = await supabaseClient
+                .from('display_metrics_aggregations')
+                .select('agg_metric_id, period_type, calculation_type_id, is_primary')
+                .eq('display_metric_id', metric.display_metric_id)
+                .eq('period_type', period)
+                .eq('is_primary', true);
+
+            console.log('Metric:', metric.display_metric_id, 'AggLinks:', aggLinks, 'Error:', aggError);
+
+            if (!aggLinks || aggLinks.length === 0) {
+                chartContainer.innerHTML += '<p class="loading">No aggregation links found</p>';
+                return;
+            }
+
+            const primaryAgg = aggLinks[0];
+
+            // Get chart configuration from aggregation_metrics_periods
+            const { data: chartConfig } = await supabaseClient
+                .from('aggregation_metrics_periods')
+                .select('*')
+                .eq('agg_metric_id', primaryAgg.agg_metric_id)
+                .eq('period_id', primaryAgg.period_type)
+                .single();
+
+            console.log('Chart config:', chartConfig);
+            console.log('Primary agg:', primaryAgg);
+
+            // Get aggregation results from cache (limit to bars count from config)
+            const { data: results, error: cacheError } = await supabaseClient
+                .from('aggregation_results_cache')
+                .select('*')
+                .eq('user_id', TEST_USER_ID)
+                .eq('agg_metric_id', primaryAgg.agg_metric_id)
+                .eq('period_type', primaryAgg.period_type)
+                .eq('calculation_type_id', primaryAgg.calculation_type_id)
+                .order('period_start', { ascending: false })
+                .limit(chartConfig?.bars || 10);
+
+            console.log('Cache results:', results, 'Error:', cacheError);
+
+            if (!results || results.length === 0) {
+                chartContainer.innerHTML += `<p class="loading">No data available (${primaryAgg.agg_metric_id}, ${primaryAgg.period_type}, ${primaryAgg.calculation_type_id})</p>`;
+                return;
+            }
+
+            // Reverse to show oldest first
+            results.reverse();
+
+            // Calculate and display summary value
+            const getTitleLabel = (periodType, calcType) => {
+                if (periodType === 'daily') return calcType === 'SUM' ? 'TOTAL' : 'AVERAGE';
+                if (periodType === 'weekly' || periodType === 'monthly') return 'AVERAGE';
+                return 'DAILY AVERAGE';
+            };
+
+            // Convert to display units (minutes to hours for sleep duration)
+            const convertToDisplayValue = (value, metricId, unit) => {
+                if (unit === 'minutes' && (metricId.includes('SLEEP') || metricId.includes('DURATION'))) {
+                    return value / 60; // Convert to hours
+                }
+                return value;
+            };
+
+            const rawValue = results.length > 0 ? results[results.length - 1].value : 0;
+            const displayValue = convertToDisplayValue(rawValue, metric.display_metric_id, chartConfig?.y_axis_label);
+            const displayUnit = (chartConfig?.y_axis_label === 'minutes' && metric.display_metric_id.includes('SLEEP')) ? 'hours' : chartConfig?.y_axis_label;
+            const titleLabel = getTitleLabel(primaryAgg.period_type, primaryAgg.calculation_type_id);
+
+            // Format date range
+            const formatDateRange = (results, periodType) => {
+                if (results.length === 0) return '';
+                const start = new Date(results[0].period_start);
+                const end = new Date(results[results.length - 1].period_end);
+
+                if (periodType === 'daily') {
+                    return 'Today';
+                } else {
+                    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    return `${formatDate(start)} - ${formatDate(end)}`.replace(', ' + end.getFullYear(), '') + ', ' + end.getFullYear();
+                }
+            };
+
+            const dateRange = formatDateRange(results, primaryAgg.period_type);
+
+            // Display summary
+            const summaryEl = document.getElementById(`summary-${chartId}`);
+            const displayValueFormatted = displayUnit === 'hours' ? displayValue.toFixed(1) : Math.round(displayValue);
+            summaryEl.innerHTML = `
+                <div style="color: #6e6e73; font-size: 11px; text-transform: uppercase; margin-bottom: 5px;">${titleLabel}</div>
+                <div style="font-size: 48px; font-weight: 600; line-height: 1;">${displayValueFormatted} <span style="font-size: 24px; color: #6e6e73;">${displayUnit || ''}</span></div>
+                <div style="color: #6e6e73; font-size: 14px; margin-top: 5px;">${dateRange}</div>
+            `;
+
+            // Generate labels based on configuration
+            const generateLabels = (results, chartConfig) => {
+                if (chartConfig?.x_axis_label_values && chartConfig?.x_axis_label_positions) {
+                    // Use configured labels
+                    const labels = new Array(results.length).fill('');
+                    chartConfig.x_axis_label_positions.forEach((pos, idx) => {
+                        const position = parseInt(pos);
+                        if (position < labels.length) {
+                            labels[position] = chartConfig.x_axis_label_values[idx];
+                        }
+                    });
+                    return labels;
+                }
+
+                // Fallback to date formatting
+                return results.map(r => {
+                    const date = new Date(r.period_start);
+                    switch(chartConfig?.x_axis_granularity) {
+                        case 'hour': return date.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+                        case 'day': return date.toLocaleDateString('en-US', { weekday: 'short' });
+                        case 'week': return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        case 'month': return date.toLocaleDateString('en-US', { month: 'short' });
+                        default: return date.toLocaleDateString();
+                    }
+                });
+            };
+
+            // Convert chart data values
+            const chartData = results.map(r => convertToDisplayValue(r.value, metric.display_metric_id, chartConfig?.y_axis_label));
+
+            // Convert y-axis min/max if needed
+            const yAxisMin = displayUnit === 'hours' && chartConfig?.y_axis_min ? chartConfig.y_axis_min / 60 : (chartConfig?.y_axis_min || 0);
+            const yAxisMax = displayUnit === 'hours' && chartConfig?.y_axis_max ? chartConfig.y_axis_max / 60 : chartConfig?.y_axis_max;
+
+            // Render chart
+            const ctx = document.getElementById(chartId);
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: generateLabels(results, chartConfig),
+                    datasets: [{
+                        label: `${metric.display_name}`,
+                        data: chartData,
+                        backgroundColor: 'rgba(0, 122, 255, 0.6)',
+                        borderColor: 'rgba(0, 122, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: yAxisMin,
+                            max: yAxisMax,
+                            title: {
+                                display: true,
+                                text: displayUnit || ''
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                callback: function(value, index) {
+                                    // Only show labels that are not empty
+                                    return this.getLabelForValue(value) || '';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // View Navigation
+        function showView(view) {
+            document.getElementById('pillars-view').classList.add('hidden');
+            document.getElementById('screens-view').classList.add('hidden');
+            document.getElementById('metrics-view').classList.add('hidden');
+            document.getElementById(`${view}-view`).classList.remove('hidden');
+        }
+
+        function showPillars() {
+            showView('pillars');
+        }
+
+        function showScreens() {
+            selectPillar(currentPillar);
+        }
+
+        // Initialize
+        loadPillars();
+    </script>
+</body>
+</html>

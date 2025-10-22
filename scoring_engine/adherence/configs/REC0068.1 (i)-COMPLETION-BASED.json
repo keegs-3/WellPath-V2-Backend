@@ -1,0 +1,46 @@
+{
+  "config_id": "REC0068.1 (i)-COMPLETION-BASED",
+  "config_name": "Completion Based - mammogram (over 50)",
+  "scoring_method": "completion_based",
+  "configuration_json": {
+    "method": "completion_based",
+    "formula": "Binary completion: 0% until completed, then 100% for remainder of cycle",
+    "evaluation_pattern": "completion",
+    "schema": {
+      "measurement_type": "completion",
+      "evaluation_period": "cycle",
+      "success_criteria": "completion",
+      "calculation_method": "completion_check",
+      "tracked_metrics": [
+        "mammogram_date"
+      ],
+      "calculated_metrics": [
+        "current_compliance_mammogram_female_50_150_avg_high_custom_calc"
+      ],
+      "calculated_metric": "current_compliance_mammogram_female_50_150_avg_high_custom_calc",
+      "completion_threshold": "compliant",
+      "unit": "completion",
+      "progress_direction": "completion",
+      "required_days": 1,
+      "total_days": 90,
+      "daily_limit": 1,
+      "persistent_scoring": true,
+      "description": "Completion tracking for Mammogram"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete a mammogram",
+    "recommendation_id": "REC0068.1 (i)",
+    "analysis": {
+      "algorithm_type": "completion_based",
+      "confidence": 1.0,
+      "reasoning": "Simple completion tracking for screening recommendations"
+    },
+    "metric_id": "mammogram_date",
+    "generated_at": "2025-09-26T17:26:16.107026",
+    "title": "Mammogram",
+    "overview": "Mammograms help detect breast cancer early and support long-term health.",
+    "category": "Gender: female | >50 | Risk Level: AVG",
+    "compliance_metric": "current_compliance_mammogram_female_50_150_avg_high_custom_calc"
+  }
+}

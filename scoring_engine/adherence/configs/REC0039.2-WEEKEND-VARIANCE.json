@@ -1,0 +1,42 @@
+{
+  "config_id": "SC-WEEKEND-VARIANCE-SLEEP_TIME_90MIN",
+  "config_name": "Weekend Variance - sleep_time",
+  "scoring_method": "weekend_variance",
+  "configuration_json": {
+    "method": "weekend_variance",
+    "formula": "Days 1-5 establish baseline; weekend days within 90.0minutes = 50.0% each",
+    "evaluation_pattern": "weekday_weekend_split",
+    "schema": {
+      "measurement_type": "weekend_variance",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "weekend_variance_target",
+      "calculation_method": "weekend_variance_check",
+      "tracked_metrics": [
+        "sleep_time"
+      ],
+      "calculated_metrics": [
+        "period_sleep_time_consistency_std_dev"
+      ],
+      "weekday_baseline_days": 5,
+      "weekend_days": 2,
+      "variance_threshold": 90.0,
+      "comparison_operator": "<=",
+      "unit": "minutes",
+      "weekend_day_weight": 50.0,
+      "description": "Weekend variance scoring: Days 1-5 establish weekday baseline sleep_time, weekend days within 90.0minutes variance = 50.0% each",
+      "required_days": 7,
+      "total_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Keep weekend bedtime within 90 minutes of your weekday time",
+    "recommendation_id": "REC0039.2",
+    "analysis": {
+      "algorithm_type": "weekend_variance",
+      "confidence": 0.85,
+      "reasoning": "Weekend variance algorithm: Weekdays 1-5 establish baseline, weekend days 6-7 scored against 90min variance"
+    },
+    "metric_id": "sleep_time",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

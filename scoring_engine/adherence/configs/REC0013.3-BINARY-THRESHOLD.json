@@ -1,0 +1,42 @@
+{
+  "config_id": "SC-WEEKLY-ELIM-CAFFEINE_400MG_DAILY",
+  "config_name": "Weekly Elimination - caffeine 400mg daily limit",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
+      "tracked_metrics": [
+        "daily_caffeine_consumed"
+      ],
+      "elimination_threshold": 400,
+      "elimination_comparison": "<=",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "mg",
+      "progress_direction": "countdown",
+      "frequency_requirement": "daily",
+      "description": "SC-WEEKLY-ELIMINATION: Daily pass/fail based on staying ≤400mg caffeine",
+      "calculated_metrics": [],
+      "required_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reduce caffeine intake to ≤400mg per day on all 7 days of the week",
+    "recommendation_id": "REC0013.3",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
+    },
+    "metric_id": "daily_caffeine_consumed",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

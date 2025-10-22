@@ -1,0 +1,72 @@
+{
+  "config_id": "SC-COMP-DAILY-MEAL_FREQUENCY_PLUS_SNACK",
+  "config_name": "Composite Daily - meal frequency plus healthy snack",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted_average([meal_frequency_score * 0.7, healthy_snack_score * 0.3])",
+    "evaluation_pattern": "daily_composite",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "weighted_combination",
+      "calculation_method": "dual_metric_weighted",
+      "components": [
+        {
+          "name": "Meals",
+          "weight": 0.9,
+          "target": 3.0,
+          "unit": "meal",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_meals"
+        },
+        {
+          "name": "Snacks",
+          "weight": 0.1,
+          "target": 1.0,
+          "unit": "snack",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "binary",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_snacks"
+        }
+      ],
+      "tracked_metrics": [
+        "meal_logged",
+        "snack_logged"
+      ],
+      "unit": "meal",
+      "progress_direction": "buildup",
+      "description": "SC-COMPOSITE-DAILY: 70% meal frequency achievement + 30% healthy snack requirement",
+      "calculated_metrics": [
+        "daily_meals",
+        "daily_snacks"
+      ],
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 99,
+      "frequency_requirement": "daily_composite"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eat 3 or more meals per day every day of the week, with at least 1 healthy snack",
+    "recommendation_id": "REC0016.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.9,
+      "reasoning": "SC-COMPOSITE-DAILY: Two distinct daily requirements - meal frequency (proportional) + healthy snack (binary)"
+    },
+    "metric_id": "daily_meals",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP020-SINGLE",
+  "config_name": "Alpha-Lipoic Acid: Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Alpha-Lipoic Acid",
+          "type": "SUP",
+          "dose_min": 600.0,
+          "dose_max": 1200.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "600-1200 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Empty stomach",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Alpha-Lipoic Acid"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 600-1,200mg of Alpha-Lipoic Acid on empty stomach daily for antioxidant protection, glucose metabolism, neuroprotection, and mitochondrial health",
+    "recommendation_id": "SUP020-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Alpha-Lipoic Acid",
+        "type": "SUP",
+        "dose_min": 600.0,
+        "dose_max": 1200.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "600-1200 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Empty stomach",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.365144",
+    "title": "Alpha-Lipoic Acid: Supplement",
+    "overview": "Antioxidant for metabolic and neurological health",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI302,LI303,LI304,LI305"
+  }
+}

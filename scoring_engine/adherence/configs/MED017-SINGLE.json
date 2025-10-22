@@ -1,0 +1,76 @@
+{
+  "config_id": "MED017-SINGLE",
+  "config_name": "Raloxifene: SERM",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Raloxifene",
+          "type": "MED",
+          "dose_min": 60.0,
+          "dose_max": NaN,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "60 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Any",
+          "category": "SERM",
+          "operator": "="
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Raloxifene"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 60mg of Raloxifene at any time daily for bone health, cardiovascular protection, and selective estrogen benefits",
+    "recommendation_id": "MED017-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Raloxifene",
+        "type": "MED",
+        "dose_min": 60.0,
+        "dose_max": NaN,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "60 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Any",
+        "category": "SERM",
+        "operator": "="
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.469216",
+    "title": "Raloxifene: SERM",
+    "overview": "Bone and cardiovascular protection",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

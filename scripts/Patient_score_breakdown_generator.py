@@ -14,8 +14,8 @@ def create_patient_score_breakdown():
     """Create patient score breakdowns using the ACTUAL comprehensive data structure."""
     
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    comprehensive_file = os.path.join(base_dir, "WellPath_Score_Combined", "comprehensive_patient_scores_detailed.csv")
-    breakdown_output_dir = os.path.join(base_dir, "WellPath_Score_Breakdown")
+    comprehensive_file = os.path.join(base_dir, "outputs/scores/combined", "comprehensive_patient_scores_detailed.csv")
+    breakdown_output_dir = os.path.join(base_dir, "outputs/breakdowns")
     os.makedirs(breakdown_output_dir, exist_ok=True)
     
     try:
@@ -1272,7 +1272,7 @@ if __name__ == "__main__":
         print("\n" + "="*80)
         print(" SUCCESS! Comprehensive patient breakdown files created with PROPERLY IMPLEMENTED complex survey logic!")
         print("="*80)
-        print("Files created in WellPath_Score_Breakdown/:")
+        print("Files created in outputs/breakdowns/:")
         print("✓ patient_XXXX_comprehensive_breakdown.txt - Detailed breakdown for each patient")
         print("✓ comprehensive_breakdown_summary.txt - Summary analysis across all patients")
         print("\nEach patient file now ACTUALLY includes:")

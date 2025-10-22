@@ -1,0 +1,104 @@
+{
+  "config_id": "PEP003-STACK",
+  "config_name": "CJC-1295 + Ipamorelin Stack",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 2 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "CJC-1295",
+          "type": "PEP",
+          "dose_min": 100.0,
+          "dose_max": 200.0,
+          "unit": "microgram",
+          "unit_symbol": "\u00b5g",
+          "rollup": "100-200 \u00b5g",
+          "frequency": "every 3 days",
+          "frequency_days": 3.0,
+          "timing": "Before bed",
+          "category": "Growth Hormone Peptide",
+          "operator": "<>"
+        },
+        {
+          "name": "Ipamorelin",
+          "type": "PEP",
+          "dose_min": 200.0,
+          "dose_max": 300.0,
+          "unit": "microgram",
+          "unit_symbol": "\u00b5g",
+          "rollup": "200-300 \u00b5g",
+          "frequency": "every 3 days",
+          "frequency_days": 3.0,
+          "timing": "Empty stomach",
+          "category": "Growth Hormone Peptide",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 2,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 2 therapeutic intervention(s): CJC-1295, Ipamorelin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 100-200mcg of CJC-1295 (before bed) and 200-300mcg of Ipamorelin (empty stomach) every 3 days for natural growth hormone optimization, body composition improvement, enhanced recovery, muscle preservation, and metabolic benefits",
+    "recommendation_id": "PEP003-STACK",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 2 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "CJC-1295",
+        "type": "PEP",
+        "dose_min": 100.0,
+        "dose_max": 200.0,
+        "unit": "microgram",
+        "unit_symbol": "\u00b5g",
+        "rollup": "100-200 \u00b5g",
+        "frequency": "every 3 days",
+        "frequency_days": 3.0,
+        "timing": "Before bed",
+        "category": "Growth Hormone Peptide",
+        "operator": "<>"
+      },
+      {
+        "name": "Ipamorelin",
+        "type": "PEP",
+        "dose_min": 200.0,
+        "dose_max": 300.0,
+        "unit": "microgram",
+        "unit_symbol": "\u00b5g",
+        "rollup": "200-300 \u00b5g",
+        "frequency": "every 3 days",
+        "frequency_days": 3.0,
+        "timing": "Empty stomach",
+        "category": "Growth Hormone Peptide",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.383768",
+    "title": "CJC-1295 + Ipamorelin Stack",
+    "overview": "Synergistic peptide combination that optimizes natural growth hormone release - CJC-1295 provides sustained GHRH stimulation while Ipamorelin offers pulsatile GHRP activation. Together they enhance body composition, recovery, and anti-aging benefits with minimal side effects.",
+    "stack_summary": "Synergistic peptide combination that optimizes natural growth hormone release - CJC-1295 provides sustained GHRH stimulation while Ipamorelin offers pulsatile GHRP activation. Together they enhance body composition, recovery, and anti-aging benefits with minimal side effects.",
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "STACK",
+    "therapeutic_type": "PEP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI087,LI356,LI357,LI358,LI359"
+  }
+}

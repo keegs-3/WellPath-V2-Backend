@@ -1,0 +1,47 @@
+{
+  "config_id": "SC-MIN-FREQ-LAST_MEAL_1HR_4_DAYS",
+  "config_name": "Minimum Frequency - last meal 1+ hours before bed 4 days/week",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "minimum_days_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "meal_logged",
+        "snack_logged",
+        "large_meal",
+        "sleep_time"
+      ],
+      "calculated_metrics": [
+        "last_meal_buffer"
+      ],
+      "daily_threshold": 1.0,
+      "daily_comparison": ">=",
+      "required_days": 4,
+      "total_days": 7,
+      "unit": "hours",
+      "scoring_type": "proportional",
+      "description": "SC-MINIMUM-FREQUENCY: Success requires finishing last meal at least 1 hour before bedtime on at least 4 of 7 days per week",
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "measurement",
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Finish your final meal at least 1 hour before bedtime on at least 4 days per week",
+    "recommendation_id": "REC0043.1",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Minimum frequency pattern detected: avoid behavior on minimum 4 nights per week"
+    },
+    "metric_id": "last_meal_buffer",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

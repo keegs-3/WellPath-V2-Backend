@@ -1,0 +1,44 @@
+{
+  "config_id": "SC-BIN-DAILY-SATURATED_FAT_SOURCES",
+  "config_name": "Binary Threshold - saturated_fat_sources",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "exists",
+      "tracked_metrics": [
+        "fat_source_type"
+      ],
+      "calculated_metrics": [
+        "daily_fat_source_count"
+      ],
+      "threshold": 2.0,
+      "comparison_operator": "<=",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "sources",
+      "progress_direction": "countdown",
+      "frequency_requirement": "daily",
+      "description": "Binary threshold scoring for: Limit saturated fat sources to \u00e2\u2030\u00a42 per day",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 20
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit saturated fat sources to \u00e2\u2030\u00a42 per day",
+    "recommendation_id": "REC0002.1",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary/threshold language detected (binary score: 5)"
+    },
+    "metric_id": "daily_saturated_fat_sources",
+    "generated_at": "2025-09-10T18:29:51.554733"
+  }
+}

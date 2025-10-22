@@ -1,0 +1,24 @@
+record_id,description,id,input_format,name,tracked_metrics
+recoMKPV9asM5gw4E,"Quantitative input like score or count (e.g., 0–10 scale)",DT001,Number,Numeric,"recgyE3iWXP2ccYEx, recEQJIHSBn0dbAsE, recXGAU9Qi5e8bKSW, recKArUE41uHphWb9, recV6TvniDSNrmCPt, recl2iT9ZsTmqtIV6, recNlALYqbdTE9AfY, recEbOiNyw46llfxE, reclY9BPepnZQSiDm, rec1MrcLLaRhmGBR2, recx84UE6rhr6jUuq, rec6ECEJg5nhl0x6y, recY75tn39AEXKwbl, recFreByeShGraal0, rec0nsL37Ihw1mkM0, recfE9BcGPHq9cPDZ, recKLAs4h7IGRfWda, recMRSL40KDppZ8IJ, recJ13o0XSJGZkkdP, recgumU8bXrsl54Ed, recGPPDd5i4uun3oa, rec0Bp07c21sb2Ref, recrOyba1O3mB2CHm, recr6RWwNxcz0tpr3, reclDxNnJwcuQSYak, rec6b386oYCSHnyVO, recwG50znghbnB0TO, rechN97Dq5ALu3FI9, reclDVu1Iv6feixC3, rec5CjdtdR3SqBAcU, rec5WLPHYGoaKUCjp, recZKlcHhj7CDPJSf, recFl99d8n4l00XcA, recjgSgnrdLSBJBZe, recBp4p7hx3cGOZFS, recWB10Y3P4QgrkAQ, recNBUyw6NvnP8WOh, recqjvztOuYRXj3Sm, recseppfup15Ij0xE, recJeEd61woRAahla, recMVZ6YoOQTJvFBa, recEPturjvPaeVBMk, recxlOQKCdytNnWtb, recY1Tz7OcO33HuVW, recoeS7pfQzXi85uK, recEfAO5FbGtiFMH7, rec0UzAaii5gqPh5k, reczsDrLyAiXOgJi7, recKVJCrX5rb8Y3Ei, recHJKknkW9SQFCqf, rec5S7ARenQjrrMWB, rec2cSrZAbKzTrbAJ, recIP9lf7bOv9VcpU, rectwdl12NyOIQZxD, recOqQiV6ZtMeXXjM, recRaC1lSL33KQ2u8, reczZJe3TIG1mp9oT, rec4SBmFYUdPPk8U8, recOyyoTez0r0ndcp, recmrxrBzd9TFYnvB, recUyh0VZjCy93jRe, recfZYnWPIzFnqZHW, recV4FEjIHsOdKtHc, recdAJfs9MBESWD8O, recFzpUjGNlVM3RNK"
+recytNvyzHZGgsZdY,Yes/No or true/false toggles,DT002,Toggle,Boolean,"recbjdq0PfP4GcXi1, recutpzJz61uQt7wt, recLm7PvuOlBuiAEk, recxlOQKCdytNnWtb, recV7GwS5qz8ax9e3, recXrIxSC6eJAABsm, recBVz1P5qclRyYRf, reccZbmA70Zghtazb, recDyD93EFJDUtdwq, recKMLHBA5mgUKArk, reclbWmQP7SMJmseU, recZkuVpMxOjNagr1, rec5k4qj3T8SPVTI2, rec78l8tMeHxVQibM, recvl8UuJgKIngkOf, recRpixGBWGUwkN7B, recxdHdNneF2qdfCI, recY1Tz7OcO33HuVW, recKVJCrX5rb8Y3Ei, recHJKknkW9SQFCqf, rec5S7ARenQjrrMWB, recWB10Y3P4QgrkAQ, rec2cSrZAbKzTrbAJ, recATC4ssc5CoJarW, recsM47DgXMaSFxrK, recn2NJclI5AuwTnP, rec4pZKchlwcEivTq, recOAhYP3SRyhogfN, recIP9lf7bOv9VcpU, rectwdl12NyOIQZxD, recOqQiV6ZtMeXXjM, recRaC1lSL33KQ2u8, reczZJe3TIG1mp9oT, rec4SBmFYUdPPk8U8, recOyyoTez0r0ndcp, recn391Dhu15POjM6, reczBLGmSI3jWDQ1K, recBPu9PYFPU8hate"
+recDIe7qCYk3mYRTM,Dropdown or predefined value selection,DT003,Dropdown,Categorical,rec3W7SRo87kFQF0L
+recakNSnNFBRTRqRa,Journaling or reflections,DT004,Text,Free Text,
+rec1rt7TJsCEnKfYb,"Time intervals (e.g., minutes)",DT005,Timestamp,Duration,"recoeS7pfQzXi85uK, recNBUyw6NvnP8WOh, recEfAO5FbGtiFMH7, rec0UzAaii5gqPh5k, reczsDrLyAiXOgJi7, rec2cSrZAbKzTrbAJ"
+recgAxp5lHOAvBeHM,Structured subjective 0–10 style rating,DT006,Number,Subjective Rating,"recJLyNCZdm7tgHQX, recR0Gdeow6IHSDvd, rechT5IIPBRNzCb74, recV4aEMQC0LiYtAe"
+recqb9TeDFYUPdpK4,Yes/No with optional explanation,DT007,Toggle + Text,Boolean + Text,"recjmkU2nIaeSH2XZ, recWRDVKJz69pZhYp, recKArUE41uHphWb9, recgyE3iWXP2ccYEx, recV6TvniDSNrmCPt, recl2iT9ZsTmqtIV6, recEbOiNyw46llfxE, reclY9BPepnZQSiDm, rec1MrcLLaRhmGBR2, recx84UE6rhr6jUuq, rec6ECEJg5nhl0x6y, recfE9BcGPHq9cPDZ, recKLAs4h7IGRfWda, recMRSL40KDppZ8IJ, recJ13o0XSJGZkkdP, recgumU8bXrsl54Ed, recGPPDd5i4uun3oa, rec0Bp07c21sb2Ref, recrOyba1O3mB2CHm, recr6RWwNxcz0tpr3, reclDxNnJwcuQSYak, rec6b386oYCSHnyVO, recwG50znghbnB0TO, rechN97Dq5ALu3FI9, reclDVu1Iv6feixC3, rec5CjdtdR3SqBAcU, rec5WLPHYGoaKUCjp, recZKlcHhj7CDPJSf, recFl99d8n4l00XcA, recWB10Y3P4QgrkAQ, recNBUyw6NvnP8WOh, recKVJCrX5rb8Y3Ei, recHJKknkW9SQFCqf, rec5S7ARenQjrrMWB, recOAhYP3SRyhogfN, recIP9lf7bOv9VcpU, rectwdl12NyOIQZxD, recOqQiV6ZtMeXXjM, recRaC1lSL33KQ2u8, reczZJe3TIG1mp9oT, rec4SBmFYUdPPk8U8, recOyyoTez0r0ndcp, recfZYnWPIzFnqZHW, recV4FEjIHsOdKtHc"
+recHozNkWz27XLfs9,Choose from multiple options + optional comment,DT008,Multi + Text,Multi-Select + Text,
+rec3VXQeeyMl1IGyq,"Specific time (e.g., 2:15 PM)",DT009,Timestamp,Time,"recY75tn39AEXKwbl, recFreByeShGraal0, rec0nsL37Ihw1mkM0, reccae2LNjsIz4uBu, recx1YaZabuU3zURf, recVMr3DikpSr9pNN, recSQT5ayVm36emQh, recbJUUXvMmPRbpoM"
+recwRUYR78Mzd8j2E,"Specific hour or time window (e.g., before 2PM).",DT010,Timestamp,Time Window,
+recmW2C4mBkPiYZCZ,"Aggregated or backend score (e.g., adherence % over 7 days).",DT011,,Computed Score,recpCHgbnbY5cEy1Q
+recajPo53fMieHUhO,"External environmental condition (e.g., AQI over 100).",DT012,,Weather Event,
+rec1TTjpEnwxJdlSd,"Specific date (e.g., 06/11/2025)",DT013,date,Date,"recV7GwS5qz8ax9e3, recXrIxSC6eJAABsm, recBVz1P5qclRyYRf, reccZbmA70Zghtazb, recDyD93EFJDUtdwq, recKMLHBA5mgUKArk, reclbWmQP7SMJmseU, recZkuVpMxOjNagr1, rec5k4qj3T8SPVTI2, rec78l8tMeHxVQibM, recvl8UuJgKIngkOf, recRpixGBWGUwkN7B, recxdHdNneF2qdfCI"
+rec7iM3eWVvpSloua,,,,,
+rec5LRVaiYiCzKzdm,,,,,
+recpf1sAZr5LEP1If,,,,,
+recYgiZBOgGN5J8DG,,,,,
+recJPXcAZwVs7Kj0x,,,,,
+recRhbQNL2m6ztKLd,,,,,
+reck2syV4PYF1FSuf,,,,,
+recrbCPr4hwpvJA9i,,,,,
+recSv4xXrZDb95Q8Y,,,,,
+reckeDa2i3j6aiQVj,,,,,

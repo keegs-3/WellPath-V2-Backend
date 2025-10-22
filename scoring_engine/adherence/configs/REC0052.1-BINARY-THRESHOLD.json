@@ -1,0 +1,45 @@
+{
+  "config_id": "SC-BIN-DAILY-SCREEN_TIME_4HOURS",
+  "config_name": "Binary Threshold - screen_time_session",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "100% if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "threshold",
+      "evaluation_period": "daily",
+      "success_criteria": "daily_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "screen_time_session"
+      ],
+      "threshold": 240.0,
+      "comparison_operator": "<=",
+      "unit": "session",
+      "required_days": 7,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "countdown",
+      "frequency_requirement": "daily",
+      "scoring_type": "daily_binary",
+      "description": "Binary threshold scoring: Limit non-work screen time to less than 4 hours daily",
+      "calculated_metrics": [
+        "daily_screen_time_sessions"
+      ],
+      "daily_limit": 1440
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit non-work screen time to less than 4 hours daily",
+    "recommendation_id": "REC0052.1",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary threshold algorithm: Daily screen time must be at or below 4 hours (240 minutes)"
+    },
+    "metric_id": "screen_time_session",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

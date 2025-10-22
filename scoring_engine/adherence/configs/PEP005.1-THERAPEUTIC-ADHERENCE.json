@@ -1,0 +1,82 @@
+{
+  "config_id": "PEP005.1-THERAPEUTIC-ADHERENCE",
+  "config_name": "Therapeutic Adherence - Epitalon + Thymalin Stack",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 2 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Epitalon",
+          "type": "peptide",
+          "dose_min": 5,
+          "dose_max": 10,
+          "unit": "mg",
+          "unit_symbol": "mg",
+          "rollup": "5-10 mg",
+          "frequency": "2x weekly"
+        },
+        {
+          "name": "Thymalin",
+          "type": "peptide",
+          "dose_min": 10.0,
+          "dose_max": 20.0,
+          "unit": "mg",
+          "unit_symbol": "mg",
+          "rollup": "10-20 mg",
+          "frequency": "weekly"
+        }
+      ],
+      "therapeutics_count": 2,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 2 therapeutic intervention(s): Epitalon, Thymalin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Use Epitalon and Thymalin together for synergistic effects",
+    "recommendation_id": "REC0108.1",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 2 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Epitalon",
+        "type": "peptide",
+        "dose_min": 5,
+        "dose_max": 10,
+        "unit": "mg",
+        "unit_symbol": "mg",
+        "rollup": "5-10 mg",
+        "frequency": "2x weekly"
+      },
+      {
+        "name": "Thymalin",
+        "type": "peptide",
+        "dose_min": 10.0,
+        "dose_max": 20.0,
+        "unit": "mg",
+        "unit_symbol": "mg",
+        "rollup": "10-20 mg",
+        "frequency": "weekly"
+      }
+    ],
+    "generated_at": "2025-09-27T08:41:31.266960",
+    "title": "Epitalon + Thymalin Stack",
+    "overview": "Best-evidence peptide stack for mortality reduction and immune rejuvenation",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": NaN
+  }
+}

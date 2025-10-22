@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP013-SINGLE",
+  "config_name": "Calcium: Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Calcium",
+          "type": "SUP",
+          "dose_min": 600.0,
+          "dose_max": 1200.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "600-1200 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Calcium"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 600-1,200mg of Calcium with meals daily for bone health, muscle function, and cardiovascular support",
+    "recommendation_id": "SUP013-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Calcium",
+        "type": "SUP",
+        "dose_min": 600.0,
+        "dose_max": 1200.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "600-1200 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.351613",
+    "title": "Calcium: Supplement",
+    "overview": "Essential mineral for bone and muscle function",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI274,LI275,LI276,LI277"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "config_id": "PEP007.1-THERAPEUTIC-ADHERENCE",
+  "config_name": "Therapeutic Adherence - Selank",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Selank",
+          "type": "peptide",
+          "dose_min": 250,
+          "dose_max": 500,
+          "unit": "mcg",
+          "unit_symbol": "mcg",
+          "rollup": "250-500 mcg",
+          "frequency": "daily"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Selank"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Use Selank 250\u2013500mcg intranasal daily",
+    "recommendation_id": "REC0117.1",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Selank",
+        "type": "peptide",
+        "dose_min": 250,
+        "dose_max": 500,
+        "unit": "mcg",
+        "unit_symbol": "mcg",
+        "rollup": "250-500 mcg",
+        "frequency": "daily"
+      }
+    ],
+    "generated_at": "2025-09-27T08:41:31.270965",
+    "title": "Selank",
+    "overview": "Synthetic peptide reducing anxiety and improving stress resilience",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": NaN
+  }
+}

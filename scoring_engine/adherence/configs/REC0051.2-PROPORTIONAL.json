@@ -1,0 +1,46 @@
+{
+  "config_id": "SC-PROP-DAILY-OUTDOOR_TIME_MORNING_10MIN",
+  "config_name": "Proportional Achievement - outdoor_time_session",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "outdoor_time_session",
+        "wake_time"
+      ],
+      "target": 10.0,
+      "unit": "minutes",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Get outdoors for 10 minutes within 2 hours of waking",
+      "morning_window_hours": 2.0,
+      "calculated_metrics": [
+        "morning_outdoor_time_duration"
+      ],
+      "progress_direction": "buildup",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Get outdoors for 10 minutes within 2 hours of waking",
+    "recommendation_id": "REC0051.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.8,
+      "reasoning": "Proportional scoring best fit: daily 10-minute morning target"
+    },
+    "metric_id": "outdoor_time_session",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

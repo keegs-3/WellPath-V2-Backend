@@ -1,0 +1,37 @@
+﻿food_name,display_name,category_name,description
+berries,Berries,fruits,"Blueberries, strawberries, raspberries, blackberries"
+citrus,Citrus Fruits,fruits,"Oranges, lemons, limes, grapefruits, tangerines"
+apples_pears,Apples & Pears,fruits,"Apples, pears, and similar pome fruits"
+stone_fruits,Stone Fruits,fruits,"Peaches, plums, apricots, cherries, nectarines"
+tropical,Tropical Fruits,fruits,"Bananas, mangoes, pineapples, kiwi, papaya"
+grapes,Grapes,fruits,"Red, green, or purple grapes"
+melons,Melons,fruits,"Watermelon, cantaloupe, honeydew"
+dried_fruits,Dried Fruits,fruits,"Raisins, dates, dried apricots, prunes (without added sugar)"
+leafy_greens,Leafy Greens,vegetables,"Spinach, kale, arugula, lettuce, chard"
+cruciferous,Cruciferous Vegetables,vegetables,"Broccoli, cauliflower, Brussels sprouts, cabbage"
+colorful_peppers,Colorful Peppers,vegetables,"Red, yellow, orange, and green bell peppers"
+root_vegetables,Root Vegetables,vegetables,"Carrots, beets, sweet potatoes, turnips"
+alliums,Alliums,vegetables,"Onions, garlic, leeks, shallots"
+tomatoes,Tomatoes,vegetables,"Fresh tomatoes, cherry tomatoes, roma tomatoes"
+squash_zucchini,Squash & Zucchini,vegetables,"Zucchini, yellow squash, butternut squash"
+mushrooms,Mushrooms,vegetables,"Button, shiitake, portobello, other edible mushrooms"
+starchy_vegetables,Starchy Vegetables,vegetables,"Potatoes, corn, peas (counted as vegetables)"
+oats,Oats,whole_grains,"Steel-cut oats, rolled oats, oatmeal"
+quinoa,Quinoa,whole_grains,All varieties of quinoa
+brown_rice,Brown Rice,whole_grains,"Brown rice, wild rice, black rice"
+whole_wheat,Whole Wheat,whole_grains,"Whole wheat bread, pasta, flour products"
+barley,Barley,whole_grains,"Pearled barley, hulled barley"
+buckwheat,Buckwheat,whole_grains,"Buckwheat groats, buckwheat flour"
+millet,Millet,whole_grains,Whole millet grains
+whole_grain_bread,Whole Grain Bread,whole_grains,100% whole grain breads and products
+farro,Farro,whole_grains,Ancient wheat grain farro
+lentils,Lentils,legumes,"Red, green, brown, or black lentils"
+chickpeas,Chickpeas,legumes,"Garbanzo beans, hummus"
+black_beans,Black Beans,legumes,Black turtle beans
+kidney_beans,Kidney Beans,legumes,"Red kidney beans, white kidney beans"
+pinto_beans,Pinto Beans,legumes,"Pinto beans, refried beans"
+navy_beans,Navy Beans,legumes,Small white beans
+split_peas,Split Peas,legumes,Green or yellow split peas
+black_eyed_peas,Black-Eyed Peas,legumes,"Black-eyed peas, cowpeas"
+edamame,Edamame,legumes,Young soybeans
+green_peas,Green Peas,legumes,Fresh or frozen green peas

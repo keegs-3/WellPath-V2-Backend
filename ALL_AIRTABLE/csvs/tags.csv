@@ -1,0 +1,44 @@
+record_id,description,id,tag,tag_type
+recjWUdmJeRziirU1,"Instills or reinforces a consistent, repeated behavior.",TAG_PUR_001,habit,purpose
+recAykhjXeWNSEa4u,Drives the user to take action or re-engage through internal or external push.,TAG_PUR_002,motivation,purpose
+recqeFn0m2FNzmgwE,Delivers knowledge to improve understanding or awareness.,TAG_PUR_003,education,purpose
+recuRpH09ivYQSeTM,Reduces friction or obstacles to completing an action.,TAG_PUR_004,barrier-reduction,purpose
+recdXaVP6evYDpP6x,Reactivates lapsed users or nudges disengaged individuals.,TAG_PUR_005,re-engagement,purpose
+recWI4HdcpMFQ3Icz,"Brings attention to an issue, behavior, or opportunity for improvement.",TAG_PUR_006,awareness,purpose
+reclm38T18Aov6P4j,Strengthens a desired behavior already in place.,TAG_PUR_007,reinforcement,purpose
+recn1PWNI4tzKtboZ,Teaches a new ability or enhances competency.,TAG_PUR_008,skill-building,purpose
+recjlvrssPd09MsTV,"Provides an incentive, payoff, or acknowledgment.",TAG_PUR_009,reward,purpose
+rec7700WYgAmzNcFP,"Involves monitoring or logging actions, metrics, or behaviors.",TAG_PUR_010,tracking,purpose
+rec9tLi3xxwPCwtTo,"Helps the user uncover patterns, correlations, or personal insights.",TAG_PUR_011,insight-generation,purpose
+recAcw7lHRlyURE3V,Introduces or reinforces behaviors outside the user’s typical actions.,TAG_PUR_012,behavior-expansion,purpose
+recC5Ls28Re81vAmH,Targets improvement of a specific physiological marker.,TAG_PUR_013,biomarker-optimization,purpose
+rec2ApIq2eznrJtdY,"Promotes brief, repeatable activity bursts (e.g., 5–15 minutes) to increase accessibility, reduce barriers, and support cumulative health impact through frequent movement throughout the day.",TAG_PUR_014,micro-session,purpose
+recGVGmFc76tlDZFx,"New to this domain or behavior, needs foundational support.",TAG_AUD_001,beginner,audience
+rec6EPreWRXqRkJsI,Has some experience and readiness for moderate-level actions.,TAG_AUD_002,intermediate,audience
+recSkWkPMyf0jWQ0O,Well-versed or motivated; capable of advanced strategies.,TAG_AUD_003,advanced,audience
+recMHTZJyvLkNCdh8,"Low baseline activity, needs activation nudges.",TAG_AUD_004,under-active,audience
+recAuhqc15Du0MNbA,"Consistently engaged, ready for optimization or challenges.",TAG_AUD_005,high-performer,audience
+recgf8oHxkQn5KzjY,Medically or behaviorally at higher risk; needs targeted support.,TAG_AUD_006,high-risk,audience
+recRLqqkegAOKH9Jv,Struggles with following through; needs re-engagement tools.,TAG_AUD_007,low-adherence,audience
+recgHRXMbugddlBW1,Requires no action; exposure alone is sufficient.,TAG_INT_001,passive,intensity
+rect8jyvM4cLi9Rm2,Encourages contemplation or insight without immediate action.,TAG_INT_002,reflective,intensity
+rec9mDSBpYrbyyAh8,Quick to complete; minimal friction or time required.,TAG_INT_003,low-effort,intensity
+recejpPst6It6oSHm,Requires consistent but manageable effort.,TAG_INT_004,moderate effort,intensity
+recHyKSUUn45xBSEE,Time- or attention-intensive; may require planning.,TAG_INT_005,high-effort,intensity
+recGoP1okgEgVQWmu,Involves interactive or multi-step engagement.,TAG_INT_006,high-engagement,intensity
+recVr769qXwQVwDTk,Built to persist over multiple days or weeks.,TAG_INT_007,sustained,intensity
+recUtKO5ZduVtCx4D,Gentle reminder or suggestion to guide behavior.,TAG_ENG_001,nudge,engagement
+rec6D7OvGH4ppBatP,"Time-bound, goal-based action to drive commitment.",TAG_ENG_002,challenge,engagement
+recN7Jj9M4H47Iv6R,Encourages building a chain of consistent behavior.,TAG_ENG_003,streak,engagement
+rec7kDuuSdfFV70DT,Timed or situational signal to initiate an action.,TAG_ENG_004,cue,engagement
+recMNlEF1tcNQLWYh,Direct ask or CTA designed to prompt immediate behavior.,TAG_ENG_005,prompt,engagement
+recrYPSb6YmrL3lq8,Encourages self-inquiry or introspection.,TAG_ENG_006,reflection,engagement
+receoRRoGGBywTKia,Captures input from the user about behavior or feelings.,TAG_ENG_007,check-in,engagement
+recFkC5QnlXvYuRpu,Gradually increases difficulty or complexity.,TAG_ENG_008,progression,engagement
+recQAmHCiRgoW5DZD,"Uses points, levels, or awards to boost participation.",TAG_ENG_009,gamification,engagement
+rec7nw5IJqf0WY1RW,Swaps undesired behavior for a more beneficial one.,TAG_ENG_010,substitution,engagement
+recxO1mD5vuVkRkSf,Pairs a new behavior with an existing habit.,TAG_ENG_011,stacking,engagement
+reclLz1omGdeGb150,Adjusts intensity or complexity based on user level.,TAG_ENG_012,tiering,engagement
+rect2yRVAPJHkXnc5,Delivers helpful content to inform action or decision-making.,TAG_ENG_013,education,engagement
+recI0R1H64UUXJcsJ,,TAG_ENG_014,action-commitment,engagement
+recwVm1mYsdt9U4pP,,,anchoring,

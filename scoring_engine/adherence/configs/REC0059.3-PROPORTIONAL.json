@@ -1,0 +1,46 @@
+{
+  "config_id": "SC-PROP-DAILY-SUNSCREEN_APPLICATION_REAPPLY",
+  "config_name": "Proportional Achievement - sunscreen_application",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "sunscreen_application",
+        "sunlight_exposure"
+      ],
+      "target": 100.0,
+      "unit": "percent",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Reapply sunscreen throughout the day when outdoors",
+      "reapplication_required": true,
+      "calculated_metrics": [
+        "daily_sunscreen_compliance_rate"
+      ],
+      "progress_direction": "buildup",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reapply sunscreen throughout the day when outdoors",
+    "recommendation_id": "REC0059.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.8,
+      "reasoning": "Proportional scoring best fit: daily 3-application target (morning + reapplications)"
+    },
+    "metric_id": "sunscreen_application",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

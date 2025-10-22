@@ -1,0 +1,142 @@
+{
+  "config_id": "SC-COMP-FREQ-SLEEP_DU",
+  "config_name": "Composite Weighted - sleep_duration",
+  "scoring_method": "sleep_composite",
+  "configuration_json": {
+    "method": "sleep_composite",
+    "formula": "weighted_average(duration_zone_score, sleep_consistency_score, wake_consistency_score)",
+    "evaluation_pattern": "frequency",
+    "schema": {
+      "measurement_type": "sleep_composite",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "composite_target",
+      "calculation_method": "sleep_composite_algorithm",
+      "tracked_metrics": [],
+      "calculated_metrics": [
+        "daily_sleep_duration_time_difference",
+        "period_wake_time_consistency_std_dev",
+        "period_sleep_time_consistency_std_dev"
+      ],
+      "components": {
+        "sleep_duration": {
+          "weight": 0.55,
+          "scoring_method": "zone_based_5_tier",
+          "unit": "hours_minutes",
+          "field_name": "daily_sleep_duration_time_difference",
+          "zones": [
+            {
+              "range": [
+                0.0,
+                5.99
+              ],
+              "score": 0.0,
+              "label": "Insufficient"
+            },
+            {
+              "range": [
+                6.0,
+                6.99
+              ],
+              "score": 50.0,
+              "label": "Low"
+            },
+            {
+              "range": [
+                7.0,
+                9.0
+              ],
+              "score": 100.0,
+              "label": "Optimal"
+            },
+            {
+              "range": [
+                9.01,
+                9.99
+              ],
+              "score": 75.0,
+              "label": "Long"
+            },
+            {
+              "range": [
+                10.0,
+                24.0
+              ],
+              "score": 25.0,
+              "label": "Excessive"
+            }
+          ]
+        },
+        "wake_time_consistency": {
+          "weight": 0.225,
+          "scoring_method": "variance_based",
+          "unit": "minutes",
+          "field_name": "period_wake_time_consistency_std_dev",
+          "variance_thresholds": [
+            {
+              "max_variance": 90.0,
+              "score": 75.0
+            },
+            {
+              "max_variance": 120.0,
+              "score": 50.0
+            },
+            {
+              "max_variance": 150.0,
+              "score": 25.0
+            },
+            {
+              "max_variance": "infinity",
+              "score": 0.0
+            }
+          ]
+        },
+        "sleep_time_consistency": {
+          "weight": 0.225,
+          "scoring_method": "variance_based",
+          "unit": "minutes",
+          "field_name": "period_sleep_time_consistency_std_dev",
+          "variance_thresholds": [
+            {
+              "max_variance": 60.0,
+              "score": 100.0
+            },
+            {
+              "max_variance": 90.0,
+              "score": 75.0
+            },
+            {
+              "max_variance": 120.0,
+              "score": 50.0
+            },
+            {
+              "max_variance": 150.0,
+              "score": 25.0
+            },
+            {
+              "max_variance": "infinity",
+              "score": 0.0
+            }
+          ]
+        }
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "measurement",
+      "frequency_requirement": "meet composite target weekly",
+      "description": "Composite scoring for: Get 7–9 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule (≤60 min variation in both bedtime and wake time over 7 days)....",
+      "required_days": 1,
+      "total_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Get 7–9 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule",
+    "recommendation_id": "REC0004.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected (composite score: 5)"
+    },
+    "metric_id": "sleep_duration,sleep_time_consistency,wake_time_consistency",
+    "generated_at": "2025-09-10T18:29:51.719982"
+  }
+}

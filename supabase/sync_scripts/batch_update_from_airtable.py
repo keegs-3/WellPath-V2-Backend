@@ -16,7 +16,10 @@ DATABASE_URL = os.getenv('DATABASE_URL',
     'postgresql://postgres.csotzmardnvrpdhlogjm:qLa4sE9zV1yvxCP4@aws-1-us-west-1.pooler.supabase.com:6543/postgres'
 )
 
-CSV_DIR = "/Users/keegs/Documents/GitHub/preliminary_data/ALL_AIRTABLE/csvs"
+# Use local ALL_AIRTABLE directory (self-contained)
+SCRIPT_DIR = Path(__file__).parent
+PROJECT_ROOT = SCRIPT_DIR.parent.parent
+CSV_DIR = PROJECT_ROOT / "ALL_AIRTABLE" / "csvs"
 
 
 def connect_db():

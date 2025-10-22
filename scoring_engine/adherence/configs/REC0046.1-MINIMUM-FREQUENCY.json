@@ -1,0 +1,47 @@
+{
+  "config_id": "SC-MINFREQ-BREATHWORK_MINDFULNESS_2MIN_7DAYS",
+  "config_name": "Minimum Frequency - breathwork/mindfulness 2 minutes daily",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "minimum_days_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "breathwork_session",
+        "mindfulness_session"
+      ],
+      "calculated_metrics": [
+        "daily_breathwork_mindfulness_sessions"
+      ],
+      "daily_threshold": 2.0,
+      "daily_comparison": ">=",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "session",
+      "scoring_type": "proportional",
+      "frequency_requirement": "daily",
+      "comparison_mode": "combined_threshold",
+      "description": "SC-MINIMUM-FREQUENCY: Success requires achieving 2+ minutes of breathwork or mindfulness practice on all 7 days per week",
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "buildup",
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Incorporate 1 minute of breathwork or mindfulness breaks twice a day",
+    "recommendation_id": "REC0046.1",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.8,
+      "reasoning": "Minimum frequency pattern detected: daily 2-minute threshold required on all 7 days"
+    },
+    "metric_id": "daily_breathwork_duration",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

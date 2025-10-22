@@ -44,15 +44,15 @@ def main():
     conn = psycopg2.connect(**DB_CONFIG)
     cur = conn.cursor()
 
-    # Check if practice and clinician exist
-    cur.execute("SELECT id FROM practices WHERE id = %s", (DEFAULT_PRACTICE_ID,))
+    # Check if practice and clinician exist (using medical_practices instead of practices)
+    cur.execute("SELECT id FROM medical_practices WHERE id = %s", (DEFAULT_PRACTICE_ID,))
     if not cur.fetchone():
         print(f"\n⚠️  Practice {DEFAULT_PRACTICE_ID} does not exist. Creating test practice...")
         cur.execute("""
-            INSERT INTO practices (id, name, email, practice_type, created_at)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO medical_practices (id, name, email, created_at)
+            VALUES (%s, %s, %s, %s)
             ON CONFLICT (id) DO NOTHING
-        """, (DEFAULT_PRACTICE_ID, 'Test Practice', 'test@wellpath.com', 'Primary Care', datetime.now()))
+        """, (DEFAULT_PRACTICE_ID, 'Test Practice', 'test@wellpath.com', datetime.now()))
         conn.commit()
         print("✓ Created test practice")
 
@@ -60,13 +60,32 @@ def main():
     if not cur.fetchone():
         print(f"\n⚠️  Clinician {DEFAULT_CLINICIAN_ID} does not exist. Creating test clinician...")
         cur.execute("""
-            INSERT INTO auth_users (id, email, first_name, last_name, role, practice_id, created_at)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO auth_users (id, email, full_name, role, created_at)
+            VALUES (%s, %s, %s, %s, %s)
             ON CONFLICT (id) DO NOTHING
-        """, (DEFAULT_CLINICIAN_ID, 'clinician@test.com', 'Test', 'Clinician', 'clinician',
-              DEFAULT_PRACTICE_ID, datetime.now()))
+        """, (DEFAULT_CLINICIAN_ID, 'clinician@test.com', 'Test Clinician', 'clinician', datetime.now()))
         conn.commit()
         print("✓ Created test clinician")
+
+    # Delete existing test data first
+    print("\n" + "="*80)
+    print("STEP 0: Cleaning Previous Test Data")
+    print("="*80)
+
+    print("Deleting existing test data for practice", DEFAULT_PRACTICE_ID)
+    # Delete based on patient_details medical_practice_id
+    cur.execute("DELETE FROM patient_survey_responses WHERE user_id IN (SELECT user_id FROM patient_details WHERE medical_practice_id = %s)", (DEFAULT_PRACTICE_ID,))
+    cur.execute("DELETE FROM patient_biometric_readings WHERE user_id IN (SELECT user_id FROM patient_details WHERE medical_practice_id = %s)", (DEFAULT_PRACTICE_ID,))
+    cur.execute("DELETE FROM patient_biomarker_readings WHERE user_id IN (SELECT user_id FROM patient_details WHERE medical_practice_id = %s)", (DEFAULT_PRACTICE_ID,))
+    # Get user_ids before deleting patient_details
+    cur.execute("SELECT user_id FROM patient_details WHERE medical_practice_id = %s", (DEFAULT_PRACTICE_ID,))
+    user_ids = [row[0] for row in cur.fetchall() if row[0] is not None]
+    cur.execute("DELETE FROM patient_details WHERE medical_practice_id = %s", (DEFAULT_PRACTICE_ID,))
+    # Delete auth_users for these patients
+    if user_ids:
+        cur.execute(f"DELETE FROM auth_users WHERE id IN ({','.join(['%s'] * len(user_ids))})", user_ids)
+    conn.commit()
+    print("✓ Deleted all existing test data")
 
     # Import patient details
     print("\n" + "="*80)
@@ -80,40 +99,39 @@ def main():
         # Generate random email
         email = f"test.patient.{idx}@wellpath.com"
 
-        # Calculate age from dob
-        age = int(row['age'])
-        dob = f"{2025 - age}-01-01"  # Approximate DOB
+        # Calculate DOB from age (age will be auto-calculated by DB from dob)
+        age_from_csv = int(row['age'])
+        dob = f"{2025 - age_from_csv}-01-01"  # Approximate DOB
 
         try:
+            # Create auth_users entry first (needed for API access and foreign key)
+            cur.execute("""
+                INSERT INTO auth_users (
+                    id, email, full_name, role, created_at
+                )
+                VALUES (%s, %s, %s, %s, %s)
+                ON CONFLICT (id) DO UPDATE
+                SET email = EXCLUDED.email
+            """, (
+                patient_id, email, f"Patient {idx+1}",
+                'patient', datetime.now()
+            ))
+
+            # Then create patient_details with user_id linking to auth_users
             cur.execute("""
                 INSERT INTO patient_details (
-                    id, practice_id, assigned_clinician_id,
-                    gender, dob, age, created_at
+                    user_id, medical_practice_id, assigned_clinician_id,
+                    biological_sex, date_of_birth, created_at
                 )
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-                ON CONFLICT (id) DO UPDATE
-                SET gender = EXCLUDED.gender,
-                    dob = EXCLUDED.dob,
-                    age = EXCLUDED.age
+                VALUES (%s, %s, %s, %s, %s, %s)
+                ON CONFLICT (user_id) DO UPDATE
+                SET biological_sex = EXCLUDED.biological_sex,
+                    date_of_birth = EXCLUDED.date_of_birth
             """, (
                 patient_id, DEFAULT_PRACTICE_ID, DEFAULT_CLINICIAN_ID,
                 row['sex'][:1].upper(),  # 'M' or 'F'
                 dob,
-                age,
                 datetime.now()
-            ))
-
-            # Also create auth_users entry (needed for API access)
-            cur.execute("""
-                INSERT INTO auth_users (
-                    id, email, first_name, last_name, role, practice_id, created_at
-                )
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-                ON CONFLICT (id) DO UPDATE
-                SET email = EXCLUDED.email
-            """, (
-                patient_id, email, f"Patient", f"{idx+1}",
-                'patient', DEFAULT_PRACTICE_ID, datetime.now()
             ))
 
             patient_count += 1
@@ -135,10 +153,10 @@ def main():
     print("STEP 2: Importing Biomarker Readings")
     print("="*80)
 
-    # First, get marker name to record_id mapping
-    cur.execute("SELECT record_id, name FROM intake_markers_raw")
-    marker_mapping = {row[1].lower(): row[0] for row in cur.fetchall()}
-    print(f"✓ Loaded {len(marker_mapping)} marker mappings")
+    # Get list of valid biomarker names
+    cur.execute("SELECT biomarker_name FROM biomarkers_base")
+    valid_biomarkers = {row[0].lower(): row[0] for row in cur.fetchall()}
+    print(f"✓ Loaded {len(valid_biomarkers)} biomarker names")
 
     # Marker name normalization (CSV column -> database name)
     MARKER_NAME_MAP = {
@@ -153,7 +171,7 @@ def main():
         'magnesium_rbc': 'Magnesium (RBC)',
         'vitamin_d': 'Vitamin D',
         'serum_ferritin': 'Serum Ferritin',
-        'total_iron_binding_capacity': 'Total Iron Binding Capacity',
+        'total_iron_binding_capacity': 'Total Iron Binding Capacity (TIBC)',
         'transferrin_saturation': 'Transferrin Saturation',
         'hscrp': 'hsCRP',
         'wbc': 'White Blood Cell Count',
@@ -169,7 +187,7 @@ def main():
         'ggt': 'GGT',
         'testosterone': 'Testosterone',
         'uric_acid': 'Uric Acid',
-        'alkaline_phosphatase': 'Alkaline Phosphatase',
+        'alkaline_phosphatase': 'ALP',
         'albumin': 'Albumin',
         'serum_protein': 'Serum Protein',
         'hemoglobin': 'Hemoglobin',
@@ -182,7 +200,7 @@ def main():
         'bun': 'BUN',
         'creatinine': 'Creatinine',
         'homocysteine': 'Homocysteine',
-        'cortisol_morning': 'Cortisol (Morning)',
+        'cortisol_morning': 'Cortisol',
         # Additional markers (previously missing)
         'tsh': 'TSH',
         'calcium_serum': 'Calcium (Serum)',
@@ -217,20 +235,19 @@ def main():
             if csv_name not in row or pd.isna(row[csv_name]):
                 continue
 
-            marker_id = marker_mapping.get(db_name.lower())
-            if not marker_id:
+            biomarker_name = valid_biomarkers.get(db_name.lower())
+            if not biomarker_name:
                 skipped_markers += 1
                 continue
 
             try:
                 cur.execute("""
-                    INSERT INTO biomarker_readings (
-                        patient_id, marker_id, value, unit, test_date, created_at
+                    INSERT INTO patient_biomarker_readings (
+                        user_id, biomarker_name, value, unit, test_date, created_at
                     )
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (
-                    patient_id, marker_id, float(row[csv_name]),
-                    'mg/dL',  # Default unit
+                    patient_id, biomarker_name, float(row[csv_name]), 'standard',
                     test_date, datetime.now()
                 ))
                 biomarker_count += 1
@@ -256,10 +273,10 @@ def main():
     print("STEP 2.5: Importing Biometric Readings")
     print("="*80)
 
-    # Get metric mapping from database
-    cur.execute("SELECT record_id, name FROM intake_metrics_raw")
-    metric_mapping = {row[1].lower(): row[0] for row in cur.fetchall()}
-    print(f"✓ Loaded {len(metric_mapping)} metric mappings")
+    # Get list of valid biometric names
+    cur.execute("SELECT biometric_name FROM biometrics_base")
+    valid_biometrics = {row[0].lower(): row[0] for row in cur.fetchall()}
+    print(f"✓ Loaded {len(valid_biometrics)} biometric names")
 
     # Metric name mapping (CSV column -> database name, unit)
     METRIC_NAME_MAP = {
@@ -292,20 +309,20 @@ def main():
             if csv_name not in row or pd.isna(row[csv_name]):
                 continue
 
-            metric_id = metric_mapping.get(db_name.lower())
-            if not metric_id:
+            biometric_name = valid_biometrics.get(db_name.lower())
+            if not biometric_name:
                 skipped_metrics += 1
                 continue
 
             try:
                 cur.execute("""
-                    INSERT INTO biometric_readings (
-                        patient_id, metric_id, value, unit, test_date, created_at
+                    INSERT INTO patient_biometric_readings (
+                        user_id, biometric_name, value, unit, recorded_at, created_at
                     )
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (
-                    patient_id, metric_id, float(row[csv_name]),
-                    unit, test_date, datetime.now()
+                    patient_id, biometric_name, float(row[csv_name]), unit,
+                    test_date, datetime.now()
                 ))
                 biometric_count += 1
             except Exception as e:
@@ -330,33 +347,55 @@ def main():
     print("STEP 3: Importing Survey Responses")
     print("="*80)
 
-    # Get question ID to record_id and type mapping
-    cur.execute('SELECT "ID", record_id, type FROM survey_questions')
+    # Get question number to type mapping from survey_questions_base
+    cur.execute('SELECT question_number, type FROM survey_questions_base')
     question_mapping = {}
     question_types = {}
     for row in cur.fetchall():
-        question_id_str = str(row[0])
-        question_mapping[question_id_str] = row[1]
-        question_types[row[1]] = row[2]  # Map record_id -> type
-    print(f"✓ Loaded {len(question_mapping)} question ID mappings")
+        question_num_str = str(row[0]).strip()  # Strip whitespace
+        # Store the original question_number
+        question_mapping[question_num_str] = question_num_str
 
-    # Get response option mapping (question_id + response_text -> response_option_id)
-    cur.execute('SELECT record_id, response, linked_survey_question FROM survey_response_options')
+        # Handle decimal padding: 8.1 should map to 8.10 (not 8.01!)
+        if '.' in question_num_str:
+            parts = question_num_str.split('.')
+            decimal_part = parts[1]
+
+            # If decimal part is single digit, pad with trailing zero (8.1 -> 8.10)
+            if len(decimal_part) == 1:
+                padded_trailing = f"{parts[0]}.{decimal_part}0"
+                question_mapping[padded_trailing] = question_num_str
+
+            # If decimal part is two digits, also create single digit version (8.01 -> 8.1)
+            elif len(decimal_part) == 2 and decimal_part.endswith('0'):
+                single_digit = f"{parts[0]}.{decimal_part[0]}"
+                question_mapping[single_digit] = question_num_str
+
+        question_types[question_num_str] = row[1]  # Map question_number -> type
+
+    # Debug: print section 8 mappings
+    section_8_keys = [k for k in question_mapping.keys() if k.startswith('8.')]
+    print(f"✓ Loaded {len(question_mapping)} question ID mappings")
+    print(f"  Section 8 mappings: {len(section_8_keys)} keys")
+    print(f"  Sample section 8 keys: {sorted(section_8_keys)[:10]}")
+
+    # Get response option mapping (question_number + option_text -> response_option_id)
+    cur.execute('SELECT id, option_text, question_number FROM survey_response_options')
     response_options = {}
-    fallback_options = {}  # Fallback options by question_id
+    fallback_options = {}  # Fallback options by question_number
     for row in cur.fetchall():
-        option_id, response_text, question_id = row
-        if question_id and response_text:
-            # Create key as (question_id, normalized_response_text)
-            key = (question_id, response_text.strip().lower())
+        option_id, option_text, question_number = row
+        if question_number and option_text:
+            # Create key as (question_number, normalized_option_text)
+            key = (question_number, option_text.strip().lower())
             response_options[key] = option_id
 
             # Track fallback options (ones with brackets or "other")
-            response_lower = response_text.lower()
-            if ('[' in response_lower or 'other' in response_lower):
-                if question_id not in fallback_options:
-                    fallback_options[question_id] = []
-                fallback_options[question_id].append((option_id, response_text))
+            option_lower = option_text.lower()
+            if ('[' in option_lower or 'other' in option_lower):
+                if question_number not in fallback_options:
+                    fallback_options[question_number] = []
+                fallback_options[question_number].append((option_id, option_text))
 
     print(f"✓ Loaded {len(response_options)} response option mappings")
     print(f"✓ Found fallback options for {len(fallback_options)} questions")
@@ -365,6 +404,7 @@ def main():
     skipped_questions = 0
     matched_options = 0
     unmatched_options = 0
+    skipped_section_8 = []  # Track skipped section 8 questions
 
     for idx, row in survey_df.iterrows():
         patient_id = row['patient_id']
@@ -377,32 +417,36 @@ def main():
             if col == 'patient_id':
                 continue
 
-            # Map numeric question ID to record_id
-            question_record_id = question_mapping.get(col)
-            if not question_record_id:
+            # Map CSV column to question_number
+            col_stripped = col.strip()
+            question_number = question_mapping.get(col_stripped)
+            if not question_number:
                 skipped_questions += 1
+                # Track section 8 skips for debugging
+                if col_stripped.startswith('8.') and col_stripped not in skipped_section_8:
+                    skipped_section_8.append(col_stripped)
                 continue
 
             response = row[col]
-            # Convert NaN to empty string - scoring logic needs to see the question was answered with ""
+            # Keep empty responses - scoring logic needs them
             if pd.isna(response):
                 response_value = ""
             else:
                 response_value = str(response).strip()
 
-            # Only try to match if there's an actual response value
+            # Only try to match response_option_id if there's an actual response value
             response_option_id = None
             if response_value and response_value != "":
                 # Try exact match first
-                key = (question_record_id, response_value.lower())
+                key = (question_number, response_value.lower())
                 response_option_id = response_options.get(key)
 
                 if response_option_id:
                     matched_options += 1
                 else:
                     # No exact match - try fallback based on question type
-                    question_type = question_types.get(question_record_id, '')
-                    fallbacks = fallback_options.get(question_record_id, [])
+                    question_type = question_types.get(question_number, '')
+                    fallbacks = fallback_options.get(question_number, [])
 
                     if fallbacks:
                         # Select appropriate fallback based on question type and response
@@ -450,14 +494,11 @@ def main():
 
             try:
                 cur.execute("""
-                    INSERT INTO survey_responses (
-                        patient_id, question_id, response_value, response_option_id, created_at
+                    INSERT INTO patient_survey_responses (
+                        user_id, question_number, response_text, response_option_id, completed_at
                     )
                     VALUES (%s, %s, %s, %s, %s)
-                    ON CONFLICT (patient_id, question_id) DO UPDATE
-                    SET response_value = EXCLUDED.response_value,
-                        response_option_id = EXCLUDED.response_option_id
-                """, (patient_id, question_record_id, response_value, response_option_id, datetime.now()))
+                """, (patient_id, question_number, response_value, response_option_id, datetime.now()))
 
                 survey_count += 1
             except Exception as e:
@@ -472,6 +513,9 @@ def main():
     print(f"  Skipped {skipped_questions} unmapped questions")
     print(f"  Matched {matched_options} response options")
     print(f"  Unmatched {unmatched_options} responses (free-form or multi-select)")
+    if skipped_section_8:
+        print(f"  ⚠ WARNING: Skipped {len(skipped_section_8)} section 8 questions:")
+        print(f"    {sorted(skipped_section_8)[:20]}")  # Show first 20
 
     # Final summary
     print("\n" + "="*80)
@@ -481,22 +525,28 @@ def main():
     cur.execute("SELECT COUNT(*) FROM patient_details")
     print(f"Total patients in database: {cur.fetchone()[0]}")
 
-    cur.execute("SELECT COUNT(*) FROM biomarker_readings")
+    cur.execute("SELECT COUNT(*) FROM patient_biomarker_readings")
     print(f"Total biomarker readings: {cur.fetchone()[0]}")
 
-    cur.execute("SELECT COUNT(*) FROM survey_responses")
+    cur.execute("SELECT COUNT(*) FROM patient_biometric_readings")
+    print(f"Total biometric readings: {cur.fetchone()[0]}")
+
+    cur.execute("SELECT COUNT(*) FROM patient_survey_responses")
     print(f"Total survey responses: {cur.fetchone()[0]}")
 
     # Check our test patient
-    print("\nTest Patient 83a28af3-82ef-4ddb-8860-ac23275a5c32:")
+    test_patient_id = biomarkers_df.iloc[0]['patient_id']
+    print(f"\nTest Patient {test_patient_id}:")
     cur.execute("""
         SELECT
-            (SELECT COUNT(*) FROM biomarker_readings WHERE patient_id = %s) as biomarkers,
-            (SELECT COUNT(*) FROM survey_responses WHERE patient_id = %s) as surveys
-    """, (biomarkers_df.iloc[0]['patient_id'], biomarkers_df.iloc[0]['patient_id']))
+            (SELECT COUNT(*) FROM patient_biomarker_readings WHERE user_id = %s) as biomarkers,
+            (SELECT COUNT(*) FROM patient_biometric_readings WHERE user_id = %s) as biometrics,
+            (SELECT COUNT(*) FROM patient_survey_responses WHERE user_id = %s) as surveys
+    """, (test_patient_id, test_patient_id, test_patient_id))
     result = cur.fetchone()
     print(f"  Biomarkers: {result[0]}")
-    print(f"  Survey responses: {result[1]}")
+    print(f"  Biometrics: {result[1]}")
+    print(f"  Survey responses: {result[2]}")
 
     cur.close()
     conn.close()

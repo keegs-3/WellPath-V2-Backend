@@ -1,0 +1,72 @@
+{
+  "config_id": "SC-COMP-DAILY-LEGUME_REC0012.2",
+  "config_name": "Composite Weighted - REC0012.2 Legumes",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "(legume_servings_score * 0.7 + legume_sources_score * 0.3)",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "weighted_components",
+      "calculation_method": "weighted_sum",
+      "tracked_metrics": [
+        "legume_serving",
+        "legume_source_type"
+      ],
+      "calculated_metrics": [
+        "daily_legume_servings",
+        "weekly_legume_source_summary"
+      ],
+      "components": [
+        {
+          "name": "Servings",
+          "weight": 0.7,
+          "target": 2.0,
+          "unit": "serving",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_legume_servings"
+        },
+        {
+          "name": "Sources",
+          "weight": 0.3,
+          "target": 2.0,
+          "unit": "sources",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "weekly",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "weekly_legume_source_summary"
+        }
+      ],
+      "description": "Reach 2 or more servings of legumes daily, with at least 2 different legume sources each day",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "serving",
+      "progress_direction": "buildup",
+      "daily_limit": 99,
+      "frequency_requirement": "daily"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reach 2 or more servings of legumes daily, with at least 2 different legume sources each day",
+    "recommendation_id": "REC0012.2",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.9,
+      "reasoning": "Daily composite: legume servings AND source variety both required daily"
+    },
+    "metric_id": "daily_legume_servings,daily_legume_source_count",
+    "generated_at": "2025-09-13T11:14:24.288132"
+  }
+}

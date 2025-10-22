@@ -1,0 +1,53 @@
+record_id,description,fields_pattern,linked_tracked_metrics,name,ui_type,validation_rules
+recvmPxMo7fMxWvj6,"Tracks timed consumption/intake with flexible units - requires date, time, and quantity. Used for food/supplement intake with configurable units (servings, grams, cups, sources, etc.) determined by the specific metric.","Date, Time, Quantity","recEQJIHSBn0dbAsE, recXGAU9Qi5e8bKSW, recgyE3iWXP2ccYEx, rec0Bp07c21sb2Ref, recJ13o0XSJGZkkdP, recUyh0VZjCy93jRe, recMRSL40KDppZ8IJ, recmrxrBzd9TFYnvB, recKLAs4h7IGRfWda, recfE9BcGPHq9cPDZ, recGPPDd5i4uun3oa, recgumU8bXrsl54Ed, recr6RWwNxcz0tpr3, recfZYnWPIzFnqZHW, recrOyba1O3mB2CHm, recV4FEjIHsOdKtHc, reclDxNnJwcuQSYak, recNlALYqbdTE9AfY, recl2iT9ZsTmqtIV6, recEbOiNyw46llfxE, reclY9BPepnZQSiDm, recx84UE6rhr6jUuq, rec5CjdtdR3SqBAcU, recOqQiV6ZtMeXXjM, recKVJCrX5rb8Y3Ei, recbJUUXvMmPRbpoM",Date Time Quantity,DateTime_Quantity_Input,"- Date: Required, cannot be future date
+- Time: Required, valid 24-hour format
+- Quantity: Required, positive number, decimal allowed
+- Units displayed based on metric configuration
+- Default quantity suggestions based on metric type
+- Unit-specific validation (e.g., grams 0-1000, servings 0-10)"
+recj3KL2ZwcEDF83A,"Tracks timed activities with start/end times - requires date and time span. Used for exercise sessions, work blocks, or any activity with measurable duration.","Date, Time Start, Time End","rec0UzAaii5gqPh5k, rec1MrcLLaRhmGBR2, rec2cSrZAbKzTrbAJ, rec5WLPHYGoaKUCjp, rec6ECEJg5nhl0x6y, recV6TvniDSNrmCPt, recY75tn39AEXKwbl, recIP9lf7bOv9VcpU, recWB10Y3P4QgrkAQ, rectwdl12NyOIQZxD, reczsDrLyAiXOgJi7, recdAJfs9MBESWD8O, recNBUyw6NvnP8WOh, recFzpUjGNlVM3RNK, rechN97Dq5ALu3FI9, reclDVu1Iv6feixC3, recEfAO5FbGtiFMH7, recoeS7pfQzXi85uK",Date Time Duration,DateTime_Duration_Input,"- Date: Required, cannot be future date
+- Time Start: Required, valid 24-hour format
+- Time End: Required, must be after Time Start
+- Auto-calculate duration for display
+- Maximum 24-hour duration validation"
+rec4eXSu9DUB9OTrZ,"Tracks single-point-in-time events - requires date and specific time. Used for meals, medication timing, wake/sleep times, or other momentary occurrences.","Date, Time","rec4pZKchlwcEivTq, recATC4ssc5CoJarW, recVMr3DikpSr9pNN, reccae2LNjsIz4uBu, recsM47DgXMaSFxrK, recn2NJclI5AuwTnP, recx1YaZabuU3zURf",Date Time Event,DateTime_Point_Input,"- Date: Required, cannot be future date
+- Time: Required, valid 24-hour format
+- Optional: Time picker with common preset times
+- Optional: 'Now' button for current time entry"
+recH8WEzKPkXv3ivr,"Tracks daily measurements or readings - requires date and numeric value. Used for biomarkers, weight, blood pressure, or other quantifiable health metrics.","Date, Measurement","recBp4p7hx3cGOZFS, recEPturjvPaeVBMk, recFl99d8n4l00XcA, recJeEd61woRAahla, recMVZ6YoOQTJvFBa, recZKlcHhj7CDPJSf, recjgSgnrdLSBJBZe, recseppfup15Ij0xE, recpCHgbnbY5cEy1Q, recKArUE41uHphWb9",Date Measurement,Date_Numeric_Input,"- Date: Required, cannot be future date
+- Measurement: Required, numeric value
+- Units displayed based on metric type
+- Range validation based on metric (e.g., HRV 0-200ms)
+- Decimal precision based on metric requirements"
+recgeXnLJb7srYbVJ,"Tracks simple daily occurrences - requires only date. Used for screenings, appointments, social events, or any occurrence where timing within the day is not critical.",Date,"rec5k4qj3T8SPVTI2, rec78l8tMeHxVQibM, recBVz1P5qclRyYRf, recDyD93EFJDUtdwq, recKMLHBA5mgUKArk, recRpixGBWGUwkN7B, recV7GwS5qz8ax9e3, recXrIxSC6eJAABsm, recZkuVpMxOjNagr1, reccZbmA70Zghtazb, reclbWmQP7SMJmseU, recvl8UuJgKIngkOf, recxdHdNneF2qdfCI",Date Only Event,Date_Only_Input,"- Date: Required, can be past or present
+- Calendar picker interface
+- Optional: 'Today' quick button
+- For medical screenings: validate against recommended frequency"
+recfznMmtKjCbKkkt,"Tracks yes/no compliance or completion - simple boolean choice. Used for supplement adherence, habit completion, or any binary outcome tracking.",Yes/No,"recjmkU2nIaeSH2XZ, recBPu9PYFPU8hate, recLm7PvuOlBuiAEk, recOAhYP3SRyhogfN, recWRDVKJz69pZhYp, recbjdq0PfP4GcXi1, recutpzJz61uQt7wt, recn391Dhu15POjM6, recHJKknkW9SQFCqf, reczBLGmSI3jWDQ1K",Binary Choice,Boolean_Input,"- Boolean: Required selection
+- Toggle switch or checkbox interface
+- Clear Yes/No or Complete/Incomplete labeling
+- Optional: 'Skip' option for missed days"
+reca59JSgvpQvwLqx,"Tracks subjective ratings or scores - requires scale selection. Used for mood, energy, pain levels, sleep quality, or other subjective assessments.",Scale (1-5),"recJLyNCZdm7tgHQX, recR0Gdeow6IHSDvd, recV4aEMQC0LiYtAe, rechT5IIPBRNzCb74",Scale Rating,Scale_Input,"- Scale: Required, integer 1-5
+- Visual scale with clear descriptors
+- Scale labels defined per metric type
+- Optional: Allow half-point ratings (1.5, 2.5, etc.)"
+recrYmtb2DcB5ykhI,"Tracks daily or weekly occurrence counts - requires date and count number. Used for social interactions, mobility sessions, meal frequency, or any countable events.","Date, Quantity","recY1Tz7OcO33HuVW, recxlOQKCdytNnWtb, recqjvztOuYRXj3Sm, recwG50znghbnB0TO, reczZJe3TIG1mp9oT, rec4SBmFYUdPPk8U8, recOyyoTez0r0ndcp, recRaC1lSL33KQ2u8, rec5S7ARenQjrrMWB, recSQT5ayVm36emQh",Frequency Count,Date_Numeric_Input,"- Date: Required, cannot be future date
+- Count: Required, positive integer
+- Maximum reasonable daily/weekly limits per metric type
+- Default value: 0
+- Increment/decrement buttons for easy entry"
+recS4Mb3qVHUTeTRn,"Tracks events with multiple category/type options - requires date, time, and category selection. Used for caffeine types, exercise types, food categories where the specific type matters.","Date, Time, Type",rec6b386oYCSHnyVO,Multi-Category Selection,Multi_Field_Input,"- Date: Required, cannot be future date
+- Time: Required, valid 24-hour format
+- Type: At least one selection required from predefined options
+- Optional quantity per category
+- 'Other' option with text input available"
+recNAvEZSsSEDhzQM,"Derived metrics calculated from other inputs - read-only display. Used for consistency scores, efficiency metrics, trend analysis, or any computed values.",Measurement,"rec0nsL37Ihw1mkM0, recFreByeShGraal0",Calculated Metric,Date_Numeric_Input,"- Read-only display for users
+- Auto-calculated via background processes
+- Clear data source indication
+- Calculation frequency definition
+- Historical trend display available"
+recyZRND6yvyTUm1k,Combines multiple sub-components into single score - requires multiple rating inputs. Used for sleep environment (temperature + darkness + sound) or other multi-factor assessments.,Scale (1-5),rec3W7SRo87kFQF0L,Composite Score,Multi_Field_Input,"- Multiple sub-component inputs required
+- Each component validated separately
+- Auto-calculation of composite score
+- Display breakdown of individual components
+- Sub-component weights defined per metric"

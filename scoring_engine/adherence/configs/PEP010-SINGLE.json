@@ -1,0 +1,76 @@
+{
+  "config_id": "PEP010-SINGLE",
+  "config_name": "MOTS-c: Mitochondrial Peptide",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "MOTS-c",
+          "type": "PEP",
+          "dose_min": 10.0,
+          "dose_max": 20.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "10-20 mg",
+          "frequency": "every 3 days",
+          "frequency_days": 3.0,
+          "timing": "Morning",
+          "category": "Mitochondrial Peptide",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): MOTS-c"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 10-20mg of MOTS-c in the morning every 3 days for mitochondrial function, metabolic optimization, exercise capacity, and longevity",
+    "recommendation_id": "PEP010-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "MOTS-c",
+        "type": "PEP",
+        "dose_min": 10.0,
+        "dose_max": 20.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "10-20 mg",
+        "frequency": "every 3 days",
+        "frequency_days": 3.0,
+        "timing": "Morning",
+        "category": "Mitochondrial Peptide",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.395019",
+    "title": "MOTS-c: Mitochondrial Peptide",
+    "overview": "Mitochondrial-derived peptide for metabolism",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "PEP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

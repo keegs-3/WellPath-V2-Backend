@@ -1,0 +1,74 @@
+{
+  "config_id": "SC-COMP-DAILY-BREATHWORK_MINDFULNESS_2TYPES",
+  "config_name": "Composite Weighted - breathwork_sessions + mindfulness_sessions",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted average of multiple components",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "weighted_average",
+      "tracked_metrics": [
+        "breathwork_session",
+        "mindfulness_session"
+      ],
+      "calculated_metrics": [
+        "daily_breathwork_sessions",
+        "daily_mindfulness_sessions"
+      ],
+      "components": [
+        {
+          "name": "Sessions",
+          "weight": 0.5,
+          "target": 2.0,
+          "unit": "session",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_breathwork_sessions"
+        },
+        {
+          "name": "Sessions",
+          "weight": 0.5,
+          "target": 2.0,
+          "unit": "session",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_mindfulness_sessions"
+        }
+      ],
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "frequency_requirement": "daily",
+      "description": "Composite scoring for: Incorporate 2 or more breathwork sessions and 2 or more mindfulness breaks daily",
+      "unit": "session",
+      "progress_direction": "buildup",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Incorporate 2 or more breathwork sessions and 2 or more mindfulness breaks daily",
+    "recommendation_id": "REC0046.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected: separate breathwork and mindfulness session requirements"
+    },
+    "metric_id": "daily_breathwork_sessions",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

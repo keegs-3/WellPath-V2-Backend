@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP027-SINGLE",
+  "config_name": "Low-Dose Aspirin: OTC Medication",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Low-Dose Aspirin",
+          "type": "SUP",
+          "dose_min": 75.0,
+          "dose_max": 100.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "75-100 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "OTC Medication",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Low-Dose Aspirin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 75-100mg of Low-Dose Aspirin with meals daily for cardiovascular protection, stroke prevention, and anti-inflammatory effects",
+    "recommendation_id": "SUP027-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Low-Dose Aspirin",
+        "type": "SUP",
+        "dose_min": 75.0,
+        "dose_max": 100.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "75-100 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "OTC Medication",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.377774",
+    "title": "Low-Dose Aspirin: OTC Medication",
+    "overview": "Antiplatelet therapy for cardiovascular protection",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI325,LI326,LI327,LI328"
+  }
+}

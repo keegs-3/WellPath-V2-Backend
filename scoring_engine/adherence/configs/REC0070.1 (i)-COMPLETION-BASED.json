@@ -1,0 +1,46 @@
+{
+  "config_id": "REC0070.1 (i)-COMPLETION-BASED",
+  "config_name": "Completion Based - cervical screening (PAP)",
+  "scoring_method": "completion_based",
+  "configuration_json": {
+    "method": "completion_based",
+    "formula": "Binary completion: 0% until completed, then 100% for remainder of cycle",
+    "evaluation_pattern": "completion",
+    "schema": {
+      "measurement_type": "completion",
+      "evaluation_period": "cycle",
+      "success_criteria": "completion",
+      "calculation_method": "completion_check",
+      "tracked_metrics": [
+        "pap_date"
+      ],
+      "calculated_metrics": [
+        "current_compliance_cervical_pap_female_0_64.9_avg_custom_calc"
+      ],
+      "calculated_metric": "current_compliance_cervical_pap_female_0_64.9_avg_custom_calc",
+      "completion_threshold": "compliant",
+      "unit": "completion",
+      "progress_direction": "completion",
+      "required_days": 1,
+      "total_days": 90,
+      "daily_limit": 1,
+      "persistent_scoring": true,
+      "description": "Completion tracking for Cervical Cancer Screening (PAP)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete a cervical screening test (PAP)",
+    "recommendation_id": "REC0070.1 (i)",
+    "analysis": {
+      "algorithm_type": "completion_based",
+      "confidence": 1.0,
+      "reasoning": "Simple completion tracking for screening recommendations"
+    },
+    "metric_id": "pap_date",
+    "generated_at": "2025-09-26T17:26:16.114382",
+    "title": "Cervical Cancer Screening (PAP)",
+    "overview": "Regular cervical cancer screening (PAP) saves lives through early detection.",
+    "category": "Gender: female | Age: Any | Risk Level: Any",
+    "compliance_metric": "current_compliance_cervical_pap_female_0_64.9_avg_custom_calc"
+  }
+}

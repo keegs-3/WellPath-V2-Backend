@@ -1,0 +1,66 @@
+record_id,healthkit_metrics,oura_metrics,subcategory
+recgs52vEIc2LueyO,"recdK2SMHFrYzzjLe, recxHAlCTggsrmtgT",,Mobilty Profile
+recY4mdyIHPzcG6c5,"recGVJo8c3QNZDgAt, receSoPedzCJCH7DG, recyFrD26MRqpUHT1",,Demographics
+rechVMBRfj4VY8Fnp,recBI2g6hLsLbTlFh,,Skin Type/Dermatology
+rec9y6uZO3IqnzLxB,"recp6hE7CAeKbqNjf, recintWQGAmnh2fYM",recyH1DYgKqTxxInF,Walking
+rec6eXiXIvRtoKYUS,"rect9e0O2CWh6aG7T, recQBjJFrzDXIbiDl, recMaGAG1PywGoCVF, recdw4oOD5Z6kkKkl, recHMwKEVQnGZetpY",,Running
+rec2M4SKWKp58GzVe,recqUXqqnCW9ddeku,,Cycling
+rectacNcC22WBcvDb,"recUgXlHo6hBvmd4W, recnalNyiDkdmxVCg",,Wheelchair Use
+recydMwWvgYjQzq3q,"reckQIjlK6mO0kCzw, rec5ODLVfxJrt5of4",,Swimming
+recyiEXpN5O3Y30wY,recExm2XK9TaAEquA,,Snow Sports
+recE1Di8duQxeuPGv,"recvDPoKM5Uidfc2m, recF9pXPvHmKxT2CI, recdY0VsvbXkR7ltl, rec7EBYoRx6JqWge9, rec2YsLE8DhUgFTAH, recrDsT8y5pSkheHZ, recY2ia89NuDjd02a","rec6L5wdZY9x1IkiT, recmarsbNEssqx1RB, recSdjPViB5M5zlFp, recpB2syt15mJliUu, rechI6L9pGyHdknt8, recTIAsxgFo1B40ER, reclVWHdxfnCfDqLf, recS4i5N3CwrUIC5y, recb4HB8yw73fCjKJ, recIzZHt5Xgmp7Pyr",Energy Expenditure + Move Metrics
+recBWuAftrdWpCG0m,recLvTwuQ0oK8rKF8,,Stair Activity
+recBi1ltdOy27bVdq,"recALlzOrzmDI2PFI, rec41ZpLtJB4fV1j7",,Cardiorespiratory Fitness
+recQtmZpLIYsr23oi,"recYpSX7DGAAnyFXL, recy4If7cz1tarcxu, rect5nRMTQHxPCSIO",,Storage Infrastructure
+recX3DQrVmY4IxMuH,"recWeCeFBeZIQMjxr, recPx0uqAFi7U3ULR, recbpPI1IIN4723h2, recDCuW8qaGyiG4QK",,Anthropometrics
+recHpyFWYUoFUVwVj,"recsdGdRM1PaiVj7z, recUbVGr2gnhxor2w",,Body Composition
+recZDyMxDlDGnT4iO,recLSkMbJgteOlaDG,,Cycle Tracking
+reckQ3Oi0hxeSKKRF,"recNZvh2o18yoAPJX, recklhkjgQWxXwRFU, recH4KDpLSJncPXrr, recaiSpStb7JcjWjI, recVcua5iiLaEeKqH",,Cycle Irregularity
+reckMLIp85R6aOFdl,"recxy4BUrQBKPg6tP, recdaBZpxlqkcQ4UK, recRCSdUuy8oPw5Lz",,Fertility Signals
+recLRCTwVQgEckfOK,recfuEyHypgI12p1b,,Hormone Testing
+recs0hyMIv3aJhTUV,recNww6T1UjGRxx0P,,Sexual Behavior
+reco7vDxyW7HTeaiy,recWSe1TL4BaiRzyX,,Contraceptive Use
+recA7pA1OgYtuHjYq,"reclZJGX8sg2Vk0ln, recquMfCxdNuE2GU6",,Pregnancy Status
+recxIhEazZSP3f23v,recRzDjncYFhh9glI,,Postpartum
+recP92fQHYWH9Pfdh,"recK4yPElOebDftJ1, recMyrVFWauOWEEmG",,Environmental Exposure
+recxhMulabNUchhTK,"recYKZ4b4AaGopAXt, recqOcoQHDXDWUlmR",,Device Exposure
+recrxnCDJsmjh2Ukv,recgikISXJC47kuhR,,Deprecated
+recZO4fCiocrvFBbz,"reccHAHft4JmcBw0C, rec3nK7KKFVWhpnR3, recKqRJ0J1p4KfplZ, recXBRZ9iazTCB9mU, recigAqNy8lodlsz6, recEVSsmhY75LCfnF","recSIY3GMU62FGAF9, recXFWT3h7qXQ6WdI, reczYQvFvAsy495nv, recwVShZTnqNCQWrM, rec4pJIHNT6QU5OFC",Heart Rate
+reca6ep50nUdBF21L,"recFVZ4bFN9vMqZax, recyMas9UfnhGAS1n",,Heart Rhythm
+rechZrTChr7QaGthF,recdbbYXXatK4c15r,"recoyQfXzneLwoUDT, recKgYYOeHXyJulyg",Heart Rate Variability
+rec51naeg2Xx3e3ap,recWd41wJlZbsItYV,,Heart Rate Recovery
+rec2Na3rLzUVfD13m,recTAHsGodj3U8fHs,,Electrocardiogram (ECG)
+reck43LCGWJ9wCP3k,rec3gKMGSPnWvjQfe,,Oxygen Saturation
+recpkTWdPhuy0Ginn,"reclhdLSNMyFYBuiG, recKgdbzVNAzw4LFn","recc71mdVj2yDyWW3, recfMCdlSmkY5mRqW, recoP4Z4LrfPouFsa, recuREH9qFfbnUCqM, recXuOIW3NxWt6aGF",Temperature
+recBCzvdLVcy3e2Bc,"rec3iTy12cKbuZvbx, recJp45RiN7mxNDRy, recttR50MiZX8h1x0",,Blood Pressure
+recTa5Q0TR1vt8AH8,recCp5Ne5qAIa0fA6,,Respiratory Rate
+recHH9GocefZ9kdJT,"recbwqFtNci19lvIG, receE2VcVuVDnUEZP",,Essentials
+recoKUJ0prdvOhhh8,"recgnDWuxxKErYlO7, recAf2UpbCSxrLdL4, recD7Yr9PATJPpM3c, rec168KRoYYSbGpnf, recNoxkIaUsGH8XZ0, recP4mYviD1JQCyHQ, recT5JKXR7m7U994X, recojsOkioQgNKdmq, recJKiOIi00raDg2b, recY2ytuqyMP6fRY9",,Macronutrients
+rec6c6i2FFeMpmwG1,"recR9w4aSTjn4AVMN, recEkaIe5soPE2KHT, recRhWTqtjMmiJZjn, recRPoE01Jwl9xEKo, rec9KxaRtHIBaiNAq, recF34r3zMrQI2njF, recoSyuEumcrqQfFS, recwttnGd9l4UvJok, recAw57CA3fMI2LYb, recZoW1j2oJfMS9Pn, recYWMkHNS38yxT04, receXYrQxQBpgGV09, recyPz1QwWLrDhoYQ",,Vitamins
+rec1nx3iOY2xYQdX1,"rec49suabd2j6RAyD, recSquzkiVMlp1xIR, recjj3U7xwK2ORLw3, rec8Xi4aXcWlMShqd, recx4JTpvivdTmG6Z, recULIKYvq6OF2kHh, recpfmvKp5LEFgUoK, reclJcdBfdeB581Bm",,Minerals
+recctH8fFHjgrMoqH,recOXZjW1dnTrOH8C,,Hydration
+reckWoIkAuvXvP6ZF,rectYcLGfVnSe5CgF,,Caffeination
+recXrZilq8LlhWaVc,"recfLgxLd7xD2OziG, recoITELSvPlKwQAy, recQHcq5prmwIf1NK, recaxoaTltNZvdJ85, rec6WfO5EMMIfMwvt, rectCDJ5fwvaDATdO",,Ultratrace Minerals
+recprqSzMItnNOzKi,"recZxJtmlwz7guVT6, recbAuBEIQoHhYOtw",,Alcohol Intake
+recotmRHZBndr5LX6,"recWOXMx1whnEfof3, rec2Y0VhDHIE1iuNL, recHoNp5i84YfI2up, recDaOUpfgCrjtH1F, recQtL4b3zzVK9xFd, recVpqr3WA3SUyvSx",,Gait Analysis
+recXIAUg9oGMOqSB7,rec1KE3bYFzbvkEyu,,Endurance / Functional Tests
+recGlTBZZWeJnEqwz,"recbeIUM7a1UfgOnr, recm7QOKEOyf6HyaE",,Stair Performance
+rec9d5RJB2ACoroKl,recENGSIELBcT7xlB,,Metabolic Panel
+recdjcXXAwoEjt0nB,recKHQHOad09GLH8e,,Autonomic Response
+recfbISfEQqwe96nM,"recCo8leepaR8EsU8, reclxn5wWg1PDXcBB, recTI8Mw5tnQYY8PB",,Pulmonary Function
+recmmlhqaC0SVEUwI,recNexgx043adCNZR,,Respiratory Medication Use
+recTt0LRqpytjd77C,recshru3aJDndNez0,,Endocrine Therapy
+recpejdVaJsLLQjU4,recpyQ6eSVwxEVhb2,,Fall Risk Assessment
+recPY4cmWAz0rBt7e,recRCS0IIJWhqHexu,,Circulatory Health
+recN3KFZklQZ8K7QU,recX6qxlOKJ5nKI2u,,Mindfulness
+recfXsZbEvBUsCoa3,"recKR9kGMPDwBz7fa, recN4BXRVVlhfe7Nr, recgFkuXvMlCyXXdW, recik3KV1u3sYXm7Y, recStPJ16ZW0vDwhw, recKKveiVw9WKU86R, recSjKkMIJPUivSuJ","rec9PtVegbqFEYmZC, recCehAlWoqxwfc8e, recb5C4tF4FLPLBOD, recADDvy2ZQfEz4hM, recTjBhbsZpkby61h, recf0Uycpk78YYiHT, rec9BiO45Oy2JVqn2, rec96GNDvJY3YtfKB, recZnU66f6Ymo8rXE, recgV1MPnqA4iHUZg",Sleep Analysis
+rec3gtWcByO5swCog,"reccIUmGIFwoj1rtI, rec2iTDW58dBtagzy",,Hygiene
+reckTalkWql58AsFo,"recO0eVDT8LxpG8Fi, recMcUzoSX1QHrzph",,Workouts
+rectzoQMX9h0mYQox,recx9WlZnE1ihPX68,,Record Categories
+recYYWziGeAwUCT4S,recVHAc97MoANRPLx,,UV Radiation
+recC5egdDyzXAE87v,recNyyxPzqInmuIRw,,Depth
+rectXrKEpYMnGmD5x,recfdZSS3DTG3TYJq,,Water Conditions
+recIWYhvHgvdBhb4Q,,"rec6RBahLVVnCdg4J, recusxxeOBeV2akpL, recKFN0rS3dhONj7x, recsfosnwv3B57vVT",Recovery
+recQQ3ZMHfdTKubTa,,recbBV0dYmJWzfs8P,Alerts
+recpYYcgieUGcxV2t,,recfkrBi58RhpTCcu,Rest
+recGcZqAYY6HTsueN,,recdRU2jVVyTTaqB8,Device Usage

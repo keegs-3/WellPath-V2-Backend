@@ -1,0 +1,76 @@
+{
+  "config_id": "MED028-SINGLE",
+  "config_name": "Duloxetine: SNRI",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Duloxetine",
+          "type": "MED",
+          "dose_min": 30.0,
+          "dose_max": 60.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "30-60 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Morning",
+          "category": "SNRI",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Duloxetine"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 30-60mg of Duloxetine in the morning daily for mood optimization and pain management",
+    "recommendation_id": "MED028-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Duloxetine",
+        "type": "MED",
+        "dose_min": 30.0,
+        "dose_max": 60.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "30-60 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Morning",
+        "category": "SNRI",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.489216",
+    "title": "Duloxetine: SNRI",
+    "overview": "Mental health optimization",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

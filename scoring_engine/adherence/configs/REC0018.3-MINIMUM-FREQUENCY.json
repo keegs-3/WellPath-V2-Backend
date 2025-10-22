@@ -1,0 +1,45 @@
+{
+  "config_id": "SC-MIN-FREQ-FIRST_MEAL_2HR_DAILY",
+  "config_name": "Minimum Frequency - first meal within 2 hours daily",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "min((successful_days / required_days) * 100, 100)",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "frequency_achievement",
+      "evaluation_period": "daily",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_threshold_achievement",
+      "tracked_metrics": [
+        "meal_logged",
+        "wake_time"
+      ],
+      "calculated_metrics": [
+        "first_meal_delay"
+      ],
+      "daily_threshold": 2.0,
+      "daily_comparison": "<=",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "hours",
+      "progress_direction": "measurement",
+      "total_days": 7,
+      "frequency_requirement": "daily",
+      "description": "Minimum frequency: Eat first meal within 2 hours of waking on all 7 days of the week",
+      "required_days": 7,
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eat your first meal of the day within 2 hours after waking every day of the week",
+    "recommendation_id": "REC0018.3",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Minimum frequency with 7-day requirement: Every day must meet 2-hour first meal timing"
+    },
+    "metric_id": "first_meal_delay",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

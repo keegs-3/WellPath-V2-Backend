@@ -1,0 +1,44 @@
+{
+  "config_id": "REC0010.3-WEEKLY-ELIMINATION",
+  "config_name": "Weekly Elimination - dietary_processed_meat",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all days meet elimination criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "elimination",
+      "evaluation_period": "weekly",
+      "success_criteria": "zero_tolerance",
+      "calculation_method": "weekly_elimination_check",
+      "tracked_metrics": [
+        ""
+      ],
+      "calculated_metrics": [
+        ""
+      ],
+      "elimination_threshold": 0,
+      "elimination_comparison": "<=",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "unit": "",
+      "progress_direction": "countdown",
+      "required_days": 7,
+      "daily_limit": "",
+      "description": "Zero tolerance weekly elimination for Reduce Processed Meat Intake"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate processed meat entirely, replacing with whole food protein sources",
+    "recommendation_id": "REC0010.3",
+    "analysis": {
+      "algorithm_type": "weekly_elimination",
+      "confidence": 1.0,
+      "reasoning": "Zero tolerance pattern requiring perfect weekly compliance"
+    },
+    "metric_id": "",
+    "generated_at": "2025-09-26T17:30:11.265360",
+    "title": "Reduce Processed Meat Intake",
+    "overview": "High intake of processed meats is linked to increased cancer, cardiovascular, and metabolic disease risk. Reducing processed meat supports longevity and promotes healthier eating."
+  }
+}

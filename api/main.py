@@ -7,8 +7,8 @@ import os
 
 from database.models import HealthCheckResponse
 
-# Import routers (will create next)
-# from api.routers import scores, patients, recommendations
+# Import routers
+from api.routers import scores, education
 
 app = FastAPI(
     title="WellPath V2 API",
@@ -51,9 +51,8 @@ async def health_check():
 
 
 # Include routers
-# app.include_router(scores.router, prefix="/api/v1/scores", tags=["scores"])
-# app.include_router(patients.router, prefix="/api/v1/patients", tags=["patients"])
-# app.include_router(recommendations.router, prefix="/api/v1/recommendations", tags=["recommendations"])
+app.include_router(scores.router, prefix="/api/v1/scores", tags=["scores"])
+app.include_router(education.router, prefix="/api/v1/education", tags=["education"])
 
 
 if __name__ == "__main__":

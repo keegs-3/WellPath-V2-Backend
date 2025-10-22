@@ -1,0 +1,46 @@
+{
+  "config_id": "REC0062.1-COMPLETION-BASED",
+  "config_name": "Completion Based - skin check (avg risk)",
+  "scoring_method": "completion_based",
+  "configuration_json": {
+    "method": "completion_based",
+    "formula": "Binary completion: 0% until completed, then 100% for remainder of cycle",
+    "evaluation_pattern": "completion",
+    "schema": {
+      "measurement_type": "completion",
+      "evaluation_period": "cycle",
+      "success_criteria": "completion",
+      "calculation_method": "completion_check",
+      "tracked_metrics": [
+        "skin_check_date"
+      ],
+      "calculated_metrics": [
+        "current_compliance_skin_check_male_female_0_150_avg_custom_calc"
+      ],
+      "calculated_metric": "current_compliance_skin_check_male_female_0_150_avg_custom_calc",
+      "completion_threshold": "compliant",
+      "unit": "completion",
+      "progress_direction": "completion",
+      "required_days": 1,
+      "total_days": 90,
+      "daily_limit": 1,
+      "persistent_scoring": true,
+      "description": "Completion tracking for Skin Check (avg risk)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete a skin check",
+    "recommendation_id": "REC0062.1",
+    "analysis": {
+      "algorithm_type": "completion_based",
+      "confidence": 1.0,
+      "reasoning": "Simple completion tracking for screening recommendations"
+    },
+    "metric_id": "skin_check_date",
+    "generated_at": "2025-09-26T17:26:16.094979",
+    "title": "Skin Check (avg risk)",
+    "overview": "Regular skin checks catch skin cancer and sun damage early for better outcomes.",
+    "category": "Gender: male_female | Age: Any | Risk Level: AVG",
+    "compliance_metric": "current_compliance_skin_check_male_female_0_150_avg_custom_calc"
+  }
+}

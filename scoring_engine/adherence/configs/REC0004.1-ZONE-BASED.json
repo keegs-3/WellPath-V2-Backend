@@ -1,0 +1,83 @@
+{
+  "config_id": "SC-Z5T-FREQ-SLEEP_DU",
+  "config_name": "5-Tier Zone Scoring - sleep_duration",
+  "scoring_method": "zone_based_5_tier",
+  "configuration_json": {
+    "method": "zone_based_5_tier",
+    "formula": "score based on which zone actual_value falls into",
+    "evaluation_pattern": "frequency",
+    "tier_count": 5,
+    "schema": {
+      "measurement_type": "zone_based",
+      "evaluation_period": "weekly_frequency",
+      "success_criteria": "frequency_target",
+      "calculation_method": "zone_frequency",
+      "tracked_metrics": [
+        "sleep_time",
+        "wake_time"
+      ],
+      "calculated_metrics": [
+        "daily_sleep_duration_time_difference"
+      ],
+      "required_days": 3.0,
+      "total_days": 7.0,
+      "zones": [
+        {
+          "range": [
+            0.0,
+            5.99
+          ],
+          "score": 0.0,
+          "label": "Insufficient"
+        },
+        {
+          "range": [
+            6.0,
+            6.99
+          ],
+          "score": 50.0,
+          "label": "Low"
+        },
+        {
+          "range": [
+            7.0,
+            9.0
+          ],
+          "score": 100.0,
+          "label": "Optimal"
+        },
+        {
+          "range": [
+            9.01,
+            9.99
+          ],
+          "score": 75.0,
+          "label": "Long"
+        },
+        {
+          "range": [
+            10.0,
+            24.0
+          ],
+          "score": 25.0,
+          "label": "Excessive"
+        }
+      ],
+      "unit": "hours_minutes",
+      "progress_direction": "measurement",
+      "description": "Zone-based scoring for: Get 7–9 hours of sleep on at least 3 of 7 nights each week. Focus is on building baseline sufficiency....",
+      "tier_count": 5
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Get 7–9 hours of sleep on at least 3 of 7 nights each week",
+    "recommendation_id": "REC0004.1",
+    "analysis": {
+      "algorithm_type": "zone_based_5tier",
+      "confidence": 0.8,
+      "reasoning": "Zone/tier language detected (zone score: 3)"
+    },
+    "metric_id": "sleep_duration",
+    "generated_at": "2025-09-10T18:29:51.674576"
+  }
+}

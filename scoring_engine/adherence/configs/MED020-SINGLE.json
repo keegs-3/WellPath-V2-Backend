@@ -1,0 +1,76 @@
+{
+  "config_id": "MED020-SINGLE",
+  "config_name": "Testosterone Therapy: Hormone Replacement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Testosterone Therapy",
+          "type": "MED",
+          "dose_min": 100.0,
+          "dose_max": 200.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "100-200 mg",
+          "frequency": "weekly",
+          "frequency_days": 7.0,
+          "timing": "Any",
+          "category": "Hormone Replacement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Testosterone Therapy"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 100-200mg of Testosterone at any time weekly for hormonal optimization, muscle preservation, and vitality enhancement",
+    "recommendation_id": "MED020-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Testosterone Therapy",
+        "type": "MED",
+        "dose_min": 100.0,
+        "dose_max": 200.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "100-200 mg",
+        "frequency": "weekly",
+        "frequency_days": 7.0,
+        "timing": "Any",
+        "category": "Hormone Replacement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.474217",
+    "title": "Testosterone Therapy: Hormone Replacement",
+    "overview": "Androgen optimization for longevity",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

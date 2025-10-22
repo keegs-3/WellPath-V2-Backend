@@ -1,0 +1,76 @@
+{
+  "config_id": "PEP004-SINGLE",
+  "config_name": "BPC-157: Healing Peptide",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "BPC-157",
+          "type": "PEP",
+          "dose_min": 250.0,
+          "dose_max": 500.0,
+          "unit": "microgram",
+          "unit_symbol": "\u00b5g",
+          "rollup": "250-500 \u00b5g",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Empty stomach",
+          "category": "Healing Peptide",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): BPC-157"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 250-500mcg of BPC-157 on empty stomach daily for tissue repair, gut health, injury recovery, and systemic healing support",
+    "recommendation_id": "PEP004-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "BPC-157",
+        "type": "PEP",
+        "dose_min": 250.0,
+        "dose_max": 500.0,
+        "unit": "microgram",
+        "unit_symbol": "\u00b5g",
+        "rollup": "250-500 \u00b5g",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Empty stomach",
+        "category": "Healing Peptide",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.385764",
+    "title": "BPC-157: Healing Peptide",
+    "overview": "Gastric pentadecapeptide for tissue repair",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "PEP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI360,LI361,LI362,LI363"
+  }
+}

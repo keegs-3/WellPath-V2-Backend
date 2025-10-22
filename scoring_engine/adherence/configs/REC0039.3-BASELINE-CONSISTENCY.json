@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-BASELINE-CONSISTENCY-DAILY-SLEEP_TIME_30MIN",
+  "config_name": "Baseline Consistency - sleep_time",
+  "scoring_method": "baseline_consistency",
+  "configuration_json": {
+    "method": "baseline_consistency",
+    "formula": "Day 1 sets baseline; each day within 30min = 14.3%",
+    "evaluation_pattern": "daily_baseline",
+    "schema": {
+      "measurement_type": "baseline_consistency",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "baseline_variance_target",
+      "calculation_method": "baseline_variance_check",
+      "tracked_metrics": [
+        "sleep_time"
+      ],
+      "baseline_day": 1,
+      "variance_threshold": 30.0,
+      "comparison_operator": "<=",
+      "unit": "minutes",
+      "weekdays_only": false,
+      "daily_weight": 14.3,
+      "description": "Baseline consistency scoring: Day 1 sleep_time sets baseline, all days within 30min variance = 14.3% each",
+      "required_days": 7,
+      "total_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Go to bed within 30 minutes of your usual time every day",
+    "recommendation_id": "REC0039.3",
+    "analysis": {
+      "algorithm_type": "baseline_consistency",
+      "confidence": 0.95,
+      "reasoning": "Baseline consistency algorithm: Day 1 establishes baseline sleep_time, all subsequent days scored against 30min variance"
+    },
+    "metric_id": "sleep_time",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

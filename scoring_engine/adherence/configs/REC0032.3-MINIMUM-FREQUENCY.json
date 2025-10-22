@@ -1,0 +1,47 @@
+{
+  "config_id": "SC-PROPORTIONAL-FREQUENCY-HYBRID-SEDENTARY_6HR_7_OF_7",
+  "config_name": "Proportional Frequency Hybrid - sedentary_time",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "100 if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "weekly_proportional_frequency",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "proportional_frequency_target",
+      "calculation_method": "hybrid_proportional_frequency",
+      "tracked_metrics": [
+        "sedentary_time"
+      ],
+      "daily_threshold": 360.0,
+      "daily_comparison": "<=",
+      "required_qualifying_days": 7,
+      "total_days": 7,
+      "unit": "minutes",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": false,
+      "progress_direction": "countdown",
+      "description": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Binary daily success (≤6 hours = 100%, >6 hours = 0%), weekly score = (qualifying_days/7) * 100",
+      "required_days": 7,
+      "calculated_metrics": [
+        "daily_sedentary_time"
+      ],
+      "success_value": 100,
+      "failure_value": 0,
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Stay on your feet: Consistently keep sedentary time below 6 hours per day, every day",
+    "recommendation_id": "REC0032.3",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.95,
+      "reasoning": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Daily binary success with frequency-based weekly scoring - each day ≤6 hours = 14.3% toward weekly goal"
+    },
+    "metric_id": "sedentary_time",
+    "generated_at": "2025-09-12T19:55:00.000000"
+  }
+}

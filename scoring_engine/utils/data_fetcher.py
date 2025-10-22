@@ -19,30 +19,20 @@ class PatientDataFetcher:
         Fetch patient survey responses with question metadata.
 
         Returns DataFrame with all data needed for survey scoring.
+
+        NOTE: After foreign key migration, question_id is now a record_id (Airtable ID).
+        We JOIN to survey_questions to get the numeric ID for scoring.
         """
         query = """
         SELECT
-            pr.patient_id,
-            pr.question_id,
-            pr.response_option_id,
-            pr.created_at as response_date,
-            sq.question,
-            sq.pillar_id,
-            p.name as pillar_name,
-            sro.option_text,
-            sro.score_value,
-            -- Get linked calculated metrics via junction table
-            ARRAY_AGG(DISTINCT cm.name) FILTER (WHERE cm.name IS NOT NULL) as calculated_metrics
-        FROM patient_responses pr
-        JOIN survey_questions sq ON pr.question_id = sq.record_id
-        LEFT JOIN pillars p ON sq.pillar_id = p.record_id
-        LEFT JOIN survey_response_options sro ON pr.response_option_id = sro.record_id
-        LEFT JOIN survey_question_calculated_metrics sqcm ON sq.record_id = sqcm.survey_question_id
-        LEFT JOIN calculated_metrics_vfinal cm ON sqcm.calculated_metric_id = cm.record_id
-        WHERE pr.patient_id = %s
-        GROUP BY pr.patient_id, pr.question_id, pr.response_option_id, pr.created_at,
-                 sq.question, sq.pillar_id, p.name, sro.option_text, sro.score_value
-        ORDER BY pr.created_at DESC
+            sr.patient_id,
+            sq."ID" as question_id,
+            sr.response_value,
+            sr.created_at as response_date
+        FROM survey_responses sr
+        JOIN survey_questions sq ON sr.question_id = sq.record_id
+        WHERE sr.patient_id = %s
+        ORDER BY sr.created_at DESC
         """
 
         rows = self.db.execute_query(query, (patient_id,))
@@ -50,43 +40,62 @@ class PatientDataFetcher:
 
     def get_patient_biomarkers(self, patient_id: str) -> pd.DataFrame:
         """
-        Fetch patient biomarker data with marker metadata.
+        Fetch patient biomarker AND biometric data with metadata.
 
-        Returns DataFrame with biomarker values, ranges, and pillar mappings.
+        Returns DataFrame combining:
+        - Biomarkers (lab values) from biomarker_readings
+        - Biometrics (physical measurements) from biometric_readings
+
+        This matches preliminary_data which scores both together.
         """
-        query = """
+        # Fetch biomarkers (lab values)
+        biomarker_query = """
         SELECT
             pb.patient_id,
-            pb.marker_id,
+            pb.marker_id as id,
             pb.value,
             pb.unit,
-            pb.measured_at,
+            pb.test_date as measured_at,
             im.name as marker_name,
-            im.category,
-            -- Get linked metrics via junction table
-            ARRAY_AGG(DISTINCT mt.name) FILTER (WHERE mt.name IS NOT NULL) as metric_types,
-            ARRAY_AGG(DISTINCT cm.name) FILTER (WHERE cm.name IS NOT NULL) as calculated_metrics,
-            -- Pillar weights for this marker
-            JSON_OBJECT_AGG(
-                p.name,
-                bpw.weight
-            ) FILTER (WHERE p.name IS NOT NULL) as pillar_weights
-        FROM patient_biomarkers pb
-        JOIN intake_markers im ON pb.marker_id = im.record_id
-        LEFT JOIN intake_metric_metric_types immt ON im.record_id = immt.intake_metric_id
-        LEFT JOIN metric_types_vfinal mt ON immt.metric_type_id = mt.record_id
-        LEFT JOIN intake_metric_calculated_metrics imcm ON im.record_id = imcm.intake_metric_id
-        LEFT JOIN calculated_metrics_vfinal cm ON imcm.calculated_metric_id = cm.record_id
-        LEFT JOIN biomarker_pillar_weights bpw ON im.record_id = bpw.biomarker_id
-        LEFT JOIN pillars p ON bpw.pillar_id = p.record_id
+            'biomarker' as data_type
+        FROM biomarker_readings pb
+        JOIN intake_markers_raw im ON pb.marker_id = im.record_id
         WHERE pb.patient_id = %s
-        GROUP BY pb.patient_id, pb.marker_id, pb.value, pb.unit, pb.measured_at,
-                 im.name, im.category
-        ORDER BY pb.measured_at DESC
+        ORDER BY pb.test_date DESC
         """
 
-        rows = self.db.execute_query(query, (patient_id,))
-        return pd.DataFrame(rows)
+        # Fetch biometrics (physical measurements like BMI, VO2 Max, etc.)
+        biometric_query = """
+        SELECT
+            br.patient_id,
+            br.metric_id as id,
+            br.value,
+            br.unit,
+            br.test_date as measured_at,
+            imr.name as marker_name,
+            'biometric' as data_type
+        FROM biometric_readings br
+        JOIN intake_metrics_raw imr ON br.metric_id = imr.record_id
+        WHERE br.patient_id = %s
+        ORDER BY br.test_date DESC
+        """
+
+        biomarker_rows = self.db.execute_query(biomarker_query, (patient_id,))
+        biometric_rows = self.db.execute_query(biometric_query, (patient_id,))
+
+        # Combine both into single DataFrame
+        df_biomarkers = pd.DataFrame(biomarker_rows)
+        df_biometrics = pd.DataFrame(biometric_rows)
+
+        # Concatenate and return
+        if df_biomarkers.empty and df_biometrics.empty:
+            return pd.DataFrame()
+        elif df_biomarkers.empty:
+            return df_biometrics
+        elif df_biometrics.empty:
+            return df_biomarkers
+        else:
+            return pd.concat([df_biomarkers, df_biometrics], ignore_index=True)
 
     def get_patient_metric_tracking(
         self,
@@ -183,13 +192,28 @@ class PatientDataFetcher:
             pd.*,
             u.email,
             u.first_name,
-            u.last_name
+            u.last_name,
+            (SELECT br.value FROM biometric_readings br
+             JOIN intake_metrics_raw imr ON br.metric_id = imr.record_id
+             WHERE br.patient_id = pd.id AND imr.name = 'Weight'
+             ORDER BY br.test_date DESC LIMIT 1) as weight_lb,
+            (SELECT br.value FROM biometric_readings br
+             JOIN intake_metrics_raw imr ON br.metric_id = imr.record_id
+             WHERE br.patient_id = pd.id AND imr.name = 'Height'
+             ORDER BY br.test_date DESC LIMIT 1) as height_in
         FROM patient_details pd
         LEFT JOIN auth_users u ON pd.id = u.id
         WHERE pd.id = %s
         """
 
-        return self.db.execute_single(query, (patient_id,))
+        result = self.db.execute_single(query, (patient_id,))
+
+        # Convert gender to sex for compatibility
+        if result and 'gender' in result:
+            gender_map = {'M': 'male', 'F': 'female', 'm': 'male', 'f': 'female', 'male': 'male', 'female': 'female'}
+            result['sex'] = gender_map.get(result['gender'], 'unknown') if result['gender'] else 'unknown'
+
+        return result
 
     def get_all_patient_data(self, patient_id: str, days: int = 30) -> Dict[str, pd.DataFrame]:
         """

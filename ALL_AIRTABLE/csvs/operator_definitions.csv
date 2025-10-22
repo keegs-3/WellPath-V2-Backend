@@ -1,0 +1,190 @@
+record_id,active,category,created,created_by,description,display_name,last_modified_by,last_modified_time,operator_id,parameter_schema,trigger_conditions
+recxm5sb3ZWa0ghnJ,True,Input Detection,2025-09-05T21:19:22.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when no tracked input has been logged within the specified time window,No Input Detected,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:49:54.000Z,no_input_detected,"{
+  ""time_window"": ""string (today|trailing)"",
+  ""threshold_hours"": ""number (default: 24)""
+}","rec0ZucJ0mQiHRkKP, recRaSDTuNo2S2b01, recm1jq2UqVHfegWv, recd890MA0zIuPHeO, rec7ifIJExQs9jN3l"
+reczANhrZZaEKRUxI,True,Input Detection,2025-09-06T00:21:29.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires when manually triggered by user action (button press, intervention initiation, etc.). No automatic timing - requires user interaction.",User Initiated,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:50:12.000Z,user_initiated,"{
+  ""trigger_context"": ""string (optional)"",
+  ""intervention_type"": ""string (optional)""
+}","recd6mt5QBCeU7r2x, recorsloOGzlzbWZi, recVFsMmKOU1nDRrf, recwJitsQkdj3H7Nw"
+rechzGQi6FiUtvq3E,True,Input Detection,2025-09-05T21:19:27.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a user logs their first entry for a specific behavior or metric,First Time Entry,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:50:19.000Z,first_time_entry,"{
+  ""tracked_metric_type"": ""string (required)"",
+  ""entry_count_threshold"": ""number (default: 1)"",
+  ""time_window_minutes"": ""number (default: 30)"",
+  ""evaluation_trigger"": ""string (immediate|delayed)""
+}","recg5xmDT3IWwTWvV, recF85EOYwDYEqbM9"
+recs544iwKK6GI4xO,True,Input Detection,2025-09-05T21:19:31.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a scheduled check-in is missed or not completed within the expected timeframe,Check-in Missed,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:50:38.000Z,check_in_missed,"{
+  ""check_in_type"": ""string (required)"",
+  ""scheduled_time"": ""string (HH:MM format)"",
+  ""grace_period_hours"": ""number (default: 2)"",
+  ""evaluation_frequency"": ""string (hourly|daily)"",
+  ""missed_threshold_hours"": ""number (required)""
+}",recBDSqGMG9H1j0Pj
+recWRhwLnzs6mLlPW,True,Input Detection,2025-09-05T23:30:04.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Screening condition that fires weekly if cumulative missing weeks since program start exceed threshold. After week 1: checks for 1+ missing weeks, after week 2: checks for 2+ missing weeks, etc. One-time satisfaction per week.",Cumulative Missing Input Screening,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:51:26.000Z,cumulative_missing_input_screening,"{
+  ""current_week"": ""number (required)"",
+  ""missing_threshold_weeks"": ""number (required)"",
+  ""assessment_period"": ""string (cumulative_from_start)"",
+  ""evaluation_day"": ""string (sunday)"",
+  ""evaluation_time"": ""string (evening)""
+}","recaxktfT0MaDR7AZ, recK9Eo2EYrtBEgcG, recXdsSQn1y3BlhSv, recyM78ZBkdNoXCR2, rec0hzvrdNFL1JJSp, recVmwZ3xwJeBqzbk, reccyKX7lAkSKktah, recerltOexfnwc5YZ, rec2NZheWNBonj30t, recYHWxhi5SsfL2l6, recPLcCEcAvwfRQWh, recrWVQnB0x2oC9QL, rec36Ji3phXLGQow8"
+recgOFLci9c6RWtL1,True,Performance,2025-09-05T21:19:36.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a user achieves a consecutive streak of hitting their target,Streak Achievement,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:34:49.000Z,streak_met,"{
+  ""streak_length"": ""number (required)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}",
+recCZ25sWrhG2vHlE,True,Performance,2025-09-05T21:19:40.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when performance is below the defined target threshold,Below Target,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:51:36.000Z,below_target,"{
+  ""threshold_percentage"": ""number (0-100)"",
+  ""measurement_window"": ""string (today|trailing|recent)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","recPURoXbgq039HUd, recEP3BexJngy0ScD, recNmleNVg1xR0NAO, recZ0rIB5IoVDbArD, recojy8HsmYk98WtQ, recxHSVMkmpv1qMik, reco6uoR0msdBqzIA, recN5IveC2YaeIVUk, recTKIfTUyWWofRRa, rectUErZllUmvojdg, recPr1dmrMbis798S, rec7ZgsdEfpWwkxCV, recgQn9sqJgasv1QO"
+reczKTHW90wrGYVyy,True,Performance,2025-09-05T21:19:45.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when performance is close to but not quite meeting the target,Near Target,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:51:43.000Z,near_target,"{
+  ""proximity_percentage"": ""number (80-99)"",
+  ""target_value"": ""number"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","recB4EUJGhV04YAqv, reczjDImvA0FfWpx0, recazbRZ8dUgYzbm5, rec1pb5qU9gJcjGvs, rec1sXECZ3A0D9JzK, recN8KhDv4ZvIpWer, recviE7CHdsEjI6SQ"
+recOx78tsZLdL4Tly,True,Performance,2025-09-05T21:19:49.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when performance exceeds target value by 20%,Above Target,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-22T15:21:06.000Z,above_target,"""{
+  """"threshold_percentage"""": """"number (101-999)"""",
+  """"measurement_window"""": """"string (today|trailing|recent)"""",
+  """"target_metric"""": """"string (required)"""",
+  """"criteria"""": """"string (required)""""
+}""","recgAwnR2TD4U0PfJ, recJT20tNjykvCEie, recz0YgLYcxE1mgQx, recvQBUkcQMImYbNv, rechUBpgc8h8L1pxK, recJ4nyX1Xbnnn9gD, rec2RFCAh8SDNVoZw, recvUDTk7gSz2A64k, recpi715DPeXa8ihf, recrZtdNQLrhA80cF"
+recNRauRLbdciqJpR,True,Performance,2025-09-05T21:19:54.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when there's a significant decline in performance from previous periods,Performance Regression,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:51:56.000Z,regression_detected,"{
+  ""decline_percentage"": ""number (10-50)"",
+  ""comparison_window"": ""string (7d|14d|30d)"",
+  ""target_metric"": ""string (required)"",
+  ""baseline_period"": ""string (required)""
+}",recIkLKgQNjclL0Dp
+recxKspV5uVIsr3gx,True,Mathematical,2025-09-05T21:20:02.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when the count of days meeting criteria is below a threshold over a rolling window,Count Below Threshold,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-20T01:48:39.000Z,count_below_threshold,"{
+  ""threshold_count"": ""number (required)"",
+  ""window_days"": ""number (required)"",
+  ""criteria"": ""string (required)""
+}","rec7q3B1tby7yzQQS, recW6UbqZK8YEDYEJ, recm69ZYiwwwC8bfx, recWQEnT0iUpVIGAu, recSWb6zwzXuKfozB, recnUn30VYM2vZqOD, recofnr99PPmS2YBS, recLtqjObpAQkLU5G"
+rec5ldNxoaki7x0uD,True,Mathematical,2025-09-05T21:20:07.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when rolling average falls below a percentage of target,Average Below Percentage,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:52:22.000Z,average_below_percentage,"{
+  ""percentage_threshold"": ""number (50-99)"",
+  ""window_days"": ""number (7|14|30)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}",rec707rPfUGbvMrJa
+recq04HZKlhzDiVhp,True,Mathematical,2025-09-19T20:35:49.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user hits target on at least the specified number of days within a rolling window,Threshold Hit Days,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:54:06.000Z,threshold_hit_days,"{
+  ""target_days"": ""number (required)"",
+  ""window_days"": ""number (required)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","rectNb8AM5fmsSRay, recu5zaPt8hg3iZMC, recHJFDvLOIHjvqG5, recVjmSuAGQVmov40, recbxSqw2o6qp4Dkr, recjOnhq934xbYCSM, recxCZDIh6JdqgTQe, recqZFOrG5IsFbFRG, rec6AK3aGjJZpNV90, recNm3p9vQ9gqLJ0P"
+recL1nLb2GAGc3qCb,True,Mathematical,2025-09-19T21:17:43.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user hits target on at least the specified number of weeks within a rolling window,Threshold Hit Weeks,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:54:06.000Z,threshold_hit_weeks,"{
+  ""target_weeks"": ""number (required)"",
+  ""window_weeks"": ""number (required)"", 
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","recev8oMkYeU99K6K, recZvqASLUujIXdcS, recR9qOFJjfXDR5em, recJGKuzrhuAGWaWU, rec8ZqHqzKsA7zdww, rec1bqPpTJKQF2T7k, recb2lcHjFdK07iHm, recLdVrRaHWiCpswQ, recz3829vfyuJTHKs, recNXBXFpTRtlaSYs, recQSm94UaDse2B4p, recAjVzeHF7WveNw0, recO135cjVf2Pu7kC, recFoPR5N4KQpIvVI, rec5gENGCLT9zMMjo"
+reca3DwKToW8j42q7,True,Mathematical,2025-09-19T21:19:54.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user misses target on at least the specified number of weeks within a rolling window,Threshold Miss Weeks,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:54:07.000Z,threshold_miss_weeks,"{
+  ""miss_weeks"": ""number (required)"",
+  ""window_weeks"": ""number (required)"", 
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","recEQLMvu2HdM7Ze9, recGqm2ArjO7Siin6"
+rec8QEIaHTXlDBiwz,True,Mathematical,2025-09-05T21:20:11.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user hits target on exactly the specified number of days,Exact Hit Days,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:53:01.000Z,exact_hit_days,"{
+  ""target_days"": ""number (required)"",
+  ""window_days"": ""number (required)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","rec21UeJFlHaRXQXw, recbDxqaEYlbZSyPm, recZAkWZiqM4trh8p, recXBWGQkB4FApAit, recALZxuoYxZZZhXR, recJHkJ5J8aAVYCka, reccVSjh01J5YGzlu, recTWEafyKUlLIG8A, recmVCukbB2D70bUw, recvcTMB8KFVUhlxP, recsM3thegMrtKsYD, recjfP3uUWUeyzzrd, reciYmeSYCjk6PAUV, recTFsmSnNHk7tRhg, recjXYqnHqgFvc0hy, recHcWo3RQphlC4wo, recYr2sGCfSvWxpAY, rec2ZvnRhT4Qlc9TT, recIsU9fjTvqRjopN, rec8UVTHwFn5JcS0B, recN04jNLoyLv15Zt, reckDnlOBZbCkOSji, rec8LkCoS6eGiVacV"
+recv7gx5Hur7FixOj,True,Mathematical,2025-09-05T21:20:16.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when current period shows improvement over previous period,Improvement Over Previous,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T21:20:16.000Z,improvement_over_previous,"{
+  ""comparison_period"": ""string (week|month|quarter)"",
+  ""improvement_threshold"": ""number (5-50)"",
+  ""target_metric"": ""string (required)"",
+  ""measurement_type"": ""string (required)""
+}",recA8sSp1te8eT7G2
+rectMaso7awZkFCHK,True,Mathematical,2025-09-19T23:50:37.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user hits target on at least the specified number of months within a rolling window,Threshold Hit Months,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:54:45.000Z,threshold_hit_months,"{
+  ""target_months"": ""number (required)"",
+  ""window_months"": ""number (required)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","recbzjFjjtDATAle8, rec91z3QjLDCmGORM, recJdGEQHssQyvuZt, recdcWIf2WXtNhPqm"
+rec2Jfytq7yBPNqpV,True,Mathematical,2025-09-19T23:50:37.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when user hits target on at least the specified number of cycles within a rolling window,Threshold Hit Cycles,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T23:54:45.000Z,threshold_hit_cycles,"{
+  ""target_cycles"": ""number (required)"",
+  ""window_cycles"": ""number (required)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","rectfzjok8LbcVwRz, recEF7FvoF94b4ncL, recSiapVZUguB1lXC, rec5WGjDIkuSwTX3j"
+recCFX6R1u9TJddcF,True,Behavioral,2025-09-05T21:20:21.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a positive streak is broken after achieving minimum length,Streak Broken,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T21:20:16.000Z,streak_broken,"{
+  ""minimum_streak_length"": ""number (3-30)"",
+  ""grace_period_days"": ""number (0-2)"",
+  ""target_metric"": ""string (required)"",
+  ""criteria"": ""string (required)""
+}","rec3RQqo0NjWZLqqL, rec6ESgjfHBXRPpJq"
+recZwk0zE2PEh6JqU,True,Behavioral,2025-09-05T21:20:25.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a user completes a specific challenge or milestone,Challenge Completion,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T21:20:16.000Z,challenge_completion,"{
+  ""challenge_type"": ""string (required)"",
+  ""completion_criteria"": ""object (required)"",
+  ""challenge_id"": ""string (optional)"",
+  ""verification_method"": ""string (required)""
+}","recuOeiUMn2J0FWhM, recBXubNXt1Hv3PJv, recvTu1Wrl7D5i7m7, recmylE4jbFqPU3Mo, recF0fXCuZ9n4hVxL"
+recs2qx3QBok3sCn9,True,Behavioral,2025-09-05T21:20:29.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a new challenge begins or is started by the user,Challenge Initiation,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T21:20:16.000Z,challenge_initiation,"{
+  ""challenge_status"": ""string (started|completed|failed)"",
+  ""time_window_minutes"": ""number (default: 30)"",
+  ""challenge_id"": ""string (optional)"",
+  ""evaluation_trigger"": ""string (immediate|delayed)""
+}",recArMH8WnKHwS1Zb
+reck6uAfaTo6neTHT,True,Temporal,2025-09-05T21:20:34.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires at a specific time or schedule (daily, weekly, monthly)",Scheduled Timepoint,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:16.000Z,scheduled_timepoint,"{
+  ""schedule_type"": ""string (daily|weekly|monthly|custom)"",
+  ""time_of_day"": ""string (HH:MM format OR 'multiple')"",
+  ""times"": ""array (optional - required when time_of_day='multiple')"",
+  ""day_of_week"": ""string (optional for weekly)"",
+  ""day_of_month"": ""number (optional for monthly)"",
+  ""timezone"": ""string (default: user_timezone)""
+}","rec1VgFjQTsPG275i, rec4ZQKWMaD5qPwGp, rec5iV0yVip7pWT5U, recAc8aO4kBEtrP8n, recAx8Nc6fR7qi94Q, recAxrnp9pOwauLgW, recL8pDeZHKxyvPXZ, recEZ5ypdzpFvJoZw, rechD5OrblRr8L9Mm, recLkoR8WSkEDToJg, recvminkLscWBKq09, recbo1Oh9Chnz7FMO, recox4lqVhAAJ0K3S, recHZr0oP2z8Mvogi, recJgSXybB0bZJHJY, recCAZ8KLE9OcTF6T, recC1KKQzaaIWmgaq, recK1x6viaPggeBcd, recz69rqF7AjC9kGz, reccCH7wSaaGV0OhN, recETOoijkT3uX5Ed, recUaTrlPlkeX08ND, recvQJEHz79oCFVYI, recyaIWaJ8TjPRoqQ, recGv720QYMFuAGVN, recFQu2B6GfxODCgP, recnrnub9gHKIb58i, recbUcROI5hOgctST, recLqIC6f4zodWSGN, recrc292yA03mWDuv, recPgVJzWGZe8wG1E, recEo1BBKeBbQ1aGG, rech3yg36Y9BqhC5C, recThvp2ziLaDSzwu, recQgnnkcSscNKa3H, recL4yzezm56Ql4Hp, recJpF6taXK5YGwre, recRhdTIbJpFdukWg, recVaBKAfoCRVBjBM, recDY41QSI1Lg5cqM, recpgIp4RmtKOWTd7, recvI4HguBRqDFsYG, reciwfC41PSOjY3dx, recMQ7qqkslcp7aPy, rectnSNbMZVKpsyT6, recDNJTi0yk1Ju6PF, recBv1rDVxZWmoIYR, recgZMr0fh83ewN9J, recWnMguBJnG8rnQO, recX8wzmpEdjkOh1a, recfaDWG8HDPI2Eof, recTzuBdXgYMJeoCE, recuzNQE4zW7byizo, recFrbknNUc4mItnq, recthvUJIHXv6fW0u, recGMNORENn5EOdfJ, reclJgTbBEcXn2r5a, recqog8pkcSE3w5NF, recaSNdfvLjTPKMYq, reckSXf3gD4sZ1M0B, recCIQCLM0okuAWr7, recTsYo3iRK9NKkmF, recQvUCF6MSlKeoxT, recJxduOHr8PRiMmY, recLm8dHkCptsfSmu, recz8HpIuLVppTtgJ, recRayIVTrEVkgcSr, recFwkrb0r4Fm7sL0"
+recZhOAs8JZS1pfLF,True,Temporal,2025-09-05T21:20:39.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires during a specific range of weekdays,Weekday Range,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:22.000Z,weekday_range,"{
+  ""start_day"": ""string (monday|tuesday|...)"",
+  ""end_day"": ""string (monday|tuesday|...)"",
+  ""time_range"": ""object (optional)"",
+  ""timezone"": ""string (default: user_timezone)""
+}","recDPdU9IvpDtqCNC, recQKtqqG5ZhFFEhm, recusUus3oDBtGJne"
+reck8ovB7htQL71LH,True,Temporal,2025-09-05T22:53:02.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires at a specific time during specific weeks of a program (e.g., Sunday evening of weeks 1-13)",Week Range Scheduled,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:27.000Z,week_range_scheduled,"{
+  ""week_numbers"": ""array (required)"",
+  ""day_of_week"": ""string (monday|tuesday|...|sunday)"",
+  ""evaluation_time"": ""string (morning|afternoon|evening)"",
+  ""timezone"": ""string (default: user_timezone)""
+}",
+reckZT2wgoEATj0Bz,True,Temporal,2025-09-05T23:12:05.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires at a random time within specific weeks of a program, constrained to operating hours (e.g., random time 8 AM - 8 PM during week 5)",Week Range Random,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:34.000Z,week_range_random,"{
+  ""week_numbers"": ""array (required)"",
+  ""min_hour"": ""number (0-23, default: 8)"",
+  ""max_hour"": ""number (0-23, default: 20)"",
+  ""randomization_type"": ""string (uniform|weighted, default: uniform)"",
+  ""timezone"": ""string (default: user_timezone)"",
+  ""exclusion_days"": ""array (optional)""
+}","recCUmg7EbL0HsQtW, rec5VViiRMcSDD0A3, recS6GGxVJqZiziHl, recvLuHPxEtrtgIQc, recKIzUVfnz7A761L, recL4mXKspG244olU, recCugkbPBqMwL1xo, recDfcLBhGMxfCgfy, rectJstYNTbz3K13V, recA50LdfqKgUhtTi, recMjN3ixSOEvIq9D, recMxA4ayGXW33syv, recqVsARZ1QyB7dQW"
+recSbWnytdNpiBVK6,True,Analytical,2025-09-05T21:20:45.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when behavior timing patterns show significant skew or inconsistency,Timing Skew Detected,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:38.000Z,timing_skew_detected,"{
+  ""skew_threshold"": ""number (0.5-2.0)"",
+  ""analysis_window"": ""number (7-30)"",
+  ""behavior_type"": ""string (required)"",
+  ""timing_metric"": ""string (required)"",
+  ""statistical_method"": ""string (default: standard_deviation)""
+}","rec62ErtY5NFhxWtX, recnUBptOd8pyQcuG"
+rec95lqvrTysGnFGI,True,Analytical,2025-09-05T21:20:50.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires when multiple conditions are met using logical operators (AND, OR, NOT)",Composite Condition,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:43.000Z,composite_condition,"{
+  ""conditions"": ""array (required)"",
+  ""logical_operator"": ""string (AND|OR|NOT)"",
+  ""evaluation_window"": ""string (required)"",
+  ""condition_structure"": ""object (required)"",
+  ""priority_order"": ""array (optional)""
+}","recm8z0R0qZ8R3TKO, recz24N8dEHwma9WG"
+rectGI4brd40QwHyW,True,Adaptive Content,2025-09-05T21:44:10.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires when a qualitative-only recommendation is currently active for the user,Qualitative Recommendation Active,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:49.000Z,qualitative_recommendation_active,"{
+  ""recommendation_type"": ""string (qualitative)"",
+  ""pillar_filter"": ""string (optional)"",
+  ""active_duration_hours"": ""number (optional)"",
+  ""recommendation_id"": ""string (optional)""
+}",reczL1k0o8s0qWgr3
+reccPGWeproG9UqtF,True,Adaptive Content,2025-09-05T21:44:11.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",Fires based on randomized rotation logic within pillar-relevant modules to optimize content variety and engagement,Randomized Rotation Trigger,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:53.000Z,randomized_rotation_trigger,"{
+  ""pillar_modules"": ""array (required)"",
+  ""rotation_frequency"": ""string (daily|weekly|session)"",
+  ""last_rotation_timestamp"": ""string (optional)"",
+  ""exclusion_modules"": ""array (optional)""
+}",recPBgEDx5FHbxuZf
+recT3BxhWVIktZVq8,True,Adaptive Content,2025-09-05T21:44:12.000Z,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}","Fires when a related check-in response indicates low confidence, difficulty, or frustration based on scoring thresholds or sentiment tags",User Struggle Detected,"{""id"": ""usrdgG7vRV8iqukqL"", ""email"": ""keegankdolan@gmail.com"", ""name"": ""Keegan Dolan""}",2025-09-19T20:53:58.000Z,user_struggle_detected,"{
+  ""confidence_threshold"": ""number (default: 4)"",
+  ""scale_max"": ""number (default: 10)"",
+  ""struggle_tags"": ""array (optional)"",
+  ""lookback_days"": ""number (default: 7)"",
+  ""response_fields"": ""array (required)""
+}",recMDdQj9HEQSCMo9

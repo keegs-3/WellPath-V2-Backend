@@ -1,0 +1,46 @@
+{
+  "config_id": "SC-PROPORTIONAL-FREQUENCY-HYBRID-ACTIVE_120MIN_7_OF_7",
+  "config_name": "Proportional Frequency Hybrid - daily_active_time",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "average of top 7 daily scores that meet minimum threshold",
+    "evaluation_pattern": "weekly_proportional_frequency",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "proportional_frequency_target",
+      "calculation_method": "hybrid_proportional_frequency",
+      "tracked_metrics": [
+        "active_time"
+      ],
+      "daily_target": 120.0,
+      "daily_minimum_threshold": 0,
+      "required_qualifying_days": 7,
+      "total_days": 7,
+      "unit": "minutes",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "description": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Proportional daily scoring, weekly score = average of top 7 qualifying days",
+      "required_days": 7,
+      "calculated_metrics": [
+        "daily_active_time"
+      ],
+      "target": 120.0,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Optimize: Achieve 120+ minutes of active time every day (7 days per week)",
+    "recommendation_id": "REC0031.3",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Daily buildup target with frequency-based weekly scoring using top N days average"
+    },
+    "metric_id": "daily_active_time",
+    "generated_at": "2025-09-12T20:30:00.000000"
+  }
+}

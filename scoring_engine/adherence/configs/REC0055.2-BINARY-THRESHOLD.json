@@ -1,0 +1,45 @@
+{
+  "config_id": "SC-BIN-DAILY-CIGARETTE_5MAX",
+  "config_name": "Binary Threshold - cigarette",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "100% if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "threshold",
+      "evaluation_period": "daily",
+      "success_criteria": "daily_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "cigarette"
+      ],
+      "threshold": 5.0,
+      "comparison_operator": "<=",
+      "unit": "cigarette",
+      "required_days": 7,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "countdown",
+      "frequency_requirement": "daily",
+      "scoring_type": "daily_binary",
+      "description": "Binary threshold scoring: Limit to 5 or fewer cigarettes daily",
+      "calculated_metrics": [
+        "daily_cigarettes"
+      ],
+      "daily_limit": 100
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit to 5 or fewer cigarettes daily",
+    "recommendation_id": "REC0055.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary threshold algorithm: Daily cigarette count must be at or below 5"
+    },
+    "metric_id": "cigarette",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

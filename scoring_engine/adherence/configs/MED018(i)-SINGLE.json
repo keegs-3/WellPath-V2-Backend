@@ -1,0 +1,76 @@
+{
+  "config_id": "MED018(i)-SINGLE",
+  "config_name": "Teriparatide: PTH Analog",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Teriparatide",
+          "type": "MED",
+          "dose_min": 20.0,
+          "dose_max": NaN,
+          "unit": "microgram",
+          "unit_symbol": "\u00b5g",
+          "rollup": "20 \u00b5g",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Any",
+          "category": "PTH Analog",
+          "operator": "="
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Teriparatide"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 20mcg of Teriparatide at any time daily for bone anabolic therapy and skeletal health optimization",
+    "recommendation_id": "MED018(i)-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Teriparatide",
+        "type": "MED",
+        "dose_min": 20.0,
+        "dose_max": NaN,
+        "unit": "microgram",
+        "unit_symbol": "\u00b5g",
+        "rollup": "20 \u00b5g",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Any",
+        "category": "PTH Analog",
+        "operator": "="
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.470219",
+    "title": "Teriparatide: PTH Analog",
+    "overview": "Bone anabolic therapy",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": "(i)",
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "config_id": "SC-WEEKLY-ELIM-CAFFEINE_TIMING_2PM_DAILY",
+  "config_name": "Weekly Elimination - caffeine timing 2pm daily cutoff",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
+      "tracked_metrics": [
+        "last_caffeine_consumption_time"
+      ],
+      "elimination_threshold": 840,
+      "elimination_comparison": "<=",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "timestamp",
+      "progress_direction": "measurement",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "frequency_requirement": "daily",
+      "description": "SC-WEEKLY-ELIMINATION: Daily pass/fail based on finishing caffeine by 2pm every day",
+      "calculated_metrics": [],
+      "required_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Finish all caffeinated beverages by 2pm every day of the week",
+    "recommendation_id": "REC0015.3",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
+    },
+    "metric_id": "last_caffeine_consumption_time",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

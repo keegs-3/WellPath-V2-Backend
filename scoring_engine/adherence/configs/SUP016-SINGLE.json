@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP016-SINGLE",
+  "config_name": "Berberine: Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Berberine",
+          "type": "SUP",
+          "dose_min": 500.0,
+          "dose_max": 1500.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "500-1500 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Before meals",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Berberine"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 500-1,500mg of Berberine before meals daily for glucose metabolism, insulin sensitivity, cholesterol management, and gut health",
+    "recommendation_id": "SUP016-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Berberine",
+        "type": "SUP",
+        "dose_min": 500.0,
+        "dose_max": 1500.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "500-1500 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Before meals",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.356617",
+    "title": "Berberine: Supplement",
+    "overview": "Plant alkaloid for glucose metabolism",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI286,LI287,LI288,LI289"
+  }
+}

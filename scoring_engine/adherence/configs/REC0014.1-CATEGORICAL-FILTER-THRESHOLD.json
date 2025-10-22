@@ -1,0 +1,49 @@
+{
+  "config_id": "SC-CAT-FILT-FREQ-CAFFEINE_SOURCE_3WEEK",
+  "config_name": "Categorical Filter Frequency - unhealthy caffeine sources 3/week limit",
+  "scoring_method": "categorical_filter_threshold",
+  "configuration_json": {
+    "method": "categorical_filter_threshold",
+    "formula": "if (weekly_unhealthy_caffeine_sources <= 3) then 100 else 0",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "categorical_filter",
+      "evaluation_period": "weekly",
+      "success_criteria": "category_threshold",
+      "calculation_method": "weekly_category_count",
+      "tracked_metrics": [
+        "caffeine_source"
+      ],
+      "calculated_metrics": [
+        "daily_caffeine_source_count"
+      ],
+      "threshold": 3.0,
+      "comparison_operator": "<=",
+      "target_categories": [
+        "energy_drink",
+        "pre_workout",
+        "soda"
+      ],
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "sources",
+      "progress_direction": "countdown",
+      "frequency_requirement": "weekly",
+      "description": "Categorical filter for: Limit energy drinks, pre-workout supplements, and high-caffeine sodas to no more than 3 total per week",
+      "required_days": 7,
+      "total_days": 7,
+      "weekly_limit": 3
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit intake of energy drinks, pre-workout, and high-caffeine sodas to no more than 3 times per week, using coffee or tea as your primary source of caffeine",
+    "recommendation_id": "REC0014.1",
+    "analysis": {
+      "algorithm_type": "categorical_filter_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-CATEGORICAL-FILTER-FREQUENCY: Weekly frequency limit on unhealthy caffeine categories with 3/week allowance"
+    },
+    "metric_id": "daily_caffeine_source_count",
+    "generated_at": "2025-09-14T18:32:53.943283"
+  }
+}

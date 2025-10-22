@@ -1,0 +1,62 @@
+{
+  "config_id": "SC-ALLOW-WEEKLY-TAKEOUT_MEALS_1_MEAL_WEEKLY",
+  "config_name": "Constrained Weekly Allowance - takeout meals",
+  "scoring_method": "constrained_weekly_allowance",
+  "configuration_json": {
+    "method": "constrained_weekly_allowance",
+    "formula": "100 if weekly_total <= weekly_limit else 0",
+    "evaluation_pattern": "weekly_limit",
+    "schema": {
+      "measurement_type": "weekly_limit_achievement",
+      "evaluation_period": "weekly_limit",
+      "success_criteria": "weekly_limit_target",
+      "calculation_method": "weekly_sum_limit",
+      "tracked_metrics": [
+        "takeout_delivery_meal"
+      ],
+      "calculated_metrics": [
+        "daily_takeout_delivery_meal"
+      ],
+      "weekly_allowance": 3.0,
+      "weekly_comparison": "<=",
+      "total_days": 7.0,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": [
+          "count"
+        ],
+        "user_friendly_limit": "3 meals per week or less",
+        "technical_limit": "≤1 meal/week"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "limit_requirement_text": "3 meals per week or less",
+      "description": "SC-WEEKLY-ELIMINATION: Weekly limit achievement for limiting takeout/delivery meals to ≤1 meal per week",
+      "required_days": 7.0,
+      "max_days_per_week": 3.0,
+      "unit": "meal",
+      "rollover_enabled": false,
+      "max_rollover_percentage": 0.0,
+      "penalty_for_overage": 100.0,
+      "daily_limit": 10.0
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit takeout or delivery meals to 3 meal per week or less",
+    "recommendation_id": "REC0023.1",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.85,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Weekly limit pattern with zero tolerance scoring for strict takeout meal reduction"
+    },
+    "metric_id": "daily_takeout_meal",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

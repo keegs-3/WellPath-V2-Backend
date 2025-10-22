@@ -1,0 +1,132 @@
+{
+  "config_id": "MULTI001-STACK",
+  "config_name": "Empagliflozin + Semaglutide + Metformin Stack",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 3 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Empagliflozin",
+          "type": "MED",
+          "dose_min": 10.0,
+          "dose_max": 25.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "10-25 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Morning",
+          "category": "SGLT2 Inhibitor",
+          "operator": "<>"
+        },
+        {
+          "name": "Semaglutide",
+          "type": "PEP",
+          "dose_min": 1.0,
+          "dose_max": 2.4,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "1-2.4 mg",
+          "frequency": "weekly",
+          "frequency_days": 7.0,
+          "timing": "Any",
+          "category": "GLP-1 Agonist",
+          "operator": "<>"
+        },
+        {
+          "name": "Metformin",
+          "type": "MED",
+          "dose_min": 500.0,
+          "dose_max": 2000.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "500-2000 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Biguanide",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 3,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 3 therapeutic intervention(s): Empagliflozin, Semaglutide, Metformin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 500-2,000mg of Metformin (with meals daily), 10-25mg of Empagliflozin (morning daily), and 1-2.4mg of Semaglutide (any time weekly) for comprehensive metabolic optimization, weight management, cardiovascular protection, neuroprotection, and longevity pathway activation",
+    "recommendation_id": "MULTI001-STACK",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 3 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Empagliflozin",
+        "type": "MED",
+        "dose_min": 10.0,
+        "dose_max": 25.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "10-25 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Morning",
+        "category": "SGLT2 Inhibitor",
+        "operator": "<>"
+      },
+      {
+        "name": "Semaglutide",
+        "type": "PEP",
+        "dose_min": 1.0,
+        "dose_max": 2.4,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "1-2.4 mg",
+        "frequency": "weekly",
+        "frequency_days": 7.0,
+        "timing": "Any",
+        "category": "GLP-1 Agonist",
+        "operator": "<>"
+      },
+      {
+        "name": "Metformin",
+        "type": "MED",
+        "dose_min": 500.0,
+        "dose_max": 2000.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "500-2000 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Biguanide",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.500222",
+    "title": "Empagliflozin + Semaglutide + Metformin Stack",
+    "overview": "Comprehensive metabolic optimization combining three complementary mechanisms - Metformin activates AMPK and longevity pathways, SGLT2 inhibitors provide glucose elimination and cardioprotection, while GLP-1 agonists offer appetite regulation and neuroprotection. Together they optimize metabolism, body composition, and longevity.",
+    "stack_summary": "Comprehensive metabolic optimization combining three complementary mechanisms - Metformin activates AMPK and longevity pathways, SGLT2 inhibitors provide glucose elimination and cardioprotection, while GLP-1 agonists offer appetite regulation and neuroprotection. Together they optimize metabolism, body composition, and longevity.",
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "STACK",
+    "therapeutic_type": "MULTI",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

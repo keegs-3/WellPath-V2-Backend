@@ -1,0 +1,42 @@
+{
+  "config_id": "SC-MINFREQ-FREQ-SKINCARE_ROUTINE_5WEEK",
+  "config_name": "Minimum Frequency - skincare_routine",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "minimum_days_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "skincare_routine"
+      ],
+      "daily_threshold": 1.0,
+      "daily_comparison": ">=",
+      "required_days": 5,
+      "total_days": 7,
+      "unit": "session",
+      "scoring_type": "proportional",
+      "description": "Must achieve threshold on minimum days: Maintain a skincare routine 5 days/week",
+      "calculated_metrics": [],
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "buildup",
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Maintain a skincare routine 5 days/week",
+    "recommendation_id": "REC0058.2",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Minimum frequency pattern detected: 1+ sessions on 5 days per week"
+    },
+    "metric_id": "skincare_routine",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

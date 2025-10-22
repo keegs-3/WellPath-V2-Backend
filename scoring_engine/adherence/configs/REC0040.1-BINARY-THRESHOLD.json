@@ -1,0 +1,45 @@
+{
+  "config_id": "SC-BIN-DAILY-WAKE_TIME_480MIN",
+  "config_name": "Binary Threshold - wake_time",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "100% if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "threshold",
+      "evaluation_period": "daily",
+      "success_criteria": "daily_threshold",
+      "calculation_method": "daily_threshold_count",
+      "tracked_metrics": [
+        "wake_time"
+      ],
+      "threshold": 480.0,
+      "comparison_operator": "<=",
+      "unit": "minutes",
+      "required_days": 7,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "progress_direction": "buildup",
+      "frequency_requirement": "daily",
+      "scoring_type": "daily_binary",
+      "description": "Binary threshold scoring: Wake time before 8:00 AM (480 minutes from midnight) all 7 days",
+      "calculated_metrics": [
+        "wake_time_consistency"
+      ],
+      "daily_limit": 1440
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Wake up by a set time (e.g., 8:00am) on weekends and weekdays",
+    "recommendation_id": "REC0040.1",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary threshold algorithm: Daily wake time must be at or before 8:00 AM (480 minutes from midnight)"
+    },
+    "metric_id": "wake_time",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

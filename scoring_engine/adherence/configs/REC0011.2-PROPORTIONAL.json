@@ -1,0 +1,44 @@
+{
+  "config_id": "SC-PROP-DAILY-DIETARY_",
+  "config_name": "Proportional Achievement - dietary_whole_grain_servings",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "whole_grain_serving"
+      ],
+      "target": 3.0,
+      "unit": "serving",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Include a serving of whole grains at every main meal (breakfast, lunch, dinner)...",
+      "calculated_metrics": [
+        "daily_whole_grain_servings"
+      ],
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Include a serving of whole grains at every main meal (breakfast, lunch, dinner)",
+    "recommendation_id": "REC0011.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.7,
+      "reasoning": "Proportional scoring best fit (proportional score: 3)"
+    },
+    "metric_id": "daily_whole_grain_servings",
+    "generated_at": "2025-09-10T20:16:10.257962"
+  }
+}

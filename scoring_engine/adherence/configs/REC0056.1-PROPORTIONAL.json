@@ -1,0 +1,44 @@
+{
+  "config_id": "SC-PROP-DAILY-BRUSHING_SESSION_1DAILY",
+  "config_name": "Proportional Achievement - brushing_session",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "brushing_session"
+      ],
+      "target": 1.0,
+      "unit": "session",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Brush your teeth at least once daily",
+      "calculated_metrics": [
+        "daily_brushing_sessions"
+      ],
+      "progress_direction": "buildup",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Brush your teeth at least once daily",
+    "recommendation_id": "REC0056.1",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.8,
+      "reasoning": "Proportional scoring best fit: daily 1-brushing target"
+    },
+    "metric_id": "brushing_session",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

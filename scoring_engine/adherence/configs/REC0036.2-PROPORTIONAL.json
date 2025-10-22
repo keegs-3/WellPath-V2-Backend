@@ -1,0 +1,45 @@
+{
+  "config_id": "SC-PROPORTIONAL-WEEKLY-POST_MEAL_7_SESSIONS",
+  "config_name": "Proportional Achievement - daily_post_meal_activity_sessions",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "active_time",
+        "meal_logged"
+      ],
+      "target": 7.0,
+      "unit": "session",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "frequency_requirement": "weekly",
+      "description": "Proportional scoring for: Move after meals at least 7 times per week",
+      "total_days": 7,
+      "daily_limit": 3,
+      "calculated_metrics": [
+        "daily_post_meal_activity_sessions"
+      ],
+      "required_days": 7
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Move after meals at least 7 times per week",
+    "recommendation_id": "REC0036.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "Weekly total target with proportional scoring"
+    },
+    "metric_id": "daily_post_meal_activity_sessions",
+    "generated_at": "2025-09-12T20:30:01.109489"
+  }
+}

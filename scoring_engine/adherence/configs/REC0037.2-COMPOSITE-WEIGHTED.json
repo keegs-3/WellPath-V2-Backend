@@ -1,0 +1,72 @@
+{
+  "config_id": "SC-COMP-DAILY-REC0037.2",
+  "config_name": "Composite Weighted - REC0037.2",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "(component1_score * weight1 + component2_score * weight2)",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "weighted_components",
+      "calculation_method": "weighted_sum",
+      "tracked_metrics": [
+        "exercise_snack",
+        "meal_logged"
+      ],
+      "calculated_metrics": [
+        "daily_exercise_snacks",
+        "post_meal_exercise_snack_session"
+      ],
+      "components": [
+        {
+          "name": "Sessions",
+          "weight": 0.8,
+          "target": 5.0,
+          "unit": "session",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_exercise_snacks"
+        },
+        {
+          "name": "Sessions",
+          "weight": 0.2,
+          "target": 2.0,
+          "unit": "session",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "post_meal_exercise_snack_session"
+        }
+      ],
+      "description": "Complete at least 5 exercise snacks per day, including 2 after meals",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "session",
+      "progress_direction": "buildup",
+      "daily_limit": 99,
+      "frequency_requirement": "daily"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete at least 5 exercise snacks per day, including 2 after meals",
+    "recommendation_id": "REC0037.2",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.9,
+      "reasoning": "Composite requirements: total exercise snacks AND post-meal subset"
+    },
+    "metric_id": "daily_exercise_snacks,daily_post_meal_exercise_snacks",
+    "generated_at": "2025-09-13T10:32:51.820024"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "config_id": "SUP001.1-THERAPEUTIC-ADHERENCE",
+  "config_name": "Therapeutic Adherence - Zinc Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Zinc",
+          "type": "supplement",
+          "dose_min": 10,
+          "dose_max": 20,
+          "unit": "mg",
+          "unit_symbol": "mg",
+          "rollup": "10-20 mg",
+          "frequency": "daily"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Zinc"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 10\u201320mg zinc daily",
+    "recommendation_id": "REC0086.1",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Zinc",
+        "type": "supplement",
+        "dose_min": 10,
+        "dose_max": 20,
+        "unit": "mg",
+        "unit_symbol": "mg",
+        "rollup": "10-20 mg",
+        "frequency": "daily"
+      }
+    ],
+    "generated_at": "2025-09-27T08:41:31.241647",
+    "title": "Zinc Supplement",
+    "overview": "Zinc supports immune function; supplementation may reduce infection risk",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": NaN
+  }
+}

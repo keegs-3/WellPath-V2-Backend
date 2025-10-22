@@ -1,0 +1,165 @@
+record_id,Status,category,challenges,check_ins,checkins_v2,data_sources,data_type,data_types,day_view,default_max_display,default_min_display,description_for_display,detail_for_reference_not_ui_display,display_notes,fields,format_from_intake_metrics,healthkit_metrics,history,id,images_for_display_notes,intake_metrics,linked_recommendations,name,notes,nudges,null_handling,oura_metrics,pillar,pillar_all,quantity_detail,recommendation_goals,recommendation_goals_2,recommendations_copy,response_options,units
+recjmkU2nIaeSH2XZ,needs_discussion,recfznMmtKjCbKkkt,CH0004,"CHK001, CHK002, CHK003","recDWOysJk6f3kLJ9, recGwo7MlZZVUClyN, recT3Ms6i0E6fFNfQ","recmJnFh2BJjHboWO, recbquDMszxCFuzsu, reckDaSnyriAU2nkU",integer,recqb9TeDFYUPdpK4,NOT REQUIRED,Yes,No,"Why: The Longevity Impact
+Replacing saturated fats with unsaturated fats reduces LDL cholesterol and inflammation. This simple swap can reduce heart disease risk by 19% and support brain health as you age.
+
+Optimal Target
+Replace butter with olive oil, choose nuts over chips, pick fatty fish over red meat 2-3 times per week.
+
+Quick Tips
+Cook with olive oil instead of butter, snack on almonds, add avocado to sandwiches, choose salmon over steak.","Whether the patient made a single healthy fat substitution (e.g., swapped butter for olive oil) on a given day","I think a better option for this would just be a calenday view with checkboxes for each day in the range (day, week, month) - ","Date, Yes/No",,,,TM004,"{'id': 'attYhwDW3lHO42ptC', 'url': 'https://v5.airtableusercontent.com/v3/u/46/46/1760054400000/IEOga9PBrr732lNpXCbwuw/5HTw8MbHMO3tNGQhfoHDwmg6q2ruZBLql_Moc9SEpZEhCkj_p8e9Vnr3G0osx-j1MJ0tJ3sfJbeffEPKfT_J4Hvl5sujKZIXSe6m8DYltQdJ5Kgk2Dk4UEFdeKzbQ795vgpOj9QNRQfddowansplDiuJL9PYrfJ7a3fO3EPANcNnxyDO5CjspUsfsafh11Ny/1ImoFyUUnPR9h1JQQPd-dbL6n6epBrb2I8FuD4Cf_y0', 'filename': 'sunscreen_compliance_views.html', 'size': 15325, 'type': 'text/html'}",,recHzb6cKfnSgyEzu,Healthy Fat Swap,<<<Update,"NUDGE0010, NUDGE0011, NUDGE0012, NUDGE0013, NUDGE0014, NUDGE0015, NUDGE0016, NUDGE0017, NUDGE0018",INCLUDE,,recgGEypX3ghJay5R,recgGEypX3ghJay5R,,,recCFWDRp1GrikXum,REC0002.1,RO002,recs216xGcYqeWqrd
+recWRDVKJz69pZhYp,needs_discussion,recfznMmtKjCbKkkt,CH0005,"CHK004, CHK005, CHK006","rec6n9XmdympJeVUr, recGwo7MlZZVUClyN, recT3Ms6i0E6fFNfQ","recmJnFh2BJjHboWO, recbquDMszxCFuzsu, reckDaSnyriAU2nkU",integer,recqb9TeDFYUPdpK4,NOT REQUIRED,Yes,No,"Why: The Longevity Impact
+Making olive oil, avocados, and nuts your go-to fats provides omega-3s and antioxidants that protect against cognitive decline and support cellular health throughout aging.
+
+Optimal Target
+Make 80-90% of your fat intake from unsaturated sources: olive oil, nuts, seeds, avocados, fatty fish.
+
+Quick Tips
+Keep olive oil visible on counter, pre-portion nuts for snacks, buy pre-sliced avocado, meal prep with salmon.","Whether the patient consistently used healthy fats (e.g., olive oil, avocado, nuts) as the default in cooking and meal prep that day",See the note and display example for Healthy Fat Swap,"Date, Yes/No",,,,TM005,,,rec949y9L8RuJ25yP,Used Healthy Fats as Default,<<<Update,"NUDGE0010, NUDGE0011, NUDGE0012, NUDGE0013, NUDGE0014, NUDGE0015, NUDGE0016, NUDGE0017, NUDGE0018",INCLUDE,,recgGEypX3ghJay5R,recgGEypX3ghJay5R,,,rec4aU5OqUa3LOotH,REC0002.2,RO002,recs216xGcYqeWqrd
+recKArUE41uHphWb9,needs_discussion,recH8WEzKPkXv3ivr,CH0006,"CHK007, CHK008, CHK009","recONnuogTqTDEYXl, recGwo7MlZZVUClyN, recT3Ms6i0E6fFNfQ","reciY6yCiPiy2vSiQ, recmJnFh2BJjHboWO, recbquDMszxCFuzsu, reckDaSnyriAU2nkU",float,"recoMKPV9asM5gw4E, recqb9TeDFYUPdpK4",REQUIRED,100,0,"Why: The Longevity Impact
+Limiting saturated fat to <10% of calories reduces arterial plaque buildup and inflammation. Lower saturated fat intake is consistently linked to better cardiovascular outcomes and longevity.
+
+Optimal Target
+<10% of total calories from saturated fat (about 20g for 2000-calorie diet). Focus on lean proteins and plant-based fats.
+
+Quick Tips
+Choose lean cuts of meat, limit cheese and butter, use cooking sprays, read labels on packaged foods.","Approximate percent of total calories from saturated fat, estimated by user input or food log reflection",,"Date, Percentage (%)",,"recNoxkIaUsGH8XZ0, recP4mYviD1JQCyHQ, recT5JKXR7m7U994X, recojsOkioQgNKdmq",,TM006,,,recIRf5TBEMboKqVm,Saturated Fat Minimization,<<<Update,"NUDGE0010, NUDGE0011, NUDGE0012, NUDGE0013, NUDGE0014, NUDGE0015, NUDGE0016, NUDGE0017, NUDGE0018",IGNORE,,recgGEypX3ghJay5R,recgGEypX3ghJay5R,,,recDX0Cygq5KqwJQe,REC0002.3,"RO002, RO028, RO003",recbr6G7O5LsA88v5
+recEbOiNyw46llfxE,needs_discussion,recvmPxMo7fMxWvj6,"CH0035, CH0054",,"recMEls3xJxrtXHok, recBBzfMv7o8hxmFR, recTW0NzUzSJ6QCR8","reciY6yCiPiy2vSiQ, recFaYQec0V1oH2po, recmJnFh2BJjHboWO, recbquDMszxCFuzsu",integer,"recoMKPV9asM5gw4E, recqb9TeDFYUPdpK4",REQUIRED,"If Liters: 3
+if ml 3,000
+if cups 12
+if ounces 100",0,"Why: The Longevity Impact
+Proper hydration supports cellular function, nutrient transport, and toxin elimination. Even mild dehydration can impair cognitive function and accelerate aging processes.
+
+Optimal Target
+8-10 cups daily (64-80 oz, 2-2.5L, 1900-2400ml). Increase with exercise, heat, or illness. Conversion: 1 cup = 8 oz = 240ml; 1 glass ≈ 8-12 oz; 4 cups = 1L
+
+Quick Tips
+Keep a water bottle visible, drink a glass upon waking, flavor with lemon or cucumber, set hourly reminders.",Total water (or non-sweetened beverage) consumed in a given time period,"It depends what the metric is for the default max, if its liters:
+","Date, Time, Quantity",,recOXZjW1dnTrOH8C,,TM026,,,"recB2JtyJ9bvr8qWT, recdUipe4wxEhf4uC, recUROIBVBAObV7l2",Daily Water Intake (mixed units),<<<Update,"NUDGE0163, NUDGE0167, NUDGE0172",IGNORE,,recgGEypX3ghJay5R,recgGEypX3ghJay5R,"Ounces (oz), Cups , Liters (L)",,"recw8u0doVu4tUJRL, rec803WTJiQdj1npu, recPXzfgAnTndHqgU","REC0020.1, REC0020.2, REC0020.3","RO002, RO028",reci9Job5YUHzeOmp
+recZKlcHhj7CDPJSf,needs_discussion,recH8WEzKPkXv3ivr,,,recFJ0x2GHfXWhHIk,recmJnFh2BJjHboWO,float,"recoMKPV9asM5gw4E, recqb9TeDFYUPdpK4",NOT REQUIRED,75,10,"Why: The Longevity Impact
+Grip strength is a powerful predictor of overall health and longevity. It correlates with muscle mass, bone density, and cardiovascular health.
+
+Optimal Target
+Maintain or improve grip strength through regular strength training and specific grip exercises. Test periodically with dynamometer.
+
+Quick Tips
+Do farmers walks, deadlifts, pull-ups, squeeze stress balls, use grip trainers, carry groceries without carts.",Maximum handgrip strength measured in kilograms using a dynamometer or similar tool.,,"Date, Measurement",1 decimal,,,TM042,,recHOTAk6Lpmb9uUz,,Grip Strength,<<<Update,,IGNORE,,recp0marLNu65GGhd,recp0marLNu65GGhd,,,,,RO028,recTze2xtGoOl8vZS
+recFl99d8n4l00XcA,needs_discussion,recH8WEzKPkXv3ivr,,,recsRGgKEQ1EfkZM9,"reciY6yCiPiy2vSiQ, recmJnFh2BJjHboWO",float,"recoMKPV9asM5gw4E, recqb9TeDFYUPdpK4",NOT REQUIRED,75,10,"Why: The Longevity Impact
+VO2 max measures cardiovascular fitness and is one of the strongest predictors of longevity. Higher VO2 max correlates with lower all-cause mortality.
+
+Optimal Target
+Maintain in top 25% for your age group. Improve through Zone 2 cardio and high-intensity training combination.
+
+Quick Tips
+Include both aerobic base building and interval training, test annually, focus on progressive training, maintain consistency.","Estimated maximal oxygen uptake during exercise, a key indicator of cardiovascular fitness.",,"Date, Measurement",1 decimal,recALlzOrzmDI2PFI,,TM043,,rec0v0JrVS6xu5Dcj,,VO2 Max,<<<Update,,IGNORE,,recp0marLNu65GGhd,recp0marLNu65GGhd,,,,,RO028,rec45frpbX1A9jS2n
+recFreByeShGraal0,needs_discussion,recNAvEZSsSEDhzQM,"CH0012, CH0013, CH0014","CHK026, CHK027","recC94COPTaYgO9Gx, rec62NOf90O7kCj35, recxmGqxigRcCfbkA","reciY6yCiPiy2vSiQ, recFaYQec0V1oH2po, recmJnFh2BJjHboWO, recbquDMszxCFuzsu",integer,"recoMKPV9asM5gw4E, rec3VXQeeyMl1IGyq",NOT REQUIRED,120,0,"Why: The Longevity Impact
+Consistent sleep and wake times support circadian rhythm health, which regulates metabolism, immune function, and cellular repair processes.
+
+Optimal Target
+Go to bed within 30 minutes of the same time nightly. Weekend variations should be minimal for optimal circadian health.
+
+Quick Tips
+Set bedtime alarms, create evening routine, limit weekend sleep-in to 1 hour, use blackout curtains, avoid caffeine late.",Standard deviation of bedtime start time,See First Meal Time ,"Date, Time",,"recN4BXRVVlhfe7Nr, recKR9kGMPDwBz7fa, recgFkuXvMlCyXXdW, recik3KV1u3sYXm7Y, recStPJ16ZW0vDwhw, recKKveiVw9WKU86R, recSjKkMIJPUivSuJ",,TM048,,,"recrAMEvn6TQqpIMf, rece9QUzAfvHZSMxU, recnCaXsF7KhzduFk, recq2gsA68cq1kCeB",Sleep Timing Consistency (minutes),<<<Update,"NUDGE0032, NUDGE0033, NUDGE0034, NUDGE0035, NUDGE0036",IGNORE,"recADDvy2ZQfEz4hM, recTjBhbsZpkby61h, recf0Uycpk78YYiHT",rec6QXhDyyqwyuLdd,rec6QXhDyyqwyuLdd,,,"recwavm7ZvlOvGpB1, rec9fBref1Og1E5sM, reciIVu7kT3QBZNAc, recl81ZfLUvZ36V9t","REC0004.3, REC0039.1, REC0039.2, REC0039.3",RO028,reccQ8CBI7yU37g1V
+rec0nsL37Ihw1mkM0,needs_discussion,recNAvEZSsSEDhzQM,CH0014,,"recFxp7wcZax2Q9Mx, recXP6ocSNCZdjUrl, recu4GJAweXBDjcqX","reciY6yCiPiy2vSiQ, recFaYQec0V1oH2po, recmJnFh2BJjHboWO, recbquDMszxCFuzsu",integer,"recoMKPV9asM5gw4E, rec3VXQeeyMl1IGyq",NOT REQUIRED,120,0,"Why: The Longevity Impact
+Consistent wake times are even more important than bedtimes for maintaining healthy circadian rhythms and optimizing sleep quality.
+
+Optimal Target
+Wake within 30 minutes of the same time daily, including weekends. Natural light exposure upon waking helps set circadian rhythm.
+
+Quick Tips
+Use consistent alarm, get morning sunlight, avoid hitting snooze, place alarm across room, maintain even on weekends.",Standard deviation of wake time,,"Date, Time",,"recN4BXRVVlhfe7Nr, recKR9kGMPDwBz7fa, recgFkuXvMlCyXXdW, recik3KV1u3sYXm7Y, recStPJ16ZW0vDwhw, recKKveiVw9WKU86R, recSjKkMIJPUivSuJ",,TM049,,,"recrAMEvn6TQqpIMf, recqGyakXN5etEtZk, recuLDdQ8KbpeyEPc, reckWMg3144Ab2593",Wake Time Consistency (Minutes),<<<Update,,IGNORE,"recADDvy2ZQfEz4hM, recTjBhbsZpkby61h, recf0Uycpk78YYiHT",rec6QXhDyyqwyuLdd,rec6QXhDyyqwyuLdd,,,"reclMjHZCzoNvqMUc, recpRoKvNwuYgkXK4, recf2xNIGQn9dOo4V","REC0004.3, REC0040.1, REC0040.2, REC0040.3",RO028,reccQ8CBI7yU37g1V
+recATC4ssc5CoJarW,needs_discussion,rec4eXSu9DUB9OTrZ,,,"recnIyHFOYdBWlHO6, recgcGsz86OntSxWJ, recXFDxsXvq21UHiu","recmJnFh2BJjHboWO, reckDaSnyriAU2nkU, recbquDMszxCFuzsu",timestamp,recytNvyzHZGgsZdY,NOT REQUIRED,11:59 PM,12 AM,"Why: The Longevity Impact
+Eating large meals late disrupts sleep, impairs glucose metabolism, and interferes with overnight cellular repair processes that are crucial for longevity.
+
+Optimal Target
+Finish largest meal 3-4 hours before bedtime. Earlier eating aligns better with natural metabolic rhythms.
+
+Quick Tips
+Plan dinner timing backwards from bedtime, make lunch your largest meal, choose lighter evening options, prep meals earlier.",Whether the user consumed a large or heavy meal within 3 hours of going to bed.,See First Meal Time ,"Date, Time",,,,TM052,,,"recjyJ3KMCwCS3IQM, recmvq3CmxWl89zlQ, recXY3q9q7wAfwlZJ",Time of last large meal of the day,<<<Update,,IGNORE,,rec6QXhDyyqwyuLdd,"rec6QXhDyyqwyuLdd, recgGEypX3ghJay5R",,"rec49L4kjjUvIWtMM, recvhTuusblgqjqKs, recjCGkR4dqP8whEQ","receEuAproPbUP1LE, rechBbAh1jfUaVSgI, recS4OXO5TP9hiEUB","REC0042.1, REC0042.2, REC0042.3","RO002, RO003",recJrNIL5Ft3i4FRT
+recsM47DgXMaSFxrK,needs_discussion,rec4eXSu9DUB9OTrZ,"CH0044, CH0045",,"recTnEh3iUAYiEe14, recnK7NQMo43hKQrp, rec7AjpZ29NUmi0uE","recmJnFh2BJjHboWO, reckDaSnyriAU2nkU, recbquDMszxCFuzsu",timestamp,recytNvyzHZGgsZdY,NOT REQUIRED,11:59 PM,12 AM,"Why: The Longevity Impact
+Late eating disrupts circadian rhythms and overnight fasting benefits. Earlier meal timing supports better metabolic health and cellular repair processes.
+
+Optimal Target
+Stop eating 2-3 hours before bedtime. Allow 12-14 hours between last meal and breakfast for optimal metabolic benefits.
+
+Quick Tips
+Set eating curfews, brush teeth after last meal, drink herbal tea instead of snacking, plan satisfying dinners.",Whether the user consumed any caloric food within 2 hours of bedtime.,See First Meal Time ,"Date, Time",,,,TM053,,,"recla4wfM9zK0cR4j, rec99M50zfGNf4bjs, recduf6TsTzeCYv1V",Time of last meal of the day,<<<Update,,IGNORE,,rec6QXhDyyqwyuLdd,"rec6QXhDyyqwyuLdd, recgGEypX3ghJay5R",,"recEoZCP6e9RPQK0w, rec2w9ATy7hUWsge4, rec0LmvB8xB78f5FP","recggP3UrVSj2YaZb, rec4fxCFe1ZmhQuek, rec8A0Dy7FSNEKOWN","REC0043.1, REC0043.2, REC0043.3","RO002, RO003",recJrNIL5Ft3i4FRT
+recn2NJclI5AuwTnP,needs_discussion,rec4eXSu9DUB9OTrZ,,,"recC6URNCqKQ5cXpg, recFtJrfZ0DfMTa1P, recBPkRxBWPP3YWMg","recmJnFh2BJjHboWO, reckDaSnyriAU2nkU, recbquDMszxCFuzsu",timestamp,recytNvyzHZGgsZdY,NOT REQUIRED,11:59 PM,12 AM,"Why: The Longevity Impact
+Alcohol disrupts sleep architecture and REM sleep quality. Late consumption impairs overnight recovery and cellular repair processes.
+
+Optimal Target
+Stop alcohol 3-4 hours before bedtime. Earlier cessation allows better sleep quality and recovery.
+
+Quick Tips
+Set drink cutoff times, switch to mocktails, choose alcohol-free days, drink water between alcoholic beverages.",Whether any alcoholic beverages were consumed within 3–4 hours before bedtime.,See First Meal Time ,"Date, Time",,,,TM054,,,"recT4f3tvSbqWAgBw, reclTbJmA8iYIbUMn, reccJvdb4qs4gLNRe",Time of last alcoholic drink,<<<Update,NUDGE0046,IGNORE,,rec6QXhDyyqwyuLdd,"rec6QXhDyyqwyuLdd, recOT0nP41iwVDLKR",,"recoqKp5S1t5LJBPR, rec7oTAqy4RcOdxL5, rectdtBRGpO8iCiJF","recOa0A8aEuZYmzwo, recgZWg1fUBxKXdHf, rec7PgKQJcLDix6M6","REC0044.1, REC0044.2, REC0044.3","RO002, RO003",recJrNIL5Ft3i4FRT
+rec4pZKchlwcEivTq,needs_discussion,rec4eXSu9DUB9OTrZ,"CH0029, CH0063",,"recS2ksfR1nrENr0V, rec0n2CDSyA2sM1sP, recCMBUOmMnsElot4","recmJnFh2BJjHboWO, reckDaSnyriAU2nkU, recbquDMszxCFuzsu",timestamp,recytNvyzHZGgsZdY,NOT REQUIRED,11:59 PM,12 AM,"Why: The Longevity Impact
+Blue light suppresses melatonin production and overstimulates the brain. Device use before bed significantly impairs sleep quality and duration.
+
+Optimal Target
+Stop all screens 1-2 hours before bedtime. Use blue light filters if necessary device use is unavoidable.
+
+Quick Tips
+Create charging stations outside bedroom, use analog alarm clocks, read physical books, try meditation apps with audio only.","Total screen time (phones, tablets, TVs) within the final 2 hours before sleep.",See First Meal Time ,"Date, Time",,,,TM055,,,"recLblhnXjPvPGMmj, recJkNzpUTB17O5t8, recocYYB6fhtj8Gbh",Time of digital device cessation,<<<Update,NUDGE0156,IGNORE,,rec6QXhDyyqwyuLdd,"rec6QXhDyyqwyuLdd, recIdXMUiA9tWGVL8",,"recNr2xH29wt4vOhr, recjbyr8aLozcFyHZ, recngyI7rmNIHoLbP","recGh6O2C584Rs5hb, recEqy64zFUA9Aoo0, recjiJvgL1A2lUZ69","REC0045.1, REC0045.2, REC0045.3","RO002, RO003",recJrNIL5Ft3i4FRT
+recjgSgnrdLSBJBZe,needs_discussion,recH8WEzKPkXv3ivr,,,recOWhxpklTDtxDoq,"reciY6yCiPiy2vSiQ, recFaYQec0V1oH2po, rec9AuwutTi8zuNt9",float,recoMKPV9asM5gw4E,NOT REQUIRED,120,40,"Why: The Longevity Impact
+Lower resting heart rate indicates better cardiovascular fitness and autonomic nervous system health. It's a strong predictor of longevity and heart health.
+
+Optimal Target
+50-70 bpm for healthy adults. Athletes may have lower rates. Track trends rather than focusing on single measurements.
+
+Quick Tips
+Improve through regular cardio, manage stress, ensure adequate sleep, limit caffeine, practice deep breathing exercises.","Average resting heart rate in beats per minute (bpm), typically captured during sleep or inactivity.",See First Meal Time ,"Date, Measurement",Integer,reccHAHft4JmcBw0C,,TM056,,recLuAlDIETnvUUtO,,Resting Heart Rate,<<<Update,,IGNORE,reczYQvFvAsy495nv,reclbVFCBWmPyvvhP,"reclbVFCBWmPyvvhP, recOT0nP41iwVDLKR, recp0marLNu65GGhd",,,,,RO028,recYXpdHEr2ssGfnV
+recBp4p7hx3cGOZFS,needs_discussion,recH8WEzKPkXv3ivr,,,recu9OQeWmoUDhZho,"reciY6yCiPiy2vSiQ, recFaYQec0V1oH2po, rec9AuwutTi8zuNt9",float,recoMKPV9asM5gw4E,NOT REQUIRED,120,20,"Why: The Longevity Impact
+Higher HRV indicates better stress resilience and autonomic nervous system balance. It's a key marker of recovery capacity and overall health.
+
+Optimal Target
+Higher values are generally better, but individual baselines vary. Focus on maintaining or improving your personal trend over time.
+
+Quick Tips
+Prioritize sleep quality, manage stress, practice breathwork, avoid overtraining, limit alcohol, maintain consistent sleep schedule.","Heart Rate Variability, measured in milliseconds (ms), reflecting autonomic nervous system balance and stress resilience.",See First Meal Time ,"Date, Measurement",Integer,recdbbYXXatK4c15r,,TM057,,recqea20SA5Y5BaIw,,HRV,<<<Update,,IGNORE,"recKgYYOeHXyJulyg, recoyQfXzneLwoUDT",reclbVFCBWmPyvvhP,"reclbVFCBWmPyvvhP, recOT0nP41iwVDLKR, recp0marLNu65GGhd",,,,,RO028,recQN6xgoi4432cV4
+recseppfup15Ij0xE,needs_discussion,recH8WEzKPkXv3ivr,,,rec3aOmRdrG0X60fw,"reciY6yCiPiy2vSiQ, recmJnFh2BJjHboWO, reckDaSnyriAU2nkU",float,recoMKPV9asM5gw4E,NOT REQUIRED,200,0,"Why: The Longevity Impact
+Maintaining healthy weight reduces stress on joints, cardiovascular system, and metabolic processes. Stable weight in healthy range supports longevity.
+
+Optimal Target
+Maintain stable weight within healthy BMI range (18.5-24.9). Focus on trends rather than daily fluctuations.
+
+Quick Tips
+Weigh consistently, focus on sustainable habits, prioritize muscle maintenance, seek professional guidance for significant changes.","Body weight measured in pounds or kilograms, ideally under consistent conditions.",,"Date, Measurement",1 decimal,recPx0uqAFi7U3ULR,,TM073,,recWsK4nX930OGci1,,Weight,<<<Update,,IGNORE,,recOT0nP41iwVDLKR,"recOT0nP41iwVDLKR, recgGEypX3ghJay5R, recp0marLNu65GGhd",,,,,RO028,recTze2xtGoOl8vZS
+recpCHgbnbY5cEy1Q,needs_discussion,recH8WEzKPkXv3ivr,,,recTju6zHWbs48eFF,reczguylI1x3HSQ2N,float,recmW2C4mBkPiYZCZ,NOT REQUIRED,30,10,"Why: The Longevity Impact
+BMI provides a general health indicator, though it doesn't account for muscle mass. Maintaining healthy BMI is associated with longer lifespan.
+
+Optimal Target
+18.5-24.9 for most adults. Consider body composition alongside BMI for more complete health picture.
+
+Quick Tips
+Focus on healthy habits rather than just numbers, build muscle mass, maintain consistent eating patterns.","Body Mass Index, calculated from height and weight to estimate general weight classification.",,"Date, Measurement",1 decimal,recbpPI1IIN4723h2,,TM074,,reccxH7AESy9vvBPo,,BMI,<<<Update,,IGNORE,,recOT0nP41iwVDLKR,"recOT0nP41iwVDLKR, recgGEypX3ghJay5R, recp0marLNu65GGhd",,,,,RO028,recd4eCCKpxMnTVbF
+recJeEd61woRAahla,needs_discussion,recH8WEzKPkXv3ivr,,,recN18P2VFbVj8GNs,"reciY6yCiPiy2vSiQ, rec9AuwutTi8zuNt9, recmJnFh2BJjHboWO",float,recoMKPV9asM5gw4E,NOT REQUIRED,50,0,"Why: The Longevity Impact
+Body composition matters more than total weight for health outcomes. Excess body fat, especially visceral fat, increases disease risk and accelerates aging.
+
+Optimal Target
+Men: 10-20%, Women: 16-24%. Lower ranges within healthy limits are generally better for longevity.
+
+Quick Tips
+Combine cardio and strength training, prioritize protein intake, manage stress, get adequate sleep.","Total body fat percentage, measured via InBody scan or similar body composition tool.",,"Date, Measurement","1 decimal, 1 decimal",recUbVGr2gnhxor2w,True,TM075,,"recVHWlB26jWt9Ij9, recyKRTIlX4Jux2W0",,Body Fat %,<<<Update,,IGNORE,,recOT0nP41iwVDLKR,"recOT0nP41iwVDLKR, recgGEypX3ghJay5R, recp0marLNu65GGhd",,,,,RO028,recbr6G7O5LsA88v5
+recMVZ6YoOQTJvFBa,needs_discussion,recH8WEzKPkXv3ivr,,,recyifjAZZrXijUrN,"reciY6yCiPiy2vSiQ, rec9AuwutTi8zuNt9, recmJnFh2BJjHboWO",float,recoMKPV9asM5gw4E,NOT REQUIRED,100,0,"Why: The Longevity Impact
+Muscle mass naturally declines with age but is crucial for metabolism, bone health, and independence. Maintaining muscle supports healthy aging.
+
+Optimal Target
+Maintain or increase lean mass through strength training and adequate protein intake throughout life.
+
+Quick Tips
+Strength train 2-3x weekly, consume adequate protein, stay active, prioritize recovery and sleep.","Amount of fat-free mass (primarily muscle, water, and bone) in the body, typically measured in kg.",,"Date, Measurement","1 decimal, 1 decimal",,True,TM076,,"recVHWlB26jWt9Ij9, recyKRTIlX4Jux2W0",,Lean Body Mass,<<<Update,,IGNORE,,recOT0nP41iwVDLKR,"recOT0nP41iwVDLKR, recgGEypX3ghJay5R, recp0marLNu65GGhd",,,,,RO028,recTze2xtGoOl8vZS
+recEPturjvPaeVBMk,needs_discussion,recH8WEzKPkXv3ivr,,,recEOwIop20ubZ94S,"reciY6yCiPiy2vSiQ, rec9AuwutTi8zuNt9, recmJnFh2BJjHboWO",float,recoMKPV9asM5gw4E,NOT REQUIRED,20,0,"Why: The Longevity Impact
+Visceral fat around organs is particularly harmful, increasing inflammation and disease risk. It's a key target for longevity interventions.
+
+Optimal Target
+<10% for men, <7% for women. Lower visceral fat percentages are strongly linked to better health outcomes.
+
+Quick Tips
+Focus on whole foods, regular exercise, stress management, adequate sleep, limit processed foods and added sugars.","Estimated percentage of abdominal (visceral) fat surrounding internal organs, often linked to metabolic risk.",,"Date, Measurement",Integer,,True,TM077,,recoiAahhmbWcaNoa,,Visceral Fat %,<<<Update,,IGNORE,,recOT0nP41iwVDLKR,"recOT0nP41iwVDLKR, recgGEypX3ghJay5R, recp0marLNu65GGhd",,,,,RO028,recbr6G7O5LsA88v5
+recBPu9PYFPU8hate,needs_discussion,recfznMmtKjCbKkkt,CH0033,,"rechmoEUhdivcH9Ao, recYjtb7COfXapKw7, recL70aQTtNQELg4t, recIkYm3iAuxEcQTb, recDhITmdRCehzdAD, recopVvMxRWn9vrtD, recqPQrwKnEWGWaTs, recviMdMUq6kL3tvD, rec15ZWVvlPwFpPWU, rec2r1px0F2cJkecg, rec4bIzuzGvFfak5p, recE7mkwo3NjD7ygz, recsDKGUoA0VLuPzE, recXGqruMWbznz7CB, rec3fFSNto9UvKueD, rec9NoAGjJKHFv6Lq, rec0zt17Q9V6MIu5P, rec1B8Vu1AsPKYPKa, recyb3ifz91oB9jGa, recTFURSeSGweibJh, rec1u9VfLShyZdvlh, recBtgm6FiJK1jrOj, recTTc1z8XW9uTFHE, recdh8C7y67nbtSO8, recqSXO5QzmYk9MNh, recJrQoAxw02iNTFD, recRFYUfkOFiwy9XQ, rec0ddOba40EomBgu, rec0iVHsfCRHGe29k, recIbn5XYseHZaFMn, recH5WHzcxPNBg1J7, recIGjZ7I2w1JjA1O, recZyYDutYvQcSeHF, recaiRO4sCD5mk3gh, recaZEp6mSHEBPY8c, recBKz0KLNfLPkMEL, recoxwttjJsFwlpUu, recTQtetas1Bsv8KM, rec3JZWXjzqNHHzPL, recaRDnkE9HTDMtC2, recYt0LDinL0cMcJb, recLeaB4pbesbnDCj, recBEMaVrbNiL76Ts, recwDRZQcOnxBurX0, recBnghW01syKQFI3, recdsQZRD0zBksVEn, recPtDDWx6Pl8Z5Bk, recC7K2nz4N9hauhl, recb6WosstNdPTdr1, rec0cqvWKYMCZioAU, recwKmgYTGeRISD2N, recD5tjhbdTR1jFLZ, recQnETSTwA9L11on, recK96y7dou04HjGf, recTl49SpERVzetiC, recEPqsXspUOCmzOa, recLBhZXIuwYJSo5H, recqiec0tCKeZ0Dbp, rec2fLxxaHyp4bZ8F, recfjpZIOOuHknwME, recv8MH4h9sTe6O02, recKiUvTvk3B8iYiQ, rec97ZmP02OCjbRfY, recVCvZ0CQwoCPFXh, recIleMQVUfCwf63G, recgj8iLCwvr8x15N, recHEHG3iMo0HVB4F, recoIReiFVGtpfcpA, reczr29DNNci3dIRN, recBP67gLPOcrgcLn, reckjl0hbmWnWQg4R, recvsLqJQdPaXRZkF, recBKO9NZJylJKYYy, recr3H7MMRF8lyBBV, recvBXTvFi83BRfIa, recGt3z4bWig0jBN0, rectqhuq6FjGelDMY, recdgqNJaGUsIT40B, recmDbP6rhC0Rn3QV, recUadhGCyyH2N70W, rechMTtodn9XHTQ4Z, recwcTbu8WfqvT8gl, reckB2kTkJlnBei88, recCRjOP154FGWDvg, recCMB7ckIjGbTmcq, recrepGRRmvlvRrqP, recFaSMeRCXf8ikSD, recBnO3qNuRCDkndv, rectM8LC2kAYZYCsf, recZgBMeQueKfXmcm, rec8BNBATlc3HZ7z5, recdFBxqFFYm3JZ1M, recj9PCbKaqdHo3xh, recLJVr3tMBkZIvwj, recdED7XSZGuxjLf7, rec8yPJar9QR9li7O, rec7CArqyAqQe0XJK, recg1uzaNeMqttWDH, recAB0HSBQEqqsg1f, recysQPbc409Qmiri, recIafNTSmQC3WbJS, recCUl8gTPviz1b6x, recDOhaI7m2pW67a1, recMKT6UWnqNdSMdu, recNbqLySQU8VcHNo, recnoWHzbeGmwed8B, recsih5SHmGQAp6gj, rec1vyXhDr6ugQKVN, rectLt03mNYCCJ4H7, recr3UkXHEGbKvWNy, rec0lyjyTgVMD89h1, rec1YST0AoIC0dgZA, recv35UnyO0xhxKiy, recpPUmzWWjNQGmSV, reclLXNaVgFOo2dfi, recaEWEhFP6mVW9ok, rec1OkvZ8j83j8eq3, recsNCXYJOdmi4QSf, recFumzbmaGQXcdcF, recqsLjdTnNMkiACP, recS1EJQANNicqraa, recEFG1ARBev9OHUt, recPwocHFVswBttvK, recxr3K7YZbfM2w3P, rec8GzcEw5G7rzKA3, recEhXY9MYMp4oVqb, recGmgYQG5t48hjhz, recpaEeKMGoCU6Tzq, recSqZMSKm9nq3Tc1, recYKHkFhTajR0Mmf, recZZngCIZxB5LpAG, recbqO1Pf5HvcHDDQ, recP8eKmM6MtUpgi7, rec9ICT4HAvQDtQq8, recnL4s4GdA6gKegM, rec1lKvymsChJ0YCg, rec8aPd4MQLFDiZqE, recsOiVFRrKeltW8L, recMAW7W1LgQYdbWL, recaW9v7yqSvc97vf, recxoa9qFIaN3hqJI, recUuU7kIALSFFL7C, recCmagfWFvCujwB4, recmGznwYmbh8LHck, recylhXsBHP1xIOOg, recfgE6oZ2IkFy3Bp, rec8idVOSoXzEqvlY, recRupQw0ckOwvqCa, recWSZorj1bRidgEe, recK6USo8474dSY3g, recaw0w3Ct4PVqSAr, reccQA8HCfyUO2zSJ, recMNH5j7TCQvCh4t, recHSa4ASrWnbl2nz, rec7RpBsjDquGcZnc, reck7APl5ZrOgWzWe, rec2gyHDYCyCIXeR4, rec4Oqol1GduDjkFj, reciCQRwYDG1fEEXz, recJ35CUm6snsVWia, recvzM7MeDO2I0zLj, recYMvfTMQ9DZNQ72, recynS6EOdykFr7RE, recYSZWswoe1jGFzI, recVFdoHSRdfuDXDo, recEiW7xEBkdd1wYS, recqFvTtIJq5PQfYF, recmxAp8TNdOpoXNX, recXWe8u6EzeIWgdk, recbSaxX7oeqcUsF5, recF76NxPMbKiJuCd, recrwK4TBcCwJmZ4f, recgIsX9hLdBHJHGe, rec5GeyNKnEY86ZIv, recARsdS4rLSCfm1T, recqb6EkmcyurIK7y, recokU3whbEgDKU42, rece54yjxZKkT6wZw, recrU5aYCbxKOG5RZ, recrjlbPueYnHcYYH, rec9m6Nsx6FQ1dSrS, recZPori1qdgOxY7x, recNUBHZ30WpP8Ry3, recHpYknaPJzpqfo6, rechHdL6fl24nzy6G, recj7I06cAxG9rFTK, reclU5HeQjiJhzBYp, recrwxiSNqgCSNTPU, recqudnHS5yFTBLKK, recdoifGDFldnV2mB, recWXk2jtRVgNGTmp, recn9QhovTOdvwmDP, recujC9nZ4VuukXIG, recCWql6EUcRsvTJ6, rec6xjfZCrjfar7Rp, recy4zkCwKYkHQrV2, recw9nG8U7RcBEtZk, recJoWIspERQ1DCvj, reccaeTNjWyXAfUDh, recTsBdfU9LwsMU8r, recYrt6nSNworMNwB",recmJnFh2BJjHboWO,integer,recytNvyzHZGgsZdY,NOT REQUIRED,Yes,No,"Why: The Longevity Impact
+Consistent adherence to prescribed medications and evidence-based supplements supports health outcomes and treatment effectiveness.
+
+Optimal Target
+Take as prescribed/recommended. Track adherence and discuss effectiveness with healthcare providers regularly.
+
+Quick Tips
+Use pill organizers, set reminders, track adherence, communicate with providers about side effects or concerns.","Daily compliance tracking for all supplements, peptides, and medications including dosage and timing.",See the note and display example for Healthy Fat Swap,"Date, Yes/No",,,,TM096,,,"rec1CITs0erlgrejI, rec3Lv7L4n0P5NRXG, recOifq6N7ttSB96g, recQcGEPeYqq9gkuZ, receIFIO0xrD92Ym4, recINluftAPavksWY, rec9qkWiu9H6o4rZk, recjNakoelsgINz0v, rec1uVBjIQODjal27, recqZ5QkKpTUNLuyR, recISyk9tLHy8M5nn, recMuFqL0V3Vyboh5, recF3yrCOuu1R5WWn, reca1EA58OLPRmVpr, recf2LUJMPK0syGHZ, recvkAS7HacVMiozb, rec1PrjGHQIdyGhrF, reckmGaZaq5z09MXR, recqRCEI6AzpyzFBa, recHKgsM8akY38ItI, rec8lhVZaga97JNPG, rec7fGXGOJzrAEf2H, recLr4qbLpkZNIcs1, recfr0V7Fnw7SZ4OA, recZwCmS9nIiIiDk9, recEfZBvWw9nHwH1C, recvuhgMsucQvK38B, recbyxDEVmqEJOGEm, recRqbE5GobS5ypJO, reckIdFin6Pkpdu89, rec21JVl1hc1NAcjF, recLQrNqZ1MFCFp9Y, recEiVaIfGGw9dPmm, recyXksrMGanEno4s, rechpQhjZNZyMJaKd, rec8N8q9NY4ZMpidr, rec4Hh9DCxAPvzMAm, rec8v17apgWvVZyv8, recktZRRegRdPu7BF, rec6j4GXfJN4lVk0a, recECNp5P1uw2tKfG, recfHVj4XC2Io9yHD, recxPYhu0wVUq8I00, recZgKqtULFI7aTbk, recCCrdmuHDQ8XwFE, rec6fwWgbrnZsWhSL, rec8JdQ8m26j0J5Ii, rec5tjtQCBJ4GIUt0, recTNCSWMJ2wYbOzB, recNA23OClnzCTLwq, reclPQp9DlG5KIMZ6, reczXLM55EAIzXMgJ, recKSMprKLEieLyvE, rec7EqxLQUj6YTgjT, recCcLx86DjEMRVI3, recQoV723sjWnXzFf, reckB84w1I7PYO70q, recRLv58bRCFXEEmM, recoQ4M1UFDYTpRtz, recvISUhZ3bLfwmRd, recIiLdL0yZoPruxo, reckZA8SDPRO4FPlr, recSwJMQFvt4VDgFE, recgJ0JW0cUB1lpIQ, recqZjESmxsIBT0cR, rec8OYVrnZXECHyH2, recYk1Rr12pasPzbC, recn7b44FTM2gLwQt, recPPB3jgQAl4RoaP, recZlrm9ku16r0EyK, recZ4xnDgCQUqC1J8, recp6DGLCaTxNl8Lh, recVgr0Jt9BCXPwrq, recJHurBuD1aU8lxT, rec4AlY1GOyZKwW8C, recOwl3cingd8zWEb, rec3RuqCKXEI4Gcsq, recSvNHfXtYZuMro9, rec8yc1YcsqsvOize, recSIgeTvZw06BnOK, rec46KtdOk0HjfDw1, rec8ggeIQTlmww2Nf, recjGAYEOulTe2EU3, recYiXLEk8DZ29sNC, recjeGf9u2bH8nPlj, recoWfRNy3Me1wKfB, reckirOiXpq90sUfn, recNxHiqAE2g4TiZz, recgFonuHJaHd9g1T, reczWOtikcP4ofJZP, recr473Z5myZocoxq, rec3wz66GQ4svwDLF, recoJgeNEdm7ID1Qx, recRptGdrmCpyLJHD, rechgUNb6nRo6MSuD, recBkXt1okqTdWtYW, rec45yTVyDirbipb1, recowvjMgKFTslp3H, recOieepC1dJP16UP, recKw2sxgw6EU6M04, recSnJ4U7H8ZPQlZT, recNyDfLvFBteUfQI, recQIXxWsZj1kOtnz, recHsFNhHJlBpFjgW, recW4YaEApUQpAkIZ, rec53OACb88HAJTmv, recvDTvx97dKfDDAQ, recHr5B1nGxnu8KnT, rec2OqXnmVKO7oJ7Q, recKrHw6m4VJcdyLw, recie6RmdcSYmh1RS, recdBhhxgIktsQYQV, recevGiDQnrPIXJky, recsF3kTVuyn1Kr1s, recA1lleRRrxvMSic, recVGfIIuJMJH5ZEN",Supplement/Peptide/Medication/Advanced Protocol Adherence,<<<Update,NUDGE0161,INCLUDE,,recOT0nP41iwVDLKR,"rec6QXhDyyqwyuLdd, recgGEypX3ghJay5R, recp0marLNu65GGhd, reclbVFCBWmPyvvhP, recIdXMUiA9tWGVL8, recWHZ0F3RQskqHtH, recOT0nP41iwVDLKR",,,"recWItq7F0KUidxeA, recYRgEqJ9jo7zaSy, recJo0XLsTM2Uns18, recLirbuTKJZb2DpR, rec9OqftFjKcbOhhW, recDT61U8m8Jx6LRQ, rec4w5tX9V0FqQKUc, receTVR3T7LPKzSVn, recWAG8YnC7clWEXZ, recl5QnZpbctPxNtJ, recDYjRO8x07ayoif, recHAqXqFHmuAXHcX, recA9jYhtgNATRfRf, rec57p7KNA4oT8ekj, reca8wrorB3zukZCR, recqqlpMmWvuO4Hu3, recWVcQlmC1MAsAmx, recfsrHEPco82V5SJ, reclXnbnLmSYAlYw2, recCQ1ZrNWDx5U1oA, rec3r2sEP2tI9v6Ky, rec2lrultvS0CqyXz, recGxPXQqbDyPuvnT, recaxLsMk9PGULnJs, recUCnTxO91RK4Wf1, reczlK8aBisWJi0Wu, recqA2Nr7gvpxwm3t, rec6EiajA8JdLAZze, recMwWbKlaur7kIEG, recfOYcX2S8TrZN31, recX7us0G3vAPmvex, recGWck5EN5eErI4Q, reczoGHnUsZ5bZ8he, rect35Z6rstWG9HZk, reccvBOYEzi7OvtF5, rec3TTXOsKnyObB8j, recZN2GihjToxl5ve, rec3BMEP42f4XLRq0, recfzKowT2aMRgqwx, rec1pPdCUv6DnHDV2, reczIyWKuNN54f3ay, recaNGQJColhqVRCv, recsVJO9FietsU1VS, recUmvX8zxYh9Wc6c, recxIcK19tWpaJPAw, rec1lhtVQdGyuIAND, rec3PYnN1OpS2voDa, rec0z40vhn2DIudoS, recOTnpBrvl50X7ut, recIGNAth7G8EF4ri, recgVBWOi7ZEMu5UY, recu3wjKKqThBJ5bB, recFYxW6pxXRgxRqw, rec2Kb4qvGCF0FzeL, recxiw4NLpCdODeDV, recLuGEHIeCvpJSA7, recfHTBbGuqo0AqVi, recMRgCNQDVeZqXhE, recjWPjGzrWxVbaor, recqODrWEPukhiFM5, recDowKqFkiXRdNsg, recf5lFxiBan6r8gj, recNCujvkhMDXpzAw, recbPLgBFYda37IDI, recl54bx1jLhDFj7J, rec3UJs62LgdEtRCU, recTqMo6GOIJuBS6u, recidWBJkF5BixPLl, recKVmAYVCTU6DH5H, recUrcTOZgkFtMXtC, recUaiUiVo9tsokE0, reckcodqhWc6P7rG9, recQmcxo8VUbZBPmi, recENfYg9pkJWUEsL, recZG6vGlARyMif3u, recJC6ARX9zMalfz3, recYXfXhpJXh6svni, recNByeUCfhywyKj1, rec3EXyDReJ1xABu6, recNO1LyaLPz8nGJC, receMlvjtgEsgOXPV, recToIijZUWy4VLIu, recekrMO9Ouga98gb, recj20osdP5N3i3at, recfoclXCbJI2edaf, recZcv0St6jgl1WrT, rectoJUQjU7M2s9xb, recuxZX8nLDr8Ur2p, recWpLwkjiV7gYDHZ, recSRILJqQXOsr1Ya, recQ7YX2MmnYSEr5P, rec8NS2MuDKPiabOG, recIDsP5fqlP6FBUr, recbL9U9mvtgfVzWL, recu2z0XZY8Dq12UH, rec3m1LnvFEVyilI7, recmaSAEK8RyqYHsi, recYCkDLlCn1xiWGx, recyJkoItAnhuOy0X, rec0NukSU919GIIwc, rec3nsC4fleHfYBcs, recjP1LsjZFGKpkLp, recMvedS68VYAx2Cv, reccmFkQL9aX8ybpv, recwqI0G36JsfIMTO, recZbjqAdpB0d4I6T, recjCgQrVwYsu7IYz, recJoZL4hNwiRNpPH, recFCNZcVipdWS5VW, recNtuBzMtryRCEUL, recIEoMqarU2gGyLA, recLOI4B7LCAmAMir, recCyqkWmvEarrCbO, recRaJHjfbdprmDDR, rec09z7hQUrgCvchn, recqJE2cOTwjhpWvI, recCxQ8G2sQWwU3iL, recXUbu21H3n9a22I, recFxs3L1QeieZRGo, recdkRo1SYbxo3kMK, recMYpSRt8jiCjrKU, rec1lhWM3iBCuvPKM, recxos1YXyfeCAyyw, recNYrGt8WE2bTmc0, rec8H2OcVuD2uChLN, rec9BrPiv9KoKJ2fq","REC0073.1, REC0074.1, REC0075.1, REC0076.1, REC0077.1, REC0078.1, REC0079.1, REC0080.1, REC0081.1, REC0082.1, REC0083.1, REC0084.1, REC0085.1, REC0086.1, REC0087.1, REC0088.1, REC0089.1, REC0090.1, REC0091.1, REC0092.1, REC0093.1, REC0094.1, REC0095.1, REC0096.1, REC0097.1, REC0098.1, REC0099.1, REC0100.1, REC0101.1, REC0102.1, REC0103.1, REC0104.1, REC0105.1, REC0106.1, REC0107.1, REC0108.1, REC0109.1, REC0110.1, REC0111.1, REC0112.1, REC0113.1, REC0114.1, REC0115.1, REC0116.1, REC0117.1, REC0118.1, REC0119.1, REC0120.1, REC0121.1, REC0122.1, REC0123.1, REC0124.1, REC0125.1, REC0126.1, REC0127.1, REC0128.1, REC0129.1, REC0130.1, REC0131.1, REC0132.1, REC0133.1, REC0134.1, REC0135.1, REC0136.1, REC0137.1, REC0138.1, REC0139.1, REC0140.1, REC0141.1, REC0142.1, REC0143.1, REC0144.1, REC0145.1, REC0146.1, REC0147.1, REC0148.1, REC0149.1, REC0150.1, REC0151.1, REC0152.1, REC0153.1, REC0154.1, REC0155.1, REC0156.1, REC0157.1, REC0158.1, REC0159.1, REC0160.1, REC0161.1, REC0162.1, REC0172.1, REC0172.2, REC0172.3, REC0173.1, REC0173.2, REC0173.3, REC0174.1, REC0174.2, REC0174.3, REC0175.1, REC0175.2, REC0175.3, REC0176.1, REC0176.2, REC0176.3, REC0177.1, REC0177.2, REC0177.3, REC0178.1, REC0178.2, REC0178.3, REC0180.2, REC0180.3, REC0181.1, REC0181.2, REC0181.3",,recs216xGcYqeWqrd

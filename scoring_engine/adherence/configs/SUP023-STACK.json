@@ -1,0 +1,104 @@
+{
+  "config_id": "SUP023-STACK",
+  "config_name": "Lutein + Zeaxanthin Stack",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 2 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Lutein",
+          "type": "SUP",
+          "dose_min": 10.0,
+          "dose_max": 20.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "10-20 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Supplement",
+          "operator": "<>"
+        },
+        {
+          "name": "Zeaxanthin",
+          "type": "SUP",
+          "dose_min": 2.0,
+          "dose_max": 4.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "2-4 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 2,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 2 therapeutic intervention(s): Lutein, Zeaxanthin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 10-20mg of Lutein and 2-4mg of Zeaxanthin with meals daily for complete macular protection, blue light defense, visual performance optimization, and age-related eye disease prevention",
+    "recommendation_id": "SUP023-STACK",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 2 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Lutein",
+        "type": "SUP",
+        "dose_min": 10.0,
+        "dose_max": 20.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "10-20 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Supplement",
+        "operator": "<>"
+      },
+      {
+        "name": "Zeaxanthin",
+        "type": "SUP",
+        "dose_min": 2.0,
+        "dose_max": 4.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "2-4 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.370600",
+    "title": "Lutein + Zeaxanthin Stack",
+    "overview": "Synergistic carotenoid antioxidants that concentrate in the macula for comprehensive eye protection. Together they filter harmful blue light, protect against oxidative damage, and support visual performance and long-term eye health.",
+    "stack_summary": "Synergistic carotenoid antioxidants that concentrate in the macula for comprehensive eye protection. Together they filter harmful blue light, protect against oxidative damage, and support visual performance and long-term eye health.",
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "STACK",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI314,LI315,LI316,LI317"
+  }
+}

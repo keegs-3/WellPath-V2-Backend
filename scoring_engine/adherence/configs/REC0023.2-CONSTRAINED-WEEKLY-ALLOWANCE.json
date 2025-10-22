@@ -1,0 +1,62 @@
+{
+  "config_id": "SC-CONST-ALLOW-TAKEOUT_MEALS_1_MEAL_weekly",
+  "config_name": "Constrained Weekly Allowance - takeout meals 1 meal weekly limit",
+  "scoring_method": "constrained_weekly_allowance",
+  "configuration_json": {
+    "method": "constrained_weekly_allowance",
+    "formula": "progressive tracking of weekly allowance usage",
+    "evaluation_pattern": "weekly_allowance",
+    "schema": {
+      "measurement_type": "weekly_allowance_tracking",
+      "evaluation_period": "weekly",
+      "success_criteria": "allowance_management",
+      "calculation_method": "progressive_allowance_tracking",
+      "tracked_metrics": [
+        "takeout_delivery_meal"
+      ],
+      "calculated_metrics": [
+        "daily_takeout_delivery_meal"
+      ],
+      "weekly_allowance": 1.0,
+      "allowance_unit": "meal",
+      "total_days": 7.0,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": [
+          "count"
+        ],
+        "user_friendly_limit": "1 meal per week allowance",
+        "technical_limit": "≤1 meal/week"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "allowance_requirement_text": "Stay within 1 meal per week allowance",
+      "description": "Constrained weekly allowance: Progressive tracking of takeout meals with 1 meal weekly limit",
+      "required_days": 7.0,
+      "max_days_per_week": 1.0,
+      "unit": "meal",
+      "rollover_enabled": false,
+      "max_rollover_percentage": 0.0,
+      "penalty_for_overage": 100.0,
+      "daily_limit": 10.0
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit takeout or delivery meals to 1 meal per week or less",
+    "recommendation_id": "REC0023.2",
+    "analysis": {
+      "algorithm_type": "constrained_weekly_allowance",
+      "confidence": 0.9,
+      "reasoning": "Constrained weekly allowance: Progressive tracking with 1 meal weekly limit"
+    },
+    "metric_id": "daily_takeout_meal",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

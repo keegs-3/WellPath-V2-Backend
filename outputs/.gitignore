@@ -1,0 +1,6 @@
+# Ignore all output files
+*
+
+# But keep directory structure
+!.gitignore
+!*/

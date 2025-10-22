@@ -1,0 +1,44 @@
+{
+  "config_id": "SC-PROP-DAILY-GRATITUDE_PRACTICE_DAILY",
+  "config_name": "Proportional Achievement - gratitude_practice_session",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "gratitude_practice_session"
+      ],
+      "target": 1.0,
+      "unit": "session",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Practice gratitude daily",
+      "calculated_metrics": [
+        "daily_gratitude_sessions"
+      ],
+      "progress_direction": "buildup",
+      "required_days": 7,
+      "total_days": 7,
+      "daily_limit": 999
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Practice gratitude daily",
+    "recommendation_id": "REC0048.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.8,
+      "reasoning": "Proportional scoring best fit: daily 1-session target"
+    },
+    "metric_id": "gratitude_practice_session",
+    "generated_at": "2025-09-15T00:00:00.000000"
+  }
+}

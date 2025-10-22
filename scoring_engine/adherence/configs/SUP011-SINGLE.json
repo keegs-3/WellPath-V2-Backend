@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP011-SINGLE",
+  "config_name": "Probiotic: Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Probiotic",
+          "type": "SUP",
+          "dose_min": 10.0,
+          "dose_max": 50.0,
+          "unit": "billion_CFU",
+          "unit_symbol": "billion CFU",
+          "rollup": "10-50 billion CFU",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Empty stomach",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Probiotic"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 10-50 billion CFU of a multi-strain Probiotic on empty stomach daily for gut microbiome health, immune function, and systemic inflammation reduction",
+    "recommendation_id": "SUP011-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Probiotic",
+        "type": "SUP",
+        "dose_min": 10.0,
+        "dose_max": 50.0,
+        "unit": "billion_CFU",
+        "unit_symbol": "billion CFU",
+        "rollup": "10-50 billion CFU",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Empty stomach",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.347184",
+    "title": "Probiotic: Supplement",
+    "overview": "Beneficial bacteria for gut microbiome health",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI256,LI266,LI267,LI268,LI269"
+  }
+}

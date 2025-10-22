@@ -1,0 +1,76 @@
+{
+  "config_id": "MED006(ii)-SINGLE",
+  "config_name": "Vascepa: Omega-3 Prescription",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Vascepa",
+          "type": "MED",
+          "dose_min": 2.0,
+          "dose_max": 4.0,
+          "unit": "gram",
+          "unit_symbol": "g",
+          "rollup": "2-4 g",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Omega-3 Prescription",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Vascepa"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 2-4g of Vascepa with meals daily for cardiovascular protection and anti-inflammatory benefits",
+    "recommendation_id": "MED006(ii)-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Vascepa",
+        "type": "MED",
+        "dose_min": 2.0,
+        "dose_max": 4.0,
+        "unit": "gram",
+        "unit_symbol": "g",
+        "rollup": "2-4 g",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Omega-3 Prescription",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.442706",
+    "title": "Vascepa: Omega-3 Prescription",
+    "overview": "Purified EPA for cardiovascular optimization",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": "(ii)",
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

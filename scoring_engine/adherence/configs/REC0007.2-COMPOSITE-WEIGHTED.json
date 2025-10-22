@@ -1,0 +1,104 @@
+{
+  "config_id": "SC-COMP-DAILY-DIETARY_",
+  "config_name": "Composite Weighted - dietary_vegetables",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted average of multiple components",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "weighted_average",
+      "tracked_metrics": [
+        "vegetable_serving",
+        "vegetable_source_type"
+      ],
+      "calculated_metrics": [
+        "daily_vegetable_serving_breakfast",
+        "daily_vegetable_serving_lunch",
+        "daily_vegetable_serving_dinner",
+        "daily_vegetable_source_count"
+      ],
+      "components": [
+        {
+          "name": "Servings",
+          "weight": 0.233,
+          "target": 1.0,
+          "unit": "serving",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "binary",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_vegetable_serving_breakfast"
+        },
+        {
+          "name": "Servings",
+          "weight": 0.233,
+          "target": 1.0,
+          "unit": "serving",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "binary",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_vegetable_serving_lunch"
+        },
+        {
+          "name": "Servings",
+          "weight": 0.233,
+          "target": 1.0,
+          "unit": "serving",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "binary",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_vegetable_serving_dinner"
+        },
+        {
+          "name": "Sources",
+          "weight": 0.3,
+          "target": 2.0,
+          "unit": "sources",
+          "comparison_operator": ">=",
+          "progress_direction": "buildup",
+          "scoring_method": "proportional",
+          "frequency_requirement": "daily",
+          "required_days": 7,
+          "total_days": 7,
+          "daily_limit": 99,
+          "field_name": "daily_vegetable_source_count"
+        }
+      ],
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "buildup",
+      "frequency_requirement": "daily",
+      "description": "Composite scoring for: Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at leas...",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "serving",
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at least 2 different vegetable sources per day",
+    "recommendation_id": "REC0007.2",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected (composite score: 8)"
+    },
+    "metric_id": "daily_vegetable_servings",
+    "generated_at": "2025-09-10T18:32:53.943283"
+  }
+}

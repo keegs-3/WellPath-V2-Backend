@@ -1,0 +1,44 @@
+{
+  "config_id": "SC-MIN-FREQ-EATING_WINDOW_8HR_DAILY",
+  "config_name": "Minimum Frequency - 8-hour eating window daily",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "min((successful_days / required_days) * 100, 100)",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "frequency_achievement",
+      "evaluation_period": "daily",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_threshold_achievement",
+      "tracked_metrics": [
+        "meal_logged"
+      ],
+      "calculated_metrics": [
+        "eating_window_duration"
+      ],
+      "daily_threshold": 8.0,
+      "daily_comparison": "<=",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "hours",
+      "progress_direction": "measurement",
+      "total_days": 7,
+      "frequency_requirement": "daily",
+      "description": "Minimum frequency: Keep eating within 8-hour window on all 7 days of the week",
+      "required_days": 7,
+      "daily_limit": 99
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Every day of the week, keep all eating within an 8-hour window (e.g., first meal at 10am, last meal by 6pm)",
+    "recommendation_id": "REC0017.3",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Minimum frequency with 7-day requirement: Every day must meet 8-hour eating window criteria"
+    },
+    "metric_id": "eating_window_duration",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

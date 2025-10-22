@@ -1,0 +1,76 @@
+{
+  "config_id": "SUP003-SINGLE",
+  "config_name": "Magnesium: Supplement",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Magnesium",
+          "type": "SUP",
+          "dose_min": 400.0,
+          "dose_max": 800.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "400-800 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Before bed",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Magnesium"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 400-800mg of Magnesium before bed daily for muscle function, sleep quality, stress reduction, bone health, and cardiovascular protection",
+    "recommendation_id": "SUP003-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Magnesium",
+        "type": "SUP",
+        "dose_min": 400.0,
+        "dose_max": 800.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "400-800 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Before bed",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.331708",
+    "title": "Magnesium: Supplement",
+    "overview": "Essential mineral for muscle, nerve, and bone health",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI237,LI238,LI239,LI240"
+  }
+}

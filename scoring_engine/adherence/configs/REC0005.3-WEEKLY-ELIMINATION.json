@@ -1,0 +1,44 @@
+{
+  "config_id": "REC0005.3-WEEKLY-ELIMINATION",
+  "config_name": "Weekly Elimination - daily_alcoholic_drinks",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all days meet elimination criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "elimination",
+      "evaluation_period": "weekly",
+      "success_criteria": "zero_tolerance",
+      "calculation_method": "weekly_elimination_check",
+      "tracked_metrics": [
+        ""
+      ],
+      "calculated_metrics": [
+        ""
+      ],
+      "elimination_threshold": 0,
+      "elimination_comparison": "<=",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "unit": "",
+      "progress_direction": "countdown",
+      "required_days": 7,
+      "daily_limit": "",
+      "description": "Zero tolerance weekly elimination for Reduce or Eliminate Alcohol Consumption: Women + Men"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate alcohol consumption entirely, with exception of rare social event if desired",
+    "recommendation_id": "REC0005.3",
+    "analysis": {
+      "algorithm_type": "weekly_elimination",
+      "confidence": 1.0,
+      "reasoning": "Zero tolerance pattern requiring perfect weekly compliance"
+    },
+    "metric_id": "",
+    "generated_at": "2025-09-26T17:30:11.263122",
+    "title": "Reduce or Eliminate Alcohol Consumption: Women + Men",
+    "overview": "Alcohol affects liver health, metabolic function, sleep quality, inflammation, and hormonal balance. For users with elevated GGT, ALT, hsCRP, or disrupted sleep, moderating or removing alcohol intake can lead to significant improvements in biomarker trends and subjective well-being over a 3\u20134 month protocol."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "config_id": "MED011(i)-SINGLE",
+  "config_name": "Metoprolol: Beta Blocker",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Metoprolol",
+          "type": "MED",
+          "dose_min": 50.0,
+          "dose_max": 200.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "50-200 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Divided",
+          "category": "Beta Blocker",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Metoprolol"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 50-200mg of Metoprolol in divided doses daily for heart health, blood pressure control, and cardiovascular longevity",
+    "recommendation_id": "MED011(i)-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Metoprolol",
+        "type": "MED",
+        "dose_min": 50.0,
+        "dose_max": 200.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "50-200 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Divided",
+        "category": "Beta Blocker",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.456204",
+    "title": "Metoprolol: Beta Blocker",
+    "overview": "Cardiovascular protection",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": "(i)",
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

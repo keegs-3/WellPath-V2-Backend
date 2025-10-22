@@ -1,0 +1,76 @@
+{
+  "config_id": "MED025-SINGLE",
+  "config_name": "Sertraline: SSRI",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 1 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Sertraline",
+          "type": "MED",
+          "dose_min": 25.0,
+          "dose_max": 100.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "25-100 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "Morning",
+          "category": "SSRI",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 1,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 1 therapeutic intervention(s): Sertraline"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 25-100mg of Sertraline in the morning daily for mental health optimization and stress resilience",
+    "recommendation_id": "MED025-SINGLE",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 1 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Sertraline",
+        "type": "MED",
+        "dose_min": 25.0,
+        "dose_max": 100.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "25-100 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "Morning",
+        "category": "SSRI",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.486217",
+    "title": "Sertraline: SSRI",
+    "overview": "Mental health optimization",
+    "stack_summary": NaN,
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "SINGLE",
+    "therapeutic_type": "MED",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": NaN
+  }
+}

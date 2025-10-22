@@ -1,0 +1,104 @@
+{
+  "config_id": "SUP018-STACK",
+  "config_name": "Glucosamine + Chondroitin Stack",
+  "scoring_method": "therapeutic_adherence",
+  "configuration_json": {
+    "method": "therapeutic_adherence",
+    "formula": "Average adherence across 2 therapeutic intervention(s)",
+    "evaluation_pattern": "daily_multi_therapeutic",
+    "schema": {
+      "measurement_type": "therapeutic_adherence",
+      "evaluation_period": "daily",
+      "success_criteria": "adherence_percentage",
+      "calculation_method": "multi_therapeutic_average",
+      "therapeutics": [
+        {
+          "name": "Glucosamine",
+          "type": "SUP",
+          "dose_min": 1500.0,
+          "dose_max": NaN,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "1500 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Supplement",
+          "operator": "="
+        },
+        {
+          "name": "Chondroitin",
+          "type": "SUP",
+          "dose_min": 800.0,
+          "dose_max": 1200.0,
+          "unit": "milligram",
+          "unit_symbol": "mg",
+          "rollup": "800-1200 mg",
+          "frequency": "daily",
+          "frequency_days": 1.0,
+          "timing": "With meals",
+          "category": "Supplement",
+          "operator": "<>"
+        }
+      ],
+      "therapeutics_count": 2,
+      "target_adherence": 90.0,
+      "unit": "percent",
+      "progress_direction": "maximize",
+      "required_days": null,
+      "total_days": 30,
+      "description": "Adherence tracking for 2 therapeutic intervention(s): Glucosamine, Chondroitin"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Take 1,500mg of Glucosamine and 800-1,200mg of Chondroitin with meals daily for comprehensive joint health, cartilage preservation, reduced inflammation, and long-term mobility maintenance",
+    "recommendation_id": "SUP018-STACK",
+    "analysis": {
+      "algorithm_type": "therapeutic_adherence",
+      "confidence": 1.0,
+      "reasoning": "Multi-therapeutic adherence tracking for 2 intervention(s)"
+    },
+    "therapeutics_details": [
+      {
+        "name": "Glucosamine",
+        "type": "SUP",
+        "dose_min": 1500.0,
+        "dose_max": NaN,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "1500 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Supplement",
+        "operator": "="
+      },
+      {
+        "name": "Chondroitin",
+        "type": "SUP",
+        "dose_min": 800.0,
+        "dose_max": 1200.0,
+        "unit": "milligram",
+        "unit_symbol": "mg",
+        "rollup": "800-1200 mg",
+        "frequency": "daily",
+        "frequency_days": 1.0,
+        "timing": "With meals",
+        "category": "Supplement",
+        "operator": "<>"
+      }
+    ],
+    "generated_at": "2025-09-27T12:16:22.361128",
+    "title": "Glucosamine + Chondroitin Stack",
+    "overview": "Complementary compounds for comprehensive cartilage support - glucosamine provides building blocks for cartilage synthesis while chondroitin maintains cartilage structure and joint lubrication. Combined they offer superior joint preservation and mobility maintenance.",
+    "stack_summary": "Complementary compounds for comprehensive cartilage support - glucosamine provides building blocks for cartilage synthesis while chondroitin maintains cartilage structure and joint lubrication. Combined they offer superior joint preservation and mobility maintenance.",
+    "stack_description": "",
+    "option_count": NaN,
+    "therapeutic_count": "STACK",
+    "therapeutic_type": "SUP",
+    "age_range": "0-150",
+    "gender": "male_female",
+    "risk_level": "",
+    "linked_evidence": "LI294,LI295,LI296,LI297"
+  }
+}
