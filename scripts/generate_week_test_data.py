@@ -146,23 +146,41 @@ def generate_week_data():
             # =====================================================
             meals = []
 
-            # Protein (2-4 servings per day)
-            num_protein = random.randint(2, 4)
-            for _ in range(num_protein):
-                event_id = str(uuid4())
-                servings = random.uniform(1, 3)
+            # Protein - realistic daily total (50-150g) broken down by meal
+            # Standard: 1 serving = 25g protein
+            daily_protein_grams = random.uniform(60, 120)  # Realistic range
 
-                # Outlier: very high protein
-                if random.random() < 0.05:
-                    servings = random.uniform(5, 8)
+            # Outlier: very low or very high
+            if random.random() < 0.05:
+                daily_protein_grams = random.choice([30, 180])
 
-                protein_types = ['fish', 'lean_poultry', 'eggs', 'tofu']
-                protein_type = random.choice(protein_types)
+            # Distribute across meals (breakfast 25%, lunch 35%, dinner 40%)
+            meal_times = [
+                (time(8, 0), 'breakfast', 0.25),
+                (time(12, 30), 'lunch', 0.35),
+                (time(18, 30), 'dinner', 0.40)
+            ]
 
-                insert_entry(cur, TEST_USER_ID, 'DEF_PROTEIN_SERVINGS', servings, 'quantity',
-                           current_date, time(12, 0), event_id)
-                insert_entry(cur, TEST_USER_ID, 'DEF_PROTEIN_TYPE', protein_type, 'reference',
-                           current_date, time(12, 0), event_id)
+            protein_types = ['processed_meat', 'red_meat', 'fatty_fish', 'lean_protein', 'plant_based', 'supplement']
+            total_protein_logged = 0
+
+            for meal_time, meal_name, fraction in meal_times:
+                if random.random() < 0.85:  # 85% chance to have protein at each meal
+                    event_id = str(uuid4())
+                    meal_protein = daily_protein_grams * fraction * random.uniform(0.8, 1.2)  # Add variation
+
+                    # Choose protein type (bias toward lean_protein and plant_based)
+                    type_weights = [0.10, 0.15, 0.15, 0.35, 0.20, 0.05]  # processed, red, fatty_fish, lean, plant, supplement
+                    protein_type = random.choices(protein_types, weights=type_weights)[0]
+
+                    insert_entry(cur, TEST_USER_ID, 'DEF_PROTEIN_GRAMS', meal_protein, 'quantity',
+                               current_date, meal_time, event_id)
+                    insert_entry(cur, TEST_USER_ID, 'DEF_PROTEIN_TYPE', protein_type, 'reference',
+                               current_date, meal_time, event_id)
+
+                    total_protein_logged += meal_protein
+
+            protein_servings = total_protein_logged / 25  # Convert to servings
 
             # Vegetables (3-5 servings)
             veg_servings = random.randint(3, 5)
@@ -184,7 +202,7 @@ def generate_week_data():
             insert_entry(cur, TEST_USER_ID, 'DEF_WATER_UNITS', 'fluid_ounce', 'reference',
                        current_date, time(12, 0), event_id)
 
-            print(f"    🥗 Nutrition: {num_protein}x protein, {veg_servings}x veg, {water_oz}oz water")
+            print(f"    🥗 Nutrition: {total_protein_logged:.0f}g protein ({protein_servings:.1f} servings), {veg_servings}x veg, {water_oz}oz water")
 
             # =====================================================
             # BIOMETRICS (measured 2-3x per week)

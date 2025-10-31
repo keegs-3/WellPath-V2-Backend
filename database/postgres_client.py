@@ -89,3 +89,16 @@ def get_postgres_client() -> PostgresClient:
     if _postgres_client is None:
         _postgres_client = PostgresClient()
     return _postgres_client
+
+
+def get_db_connection():
+    """
+    Get a database connection for the adherence agent system.
+
+    Returns a psycopg2 connection object that can be used with cursor().
+    The connection should be committed and closed by the caller.
+    """
+    connection_string = os.getenv("DATABASE_URL")
+    if not connection_string:
+        raise ValueError("DATABASE_URL must be set in environment")
+    return psycopg2.connect(connection_string)

@@ -1,0 +1,391 @@
+-- =====================================================================================
+-- ADD REMAINING BIOMETRIC SCORING RANGES
+-- =====================================================================================
+-- This migration adds scoring ranges for all remaining trackable biometrics and
+-- updates existing ranges to use correct data quality requirements
+--
+-- Snapshot Biometrics (latest value only, no min data points):
+--   - Grip Strength, VO2 Max
+--
+-- Behavioral/Trend Biometrics (20+ data points over 30 days):
+--   - Sleep: Deep, REM, Total
+--   - HRV
+--   - Water Consumption
+--   - Steps
+--   - Blood Pressure (UPDATED from existing)
+--   - Resting Heart Rate (UPDATED from existing)
+-- =====================================================================================
+
+-- =====================================================================================
+-- PART 1: UPDATE EXISTING RANGES TO REQUIRE 20+ DATA POINTS
+-- =====================================================================================
+
+-- Update Blood Pressure ranges (should track trend, not single reading)
+UPDATE biometric_aggregations_scoring
+SET
+    min_data_points = 20,
+    lookback_days = 30,
+    notes = notes || ' - Requires 20+ readings over 30 days for accurate trend'
+WHERE agg_metric_id IN ('AGG_SYSTOLIC_BLOOD_PRESSURE', 'AGG_DIASTOLIC_BLOOD_PRESSURE');
+
+-- Update Resting Heart Rate ranges (can vary daily with stress/recovery)
+UPDATE biometric_aggregations_scoring
+SET
+    min_data_points = 20,
+    lookback_days = 30,
+    notes = notes || ' - Requires 20+ readings over 30 days for accurate baseline'
+WHERE agg_metric_id = 'AGG_RESTING_HEART_RATE';
+
+
+-- =====================================================================================
+-- PART 2: SNAPSHOT BIOMETRICS (Latest Value Only)
+-- =====================================================================================
+
+-- -------------------------------------------------------------------------------------
+-- GRIP STRENGTH SCORING (Gender and Age Specific)
+-- -------------------------------------------------------------------------------------
+-- Source: Normative data from clinical studies
+-- Unit: kg
+
+-- Men 18-39
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (46+ kg)', 'Optimal', 46, 999, 1.0,
+ 'male', 18, 39, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for men 18-39'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (41-45 kg)', 'Good', 41, 45, 0.8,
+ 'male', 18, 39, 'MAX', 'monthly', 1, 30, 'Good grip strength for men 18-39'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (35-40 kg)', 'Average', 35, 40, 0.6,
+ 'male', 18, 39, 'MAX', 'monthly', 1, 30, 'Average grip strength for men 18-39'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<35 kg)', 'Below Average', 0, 34, 0.3,
+ 'male', 18, 39, 'MAX', 'monthly', 1, 30, 'Below average grip strength for men 18-39'),
+
+-- Men 40-59
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (43+ kg)', 'Optimal', 43, 999, 1.0,
+ 'male', 40, 59, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for men 40-59'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (38-42 kg)', 'Good', 38, 42, 0.8,
+ 'male', 40, 59, 'MAX', 'monthly', 1, 30, 'Good grip strength for men 40-59'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (32-37 kg)', 'Average', 32, 37, 0.6,
+ 'male', 40, 59, 'MAX', 'monthly', 1, 30, 'Average grip strength for men 40-59'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<32 kg)', 'Below Average', 0, 31, 0.3,
+ 'male', 40, 59, 'MAX', 'monthly', 1, 30, 'Below average grip strength for men 40-59'),
+
+-- Men 60+
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (39+ kg)', 'Optimal', 39, 999, 1.0,
+ 'male', 60, 120, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for men 60+'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (34-38 kg)', 'Good', 34, 38, 0.8,
+ 'male', 60, 120, 'MAX', 'monthly', 1, 30, 'Good grip strength for men 60+'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (28-33 kg)', 'Average', 28, 33, 0.6,
+ 'male', 60, 120, 'MAX', 'monthly', 1, 30, 'Average grip strength for men 60+'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<28 kg)', 'Below Average', 0, 27, 0.3,
+ 'male', 60, 120, 'MAX', 'monthly', 1, 30, 'Below average grip strength for men 60+'),
+
+-- Women 18-39
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (28+ kg)', 'Optimal', 28, 999, 1.0,
+ 'female', 18, 39, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for women 18-39'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (24-27 kg)', 'Good', 24, 27, 0.8,
+ 'female', 18, 39, 'MAX', 'monthly', 1, 30, 'Good grip strength for women 18-39'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (19-23 kg)', 'Average', 19, 23, 0.6,
+ 'female', 18, 39, 'MAX', 'monthly', 1, 30, 'Average grip strength for women 18-39'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<19 kg)', 'Below Average', 0, 18, 0.3,
+ 'female', 18, 39, 'MAX', 'monthly', 1, 30, 'Below average grip strength for women 18-39'),
+
+-- Women 40-59
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (26+ kg)', 'Optimal', 26, 999, 1.0,
+ 'female', 40, 59, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for women 40-59'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (22-25 kg)', 'Good', 22, 25, 0.8,
+ 'female', 40, 59, 'MAX', 'monthly', 1, 30, 'Good grip strength for women 40-59'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (17-21 kg)', 'Average', 17, 21, 0.6,
+ 'female', 40, 59, 'MAX', 'monthly', 1, 30, 'Average grip strength for women 40-59'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<17 kg)', 'Below Average', 0, 16, 0.3,
+ 'female', 40, 59, 'MAX', 'monthly', 1, 30, 'Below average grip strength for women 40-59'),
+
+-- Women 60+
+('AGG_GRIP_STRENGTH', 'Excellent Grip Strength (23+ kg)', 'Optimal', 23, 999, 1.0,
+ 'female', 60, 120, 'MAX', 'monthly', 1, 30, 'Excellent grip strength for women 60+'),
+('AGG_GRIP_STRENGTH', 'Good Grip Strength (19-22 kg)', 'Good', 19, 22, 0.8,
+ 'female', 60, 120, 'MAX', 'monthly', 1, 30, 'Good grip strength for women 60+'),
+('AGG_GRIP_STRENGTH', 'Average Grip Strength (14-18 kg)', 'Average', 14, 18, 0.6,
+ 'female', 60, 120, 'MAX', 'monthly', 1, 30, 'Average grip strength for women 60+'),
+('AGG_GRIP_STRENGTH', 'Below Average Grip Strength (<14 kg)', 'Below Average', 0, 13, 0.3,
+ 'female', 60, 120, 'MAX', 'monthly', 1, 30, 'Below average grip strength for women 60+');
+
+
+-- -------------------------------------------------------------------------------------
+-- VO2 MAX SCORING (Gender and Age Specific)
+-- -------------------------------------------------------------------------------------
+-- Source: ACSM guidelines for cardiorespiratory fitness
+-- Unit: mL/kg/min
+
+-- Men 18-39
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_VO2_MAX', 'Excellent VO2 Max (47+ mL/kg/min)', 'Optimal', 47, 999, 1.0,
+ 'male', 18, 39, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for men 18-39'),
+('AGG_VO2_MAX', 'Good VO2 Max (42-46 mL/kg/min)', 'Good', 42, 46, 0.8,
+ 'male', 18, 39, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for men 18-39'),
+('AGG_VO2_MAX', 'Average VO2 Max (37-41 mL/kg/min)', 'Average', 37, 41, 0.6,
+ 'male', 18, 39, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for men 18-39'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<37 mL/kg/min)', 'Below Average', 0, 36, 0.3,
+ 'male', 18, 39, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for men 18-39'),
+
+-- Men 40-59
+('AGG_VO2_MAX', 'Excellent VO2 Max (43+ mL/kg/min)', 'Optimal', 43, 999, 1.0,
+ 'male', 40, 59, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for men 40-59'),
+('AGG_VO2_MAX', 'Good VO2 Max (38-42 mL/kg/min)', 'Good', 38, 42, 0.8,
+ 'male', 40, 59, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for men 40-59'),
+('AGG_VO2_MAX', 'Average VO2 Max (33-37 mL/kg/min)', 'Average', 33, 37, 0.6,
+ 'male', 40, 59, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for men 40-59'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<33 mL/kg/min)', 'Below Average', 0, 32, 0.3,
+ 'male', 40, 59, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for men 40-59'),
+
+-- Men 60+
+('AGG_VO2_MAX', 'Excellent VO2 Max (37+ mL/kg/min)', 'Optimal', 37, 999, 1.0,
+ 'male', 60, 120, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for men 60+'),
+('AGG_VO2_MAX', 'Good VO2 Max (32-36 mL/kg/min)', 'Good', 32, 36, 0.8,
+ 'male', 60, 120, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for men 60+'),
+('AGG_VO2_MAX', 'Average VO2 Max (27-31 mL/kg/min)', 'Average', 27, 31, 0.6,
+ 'male', 60, 120, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for men 60+'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<27 mL/kg/min)', 'Below Average', 0, 26, 0.3,
+ 'male', 60, 120, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for men 60+'),
+
+-- Women 18-39
+('AGG_VO2_MAX', 'Excellent VO2 Max (40+ mL/kg/min)', 'Optimal', 40, 999, 1.0,
+ 'female', 18, 39, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for women 18-39'),
+('AGG_VO2_MAX', 'Good VO2 Max (35-39 mL/kg/min)', 'Good', 35, 39, 0.8,
+ 'female', 18, 39, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for women 18-39'),
+('AGG_VO2_MAX', 'Average VO2 Max (30-34 mL/kg/min)', 'Average', 30, 34, 0.6,
+ 'female', 18, 39, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for women 18-39'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<30 mL/kg/min)', 'Below Average', 0, 29, 0.3,
+ 'female', 18, 39, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for women 18-39'),
+
+-- Women 40-59
+('AGG_VO2_MAX', 'Excellent VO2 Max (36+ mL/kg/min)', 'Optimal', 36, 999, 1.0,
+ 'female', 40, 59, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for women 40-59'),
+('AGG_VO2_MAX', 'Good VO2 Max (31-35 mL/kg/min)', 'Good', 31, 35, 0.8,
+ 'female', 40, 59, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for women 40-59'),
+('AGG_VO2_MAX', 'Average VO2 Max (26-30 mL/kg/min)', 'Average', 26, 30, 0.6,
+ 'female', 40, 59, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for women 40-59'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<26 mL/kg/min)', 'Below Average', 0, 25, 0.3,
+ 'female', 40, 59, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for women 40-59'),
+
+-- Women 60+
+('AGG_VO2_MAX', 'Excellent VO2 Max (31+ mL/kg/min)', 'Optimal', 31, 999, 1.0,
+ 'female', 60, 120, 'AVG', 'monthly', 1, 30, 'Excellent cardiorespiratory fitness for women 60+'),
+('AGG_VO2_MAX', 'Good VO2 Max (26-30 mL/kg/min)', 'Good', 26, 30, 0.8,
+ 'female', 60, 120, 'AVG', 'monthly', 1, 30, 'Good cardiorespiratory fitness for women 60+'),
+('AGG_VO2_MAX', 'Average VO2 Max (21-25 mL/kg/min)', 'Average', 21, 25, 0.6,
+ 'female', 60, 120, 'AVG', 'monthly', 1, 30, 'Average cardiorespiratory fitness for women 60+'),
+('AGG_VO2_MAX', 'Below Average VO2 Max (<21 mL/kg/min)', 'Below Average', 0, 20, 0.3,
+ 'female', 60, 120, 'AVG', 'monthly', 1, 30, 'Below average cardiorespiratory fitness for women 60+');
+
+
+-- =====================================================================================
+-- PART 3: BEHAVIORAL/TREND BIOMETRICS (20+ Data Points Required)
+-- =====================================================================================
+
+-- -------------------------------------------------------------------------------------
+-- SLEEP DURATION SCORING
+-- -------------------------------------------------------------------------------------
+-- Source: National Sleep Foundation recommendations
+-- Unit: hours per night
+
+-- Deep Sleep Duration (age-independent, gender-independent)
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_DEEP_SLEEP_DURATION', 'Optimal Deep Sleep (1.5-2.5 hours)', 'Optimal', 1.5, 2.5, 1.0,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Optimal deep sleep duration - 15-25% of total sleep'),
+('AGG_DEEP_SLEEP_DURATION', 'Good Deep Sleep (1.0-1.4 hours)', 'Good', 1.0, 1.4, 0.7,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Adequate deep sleep duration'),
+('AGG_DEEP_SLEEP_DURATION', 'Low Deep Sleep (<1.0 hours)', 'Below Average', 0, 0.9, 0.3,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Insufficient deep sleep - may affect recovery'),
+('AGG_DEEP_SLEEP_DURATION', 'Excessive Deep Sleep (>2.5 hours)', 'Out-of-Range', 2.51, 10, 0.5,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Unusually high deep sleep - may indicate sleep debt recovery');
+
+-- REM Sleep Duration (age-independent, gender-independent)
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_REM_SLEEP_DURATION', 'Optimal REM Sleep (1.5-2.5 hours)', 'Optimal', 1.5, 2.5, 1.0,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Optimal REM sleep duration - 20-25% of total sleep'),
+('AGG_REM_SLEEP_DURATION', 'Good REM Sleep (1.0-1.4 hours)', 'Good', 1.0, 1.4, 0.7,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Adequate REM sleep duration'),
+('AGG_REM_SLEEP_DURATION', 'Low REM Sleep (<1.0 hours)', 'Below Average', 0, 0.9, 0.3,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Insufficient REM sleep - may affect memory and mood'),
+('AGG_REM_SLEEP_DURATION', 'Excessive REM Sleep (>2.5 hours)', 'Out-of-Range', 2.51, 10, 0.5,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Unusually high REM sleep - may indicate sleep debt recovery');
+
+-- Total Sleep Duration (age-independent, gender-independent)
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_TOTAL_SLEEP_DURATION', 'Optimal Sleep (7-9 hours)', 'Optimal', 7.0, 9.0, 1.0,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Recommended sleep duration for adults'),
+('AGG_TOTAL_SLEEP_DURATION', 'Adequate Sleep (6.5-6.9 hours)', 'Good', 6.5, 6.9, 0.7,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Slightly below optimal sleep duration'),
+('AGG_TOTAL_SLEEP_DURATION', 'Insufficient Sleep (<6.5 hours)', 'Below Average', 0, 6.4, 0.3,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Insufficient sleep - health risks increase'),
+('AGG_TOTAL_SLEEP_DURATION', 'Excessive Sleep (>9 hours)', 'Out-of-Range', 9.1, 15, 0.5,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'May indicate underlying health issues or sleep debt recovery');
+
+
+-- -------------------------------------------------------------------------------------
+-- HRV (HEART RATE VARIABILITY) SCORING
+-- -------------------------------------------------------------------------------------
+-- Source: HRV research - RMSSD measurement (Root Mean Square of Successive Differences)
+-- Unit: milliseconds (ms)
+-- Note: HRV is highly individual and decreases with age
+
+-- Men 18-39
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_HRV', 'Excellent HRV (60+ ms)', 'Optimal', 60, 999, 1.0,
+ 'male', 18, 39, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for men 18-39'),
+('AGG_HRV', 'Good HRV (40-59 ms)', 'Good', 40, 59, 0.8,
+ 'male', 18, 39, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for men 18-39'),
+('AGG_HRV', 'Average HRV (25-39 ms)', 'Average', 25, 39, 0.6,
+ 'male', 18, 39, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for men 18-39'),
+('AGG_HRV', 'Below Average HRV (<25 ms)', 'Below Average', 0, 24, 0.3,
+ 'male', 18, 39, 'AVG', 'monthly', 20, 30, 'Low HRV - may indicate stress or overtraining'),
+
+-- Men 40-59
+('AGG_HRV', 'Excellent HRV (50+ ms)', 'Optimal', 50, 999, 1.0,
+ 'male', 40, 59, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for men 40-59'),
+('AGG_HRV', 'Good HRV (35-49 ms)', 'Good', 35, 49, 0.8,
+ 'male', 40, 59, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for men 40-59'),
+('AGG_HRV', 'Average HRV (20-34 ms)', 'Average', 20, 34, 0.6,
+ 'male', 40, 59, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for men 40-59'),
+('AGG_HRV', 'Below Average HRV (<20 ms)', 'Below Average', 0, 19, 0.3,
+ 'male', 40, 59, 'AVG', 'monthly', 20, 30, 'Low HRV - may indicate stress or health concerns'),
+
+-- Men 60+
+('AGG_HRV', 'Excellent HRV (40+ ms)', 'Optimal', 40, 999, 1.0,
+ 'male', 60, 120, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for men 60+'),
+('AGG_HRV', 'Good HRV (28-39 ms)', 'Good', 28, 39, 0.8,
+ 'male', 60, 120, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for men 60+'),
+('AGG_HRV', 'Average HRV (17-27 ms)', 'Average', 17, 27, 0.6,
+ 'male', 60, 120, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for men 60+'),
+('AGG_HRV', 'Below Average HRV (<17 ms)', 'Below Average', 0, 16, 0.3,
+ 'male', 60, 120, 'AVG', 'monthly', 20, 30, 'Low HRV - consult healthcare provider'),
+
+-- Women 18-39
+('AGG_HRV', 'Excellent HRV (65+ ms)', 'Optimal', 65, 999, 1.0,
+ 'female', 18, 39, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for women 18-39'),
+('AGG_HRV', 'Good HRV (45-64 ms)', 'Good', 45, 64, 0.8,
+ 'female', 18, 39, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for women 18-39'),
+('AGG_HRV', 'Average HRV (30-44 ms)', 'Average', 30, 44, 0.6,
+ 'female', 18, 39, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for women 18-39'),
+('AGG_HRV', 'Below Average HRV (<30 ms)', 'Below Average', 0, 29, 0.3,
+ 'female', 18, 39, 'AVG', 'monthly', 20, 30, 'Low HRV - may indicate stress or overtraining'),
+
+-- Women 40-59
+('AGG_HRV', 'Excellent HRV (55+ ms)', 'Optimal', 55, 999, 1.0,
+ 'female', 40, 59, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for women 40-59'),
+('AGG_HRV', 'Good HRV (38-54 ms)', 'Good', 38, 54, 0.8,
+ 'female', 40, 59, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for women 40-59'),
+('AGG_HRV', 'Average HRV (24-37 ms)', 'Average', 24, 37, 0.6,
+ 'female', 40, 59, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for women 40-59'),
+('AGG_HRV', 'Below Average HRV (<24 ms)', 'Below Average', 0, 23, 0.3,
+ 'female', 40, 59, 'AVG', 'monthly', 20, 30, 'Low HRV - may indicate stress or health concerns'),
+
+-- Women 60+
+('AGG_HRV', 'Excellent HRV (45+ ms)', 'Optimal', 45, 999, 1.0,
+ 'female', 60, 120, 'AVG', 'monthly', 20, 30, 'Excellent heart rate variability for women 60+'),
+('AGG_HRV', 'Good HRV (32-44 ms)', 'Good', 32, 44, 0.8,
+ 'female', 60, 120, 'AVG', 'monthly', 20, 30, 'Good heart rate variability for women 60+'),
+('AGG_HRV', 'Average HRV (20-31 ms)', 'Average', 20, 31, 0.6,
+ 'female', 60, 120, 'AVG', 'monthly', 20, 30, 'Average heart rate variability for women 60+'),
+('AGG_HRV', 'Below Average HRV (<20 ms)', 'Below Average', 0, 19, 0.3,
+ 'female', 60, 120, 'AVG', 'monthly', 20, 30, 'Low HRV - consult healthcare provider');
+
+
+-- -------------------------------------------------------------------------------------
+-- WATER CONSUMPTION SCORING
+-- -------------------------------------------------------------------------------------
+-- Source: IOM (Institute of Medicine) recommendations
+-- Unit: fluid ounces per day
+
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+-- Men: 125 fl oz (3.7L) recommended
+('AGG_WATER_CONSUMPTION', 'Optimal Hydration (100+ fl oz)', 'Optimal', 100, 999, 1.0,
+ 'male', 18, 120, 'AVG', 'monthly', 20, 30, 'Excellent hydration for men - meets or exceeds recommendations'),
+('AGG_WATER_CONSUMPTION', 'Good Hydration (80-99 fl oz)', 'Good', 80, 99, 0.8,
+ 'male', 18, 120, 'AVG', 'monthly', 20, 30, 'Good hydration for men - approaching recommendations'),
+('AGG_WATER_CONSUMPTION', 'Adequate Hydration (64-79 fl oz)', 'Average', 64, 79, 0.6,
+ 'male', 18, 120, 'AVG', 'monthly', 20, 30, 'Minimum adequate hydration for men'),
+('AGG_WATER_CONSUMPTION', 'Insufficient Hydration (<64 fl oz)', 'Below Average', 0, 63, 0.3,
+ 'male', 18, 120, 'AVG', 'monthly', 20, 30, 'Below recommended hydration levels'),
+
+-- Women: 91 fl oz (2.7L) recommended
+('AGG_WATER_CONSUMPTION', 'Optimal Hydration (80+ fl oz)', 'Optimal', 80, 999, 1.0,
+ 'female', 18, 120, 'AVG', 'monthly', 20, 30, 'Excellent hydration for women - meets or exceeds recommendations'),
+('AGG_WATER_CONSUMPTION', 'Good Hydration (64-79 fl oz)', 'Good', 64, 79, 0.8,
+ 'female', 18, 120, 'AVG', 'monthly', 20, 30, 'Good hydration for women - approaching recommendations'),
+('AGG_WATER_CONSUMPTION', 'Adequate Hydration (48-63 fl oz)', 'Average', 48, 63, 0.6,
+ 'female', 18, 120, 'AVG', 'monthly', 20, 30, 'Minimum adequate hydration for women'),
+('AGG_WATER_CONSUMPTION', 'Insufficient Hydration (<48 fl oz)', 'Below Average', 0, 47, 0.3,
+ 'female', 18, 120, 'AVG', 'monthly', 20, 30, 'Below recommended hydration levels');
+
+
+-- -------------------------------------------------------------------------------------
+-- DAILY STEPS SCORING
+-- -------------------------------------------------------------------------------------
+-- Source: Physical activity guidelines and research on step counts
+-- Unit: steps per day
+
+INSERT INTO biometric_aggregations_scoring (
+    agg_metric_id, range_name, range_bucket, range_low, range_high, range_score,
+    gender, age_low, age_high, calculation_type_id, period_type, min_data_points, lookback_days, notes
+) VALUES
+('AGG_STEPS', 'Highly Active (10,000+ steps)', 'Optimal', 10000, 999999, 1.0,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Excellent activity level - health benefits maximized'),
+('AGG_STEPS', 'Active (7,500-9,999 steps)', 'Good', 7500, 9999, 0.8,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Good activity level - substantial health benefits'),
+('AGG_STEPS', 'Somewhat Active (5,000-7,499 steps)', 'Average', 5000, 7499, 0.6,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Moderate activity - some health benefits'),
+('AGG_STEPS', 'Low Active (2,500-4,999 steps)', 'Below Average', 2500, 4999, 0.4,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Below recommended activity levels'),
+('AGG_STEPS', 'Sedentary (<2,500 steps)', 'Out-of-Range', 0, 2499, 0.2,
+ 'all', 18, 120, 'AVG', 'monthly', 20, 30, 'Sedentary lifestyle - increased health risks');
+
+
+-- =====================================================================================
+-- VERIFICATION QUERY
+-- =====================================================================================
+-- Run this to verify all new ranges were added
+
+-- SELECT
+--     agg_metric_id,
+--     COUNT(*) as range_count,
+--     MIN(min_data_points) as min_req_points,
+--     STRING_AGG(DISTINCT gender, ', ') as genders
+-- FROM biometric_aggregations_scoring
+-- WHERE agg_metric_id IN (
+--     'AGG_GRIP_STRENGTH', 'AGG_VO2_MAX',
+--     'AGG_DEEP_SLEEP_DURATION', 'AGG_REM_SLEEP_DURATION', 'AGG_TOTAL_SLEEP_DURATION',
+--     'AGG_HRV', 'AGG_WATER_CONSUMPTION', 'AGG_STEPS'
+-- )
+-- GROUP BY agg_metric_id
+-- ORDER BY agg_metric_id;
+
+-- Expected results:
+-- AGG_DEEP_SLEEP_DURATION: 4 ranges, min 20 points
+-- AGG_GRIP_STRENGTH: 24 ranges (4 per age group × 6 groups), min 1 point
+-- AGG_HRV: 24 ranges (4 per age group × 6 groups), min 20 points
+-- AGG_REM_SLEEP_DURATION: 4 ranges, min 20 points
+-- AGG_STEPS: 5 ranges, min 20 points
+-- AGG_TOTAL_SLEEP_DURATION: 4 ranges, min 20 points
+-- AGG_VO2_MAX: 24 ranges (4 per age group × 6 groups), min 1 point
+-- AGG_WATER_CONSUMPTION: 8 ranges (4 for men, 4 for women), min 20 points

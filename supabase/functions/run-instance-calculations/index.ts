@@ -3,7 +3,7 @@
 // =====================================================
 // Triggers after patient_data_entries insert
 // Executes instance calculations to auto-populate related fields
-// (e.g., vegetables → fiber, servings → grams)
+// (e.g., vegetables → fiber, duration calculations)
 //
 // Created: 2025-10-21
 // =====================================================
@@ -27,21 +27,21 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     )
 
-    const { user_id, event_instance_id } = await req.json()
+    const { patient_id, event_instance_id } = await req.json()
 
-    if (!user_id || !event_instance_id) {
-      throw new Error('user_id and event_instance_id are required')
+    if (!patient_id || !event_instance_id) {
+      throw new Error('patient_id and event_instance_id are required')
     }
 
     console.log(`\n========== RUNNING INSTANCE CALCULATIONS ==========`)
-    console.log(`User: ${user_id}`)
+    console.log(`User: ${patient_id}`)
     console.log(`Event Instance: ${event_instance_id}`)
 
     // 1. Get all data entries for this event instance to determine event_type_id
     const { data: eventEntries, error: entriesError } = await supabaseClient
       .from('patient_data_entries')
       .select('field_id')
-      .eq('user_id', user_id)
+      .eq('patient_id', patient_id)
       .eq('event_instance_id', event_instance_id)
       .limit(1)
 
@@ -120,7 +120,7 @@ serve(async (req) => {
     const { data: dataEntries, error: dataEntriesError } = await supabaseClient
       .from('patient_data_entries')
       .select('*')
-      .eq('user_id', user_id)
+      .eq('patient_id', patient_id)
       .eq('event_instance_id', event_instance_id)
 
     if (dataEntriesError) throw dataEntriesError
@@ -145,7 +145,7 @@ serve(async (req) => {
         const result = await executeCalculation(
           supabaseClient,
           calc,
-          user_id,
+          patient_id,
           event_instance_id,
           entriesMap
         )
@@ -156,7 +156,7 @@ serve(async (req) => {
           const { data: existing } = await supabaseClient
             .from('patient_data_entries')
             .select('field_id')
-            .eq('user_id', user_id)
+            .eq('patient_id', patient_id)
             .eq('event_instance_id', event_instance_id)
             .eq('source', 'auto_calculated')
             .in('field_id', outputFieldIds)
@@ -197,14 +197,69 @@ serve(async (req) => {
     console.log(`\n========== CALCULATIONS COMPLETE ==========`)
     console.log(`Total entries created: ${createdEntries.length}`)
 
+    // =====================================================
+    // STEP 4: Process Aggregations
+    // =====================================================
+    console.log(`\n========== PROCESSING AGGREGATIONS ==========`)
+
+    let aggregationsProcessed = 0
+
+    // Get the entry date from one of the data entries
+    const { data: dateEntry } = await supabaseClient
+      .from('patient_data_entries')
+      .select('entry_date, field_id')
+      .eq('patient_id', patient_id)
+      .eq('event_instance_id', event_instance_id)
+      .limit(1)
+      .single()
+
+    if (dateEntry) {
+      // Get all fields that were created/updated in this event
+      const { data: allFields } = await supabaseClient
+        .from('patient_data_entries')
+        .select('field_id')
+        .eq('patient_id', patient_id)
+        .eq('event_instance_id', event_instance_id)
+
+      const uniqueFields = [...new Set(allFields?.map(f => f.field_id) || [])]
+
+      console.log(`Processing aggregations for ${uniqueFields.length} fields`)
+
+      // Process aggregations for each affected field
+      for (const field_id of uniqueFields) {
+        try {
+          // Call PostgreSQL function to process aggregations for this field
+          const { data: result, error: aggError } = await supabaseClient
+            .rpc('process_field_aggregations', {
+              p_patient_id: patient_id,
+              p_field_id: field_id,
+              p_entry_date: dateEntry.entry_date
+            })
+
+          if (aggError) {
+            console.error(`Error processing aggregations for ${field_id}:`, aggError)
+          } else {
+            aggregationsProcessed += result || 0
+            console.log(`  ✅ ${field_id}: ${result || 0} aggregations updated`)
+          }
+        } catch (aggError) {
+          console.error(`Exception processing aggregations for ${field_id}:`, aggError)
+        }
+      }
+    }
+
+    console.log(`\n========== AGGREGATIONS COMPLETE ==========`)
+    console.log(`Total aggregations updated: ${aggregationsProcessed}`)
+
     return new Response(
       JSON.stringify({
         success: true,
-        user_id,
+        patient_id,
         event_type_id,
         calculations_run: calcDeps.length,
         entries_created: createdEntries.length,
-        created_fields: createdEntries.map(e => e.field_id)
+        created_fields: createdEntries.map(e => e.field_id),
+        aggregations_processed: aggregationsProcessed
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -230,7 +285,7 @@ serve(async (req) => {
 async function executeCalculation(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>
 ): Promise<any[]> {
@@ -240,28 +295,28 @@ async function executeCalculation(
 
   switch (calc.calculation_method) {
     case 'lookup_multiply':
-      return executeLookupMultiply(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeLookupMultiply(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'lookup_divide':
-      return executeLookupDivide(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeLookupDivide(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'category_to_macro':
-      return executeCategoryToMacro(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeCategoryToMacro(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'food_lookup':
-      return executeFoodLookup(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeFoodLookup(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'calculate_duration':
-      return executeCalculateDuration(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeCalculateDuration(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'calculate_heart_rate_zones':
-      return executeCalculateHeartRateZones(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeCalculateHeartRateZones(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'calculate_formula':
-      return executeCalculateFormula(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeCalculateFormula(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     case 'constant':
-      return executeConstant(supabase, calc, user_id, event_instance_id, entriesMap, config)
+      return executeConstant(supabase, calc, patient_id, event_instance_id, entriesMap, config)
 
     default:
       console.warn(`Unknown calculation method: ${calc.calculation_method}`)
@@ -270,12 +325,12 @@ async function executeCalculation(
 }
 
 // =====================================================
-// Calculation: Lookup Multiply (Servings → Grams)
+// Calculation: Lookup Multiply (lookup value × quantity)
 // =====================================================
 async function executeLookupMultiply(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -338,7 +393,7 @@ async function executeLookupMultiply(
 
   // Create auto-calculated entry
   return [{
-    user_id,
+    patient_id,
     event_instance_id,
     field_id: config.output_field,
     entry_date,
@@ -355,12 +410,12 @@ async function executeLookupMultiply(
 }
 
 // =====================================================
-// Calculation: Lookup Divide (Grams → Servings)
+// Calculation: Lookup Divide (quantity ÷ lookup value)
 // =====================================================
 async function executeLookupDivide(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -408,7 +463,7 @@ async function executeLookupDivide(
   const entry_timestamp = gramsEntry.entry_timestamp
 
   return [{
-    user_id,
+    patient_id,
     event_instance_id,
     field_id: config.output_field,
     entry_date,
@@ -430,7 +485,7 @@ async function executeLookupDivide(
 async function executeCategoryToMacro(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -465,7 +520,7 @@ async function executeCategoryToMacro(
   // Create fiber entries
   if (outputs.source) {
     results.push({
-      user_id,
+      patient_id,
       event_instance_id,
       field_id: outputs.source,
       entry_date,
@@ -478,7 +533,7 @@ async function executeCategoryToMacro(
 
   if (outputs.servings) {
     results.push({
-      user_id,
+      patient_id,
       event_instance_id,
       field_id: outputs.servings,
       entry_date,
@@ -491,7 +546,7 @@ async function executeCategoryToMacro(
 
   if (outputs.grams) {
     results.push({
-      user_id,
+      patient_id,
       event_instance_id,
       field_id: outputs.grams,
       entry_date,
@@ -511,7 +566,7 @@ async function executeCategoryToMacro(
 async function executeFoodLookup(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -592,7 +647,7 @@ async function executeFoodLookup(
       const calculatedValue = servings * perServingValue
 
       results.push({
-        user_id,
+        patient_id,
         event_instance_id,
         field_id: targetField,
         entry_date,
@@ -620,7 +675,7 @@ async function executeFoodLookup(
 async function executeCalculateDuration(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -661,8 +716,9 @@ async function executeCalculateDuration(
   const entry_date = startEntry.entry_date
   const entry_timestamp = startEntry.entry_timestamp
 
-  return [{
-    user_id,
+  // Always write the generic output field
+  const results = [{
+    patient_id,
     event_instance_id,
     field_id: config.output_field,
     entry_date,
@@ -676,6 +732,54 @@ async function executeCalculateDuration(
       duration_minutes: durationMinutes
     }
   }]
+
+  // Check if type-specific output mapping exists (for sleep periods)
+  if (config.type_field && config.type_output_mapping) {
+    const typeEntry = entriesMap.get(config.type_field)
+
+    if (typeEntry && typeEntry.value_reference) {
+      console.log(`Looking up type from reference: ${typeEntry.value_reference}`)
+
+      // Query reference table to get period name
+      const { data: periodType, error } = await supabase
+        .from('def_ref_sleep_period_types')
+        .select('period_name')
+        .eq('id', typeEntry.value_reference)
+        .single()
+
+      if (error) {
+        console.error(`Error fetching period type: ${error.message}`)
+      } else if (periodType) {
+        const periodName = periodType.period_name.toLowerCase()
+        const typeOutputField = config.type_output_mapping[periodName]
+
+        if (typeOutputField) {
+          console.log(`Adding type-specific output: ${periodName} → ${typeOutputField}`)
+
+          results.push({
+            patient_id,
+            event_instance_id,
+            field_id: typeOutputField,
+            entry_date,
+            entry_timestamp,
+            value_quantity: durationMinutes,
+            source: config.output_source || 'auto_calculated',
+            metadata: {
+              calculated_by: calc.calc_id,
+              sleep_period_type: periodName,
+              start_time: startTime,
+              end_time: endTime,
+              duration_minutes: durationMinutes
+            }
+          })
+        } else {
+          console.warn(`No output mapping found for period type: ${periodName}`)
+        }
+      }
+    }
+  }
+
+  return results
 }
 
 // =====================================================
@@ -684,7 +788,7 @@ async function executeCalculateDuration(
 async function executeCalculateHeartRateZones(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -702,7 +806,7 @@ async function executeCalculateHeartRateZones(
 async function executeCalculateFormula(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -786,7 +890,7 @@ async function executeCalculateFormula(
   const entry_timestamp = firstEntry.entry_timestamp
 
   return [{
-    user_id,
+    patient_id,
     event_instance_id,
     field_id: config.output_field,
     entry_date,
@@ -807,7 +911,7 @@ async function executeCalculateFormula(
 async function executeConstant(
   supabase: any,
   calc: any,
-  user_id: string,
+  patient_id: string,
   event_instance_id: string,
   entriesMap: Map<string, any>,
   config: any
@@ -857,7 +961,7 @@ async function executeConstant(
   const entry_timestamp = triggerEntry.entry_timestamp
 
   return [{
-    user_id,
+    patient_id,
     event_instance_id,
     field_id: config.output_field,
     entry_date,

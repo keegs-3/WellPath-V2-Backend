@@ -26,6 +26,8 @@ env/
 # Environment
 .env
 .env.local
+.env.dev
+.env.prod
 
 # IDE
 .vscode/

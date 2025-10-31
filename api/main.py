@@ -8,12 +8,12 @@ import os
 from database.models import HealthCheckResponse
 
 # Import routers
-from api.routers import scores, education
+from api.routers import adherence
 
 app = FastAPI(
     title="WellPath V2 API",
-    description="Production-ready scoring engine with 14 adherence algorithms",
-    version="2.0.0",
+    description="AI-powered health platform with intelligent adherence tracking, personalized nudges, and adaptive challenges",
+    version="2.1.0",
 )
 
 # CORS Configuration
@@ -51,8 +51,7 @@ async def health_check():
 
 
 # Include routers
-app.include_router(scores.router, prefix="/api/v1/scores", tags=["scores"])
-app.include_router(education.router, prefix="/api/v1/education", tags=["education"])
+app.include_router(adherence.router, prefix="/api/v1", tags=["adherence"])
 
 
 if __name__ == "__main__":

@@ -41,9 +41,9 @@ serve(async (req) => {
 
     // 1. Get patient demographics
     const { data: patientDetails, error: patientError } = await supabaseClient
-      .from('patient_details')
+      .from('patients')
       .select('biological_sex, date_of_birth, weight_kg')
-      .eq('user_id', patient_id)
+      .eq('patient_id', patient_id)
       .single()
 
     if (patientError) throw patientError
@@ -58,21 +58,18 @@ serve(async (req) => {
 
     console.log(`Patient: ${patient.gender}, age ${patient.age}`)
 
-    // 2. Delete existing score items for this patient (fresh calculation)
-    await supabaseClient
-      .from('patient_wellpath_score_items')
-      .delete()
-      .eq('user_id', patient_id)
-
-    console.log('Deleted old score items')
+    // 2. Generate unique batch ID for this calculation run
+    const batch_id = crypto.randomUUID()
+    const scored_at = new Date().toISOString()
+    console.log(`Starting calculation batch: ${batch_id}`)
 
     // 3. Score biomarkers and biometrics
-    const markerItems = await scoreBiomarkersAndBiometrics(supabaseClient, patient_id, patient)
+    const markerItems = await scoreBiomarkersAndBiometrics(supabaseClient, patient_id, patient, batch_id, scored_at)
     console.log(`Scored ${markerItems.length} biomarkers/biometrics`)
 
     // 4. Score survey questions
     console.log('🔍🔍🔍 ABOUT TO SCORE SURVEY QUESTIONS 🔍🔍🔍')
-    const questionResult = await scoreSurveyQuestions(supabaseClient, patient_id, patient)
+    const questionResult = await scoreSurveyQuestions(supabaseClient, patient_id, patient, batch_id, scored_at)
     const questionItems = questionResult.items
     const scoreMapKeys = questionResult.scoreMapKeys
     console.log(`🔍🔍🔍 SCORED ${questionItems.length} SURVEY QUESTIONS 🔍🔍🔍`)
@@ -82,7 +79,7 @@ serve(async (req) => {
     console.log(`Questions scoring 0: ${zeroScorers.map(q => q.question_number).join(', ')}`)
 
     // 5. Score survey functions
-    const functionItems = await scoreSurveyFunctions(supabaseClient, patient_id, patient)
+    const functionItems = await scoreSurveyFunctions(supabaseClient, patient_id, patient, batch_id, scored_at)
     console.log(`Scored ${functionItems.length} survey functions`)
 
     // 6. Insert all scored items into database
@@ -99,11 +96,50 @@ serve(async (req) => {
       }
 
       console.log(`✅ Inserted ${allItems.length} scored items`)
+
+      // 6b. Populate item history for charts
+      console.log(`🔵 ABOUT TO CALL populateItemHistory with ${allItems.length} items, patient_id=${patient_id}, gender=${patient.gender}, age=${patient.age}`)
+      const itemHistory = await populateItemHistory(supabaseClient, allItems, patient_id, patient.gender, patient.age, batch_id, scored_at)
+      console.log(`🟢 populateItemHistory RETURNED ${itemHistory.length} records`)
+      console.log(`✅ Inserted ${itemHistory.length} item history records`)
     }
 
-    // 7. Calculate summary scores by pillar
-    const pillarSummary = await calculatePillarSummary(supabaseClient, patient_id, patient.gender)
+    // 7. Calculate summary scores by pillar (filter by batch_id to avoid double-counting)
+    const pillarSummary = await calculatePillarSummary(supabaseClient, patient_id, patient.gender, batch_id)
 
+    // 8. Calculate overall score and save to history table
+    const overallScore = pillarSummary.reduce((sum, p) => sum + (p.score || 0), 0)
+    const overallMaxScore = pillarSummary.reduce((sum, p) => sum + (p.max || 0), 0)
+    const overallPercentage = overallMaxScore > 0 ? (overallScore / overallMaxScore) * 100 : 0
+
+    // Count item types
+    const biomarkerCount = markerItems.filter(i => i.item_type === 'biomarker').length
+    const biometricCount = markerItems.filter(i => i.item_type === 'biometric').length
+    const surveyQuestionCount = questionItems.length
+    const surveyFunctionCount = functionItems.length
+
+    const { error: historyError } = await supabaseClient
+      .from('patient_wellpath_scores_history')
+      .insert({
+        patient_id: patient_id,
+        overall_score: overallScore,
+        overall_max_score: overallMaxScore,
+        overall_percentage: overallPercentage,
+        pillar_scores: pillarSummary,
+        total_items_scored: allItems.length,
+        biomarker_count: biomarkerCount,
+        biometric_count: biometricCount,
+        survey_question_count: surveyQuestionCount,
+        survey_function_count: surveyFunctionCount,
+        calculation_version: '3.0'
+      })
+
+    if (historyError) {
+      console.error('Error saving to history:', historyError)
+      throw historyError
+    }
+
+    console.log(`✅ Saved overall score to history: ${overallPercentage.toFixed(2)}%`)
     console.log('========== SCORING COMPLETE ==========\n')
 
     // Debug: Check multiple questions - both working and failing
@@ -155,7 +191,7 @@ serve(async (req) => {
 // =====================================================
 // BIOMARKERS & BIOMETRICS SCORING
 // =====================================================
-async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, patient: any) {
+async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, patient: any, batch_id: string, scored_at: string) {
   const items: any[] = []
 
   // Get normalized weights (gender-specific)
@@ -177,14 +213,14 @@ async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, p
   const { data: biomarkerReadings } = await supabase
     .from('patient_biomarker_readings')
     .select('biomarker_name, value, test_date')
-    .eq('user_id', patient_id)
+    .eq('patient_id', patient_id)
     .order('test_date', { ascending: false })
     .limit(100)
 
   const { data: biometricReadings } = await supabase
     .from('patient_biometric_readings')
     .select('biometric_name, value, recorded_at')
-    .eq('user_id', patient_id)
+    .eq('patient_id', patient_id)
     .order('recorded_at', { ascending: false })
     .limit(100)
 
@@ -256,7 +292,7 @@ async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, p
     console.log(`Adding item: ${markerName} -> ${w.pillar_name}, score=${normalizedScore}, weighted=${patientNormalizedScore}`)
 
     items.push({
-      user_id: patient_id,
+      patient_id: patient_id,
       patient_gender: patient.gender,
       patient_age: patient.age,
       item_type: isBiomarker ? 'biomarker' : 'biometric',
@@ -274,7 +310,9 @@ async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, p
       max_normalized_score_male: w.max_normalized_score_male,
       max_normalized_score_female: w.max_normalized_score_female,
       max_grouping: w.max_grouping,
-      data_collected_at: reading?.test_date || reading?.recorded_at || null
+      data_collected_at: reading?.test_date || reading?.recorded_at || null,
+      batch_id: batch_id,
+      scored_at: scored_at
     })
   }
 
@@ -285,7 +323,7 @@ async function scoreBiomarkersAndBiometrics(supabase: any, patient_id: string, p
 // =====================================================
 // SURVEY QUESTIONS SCORING
 // =====================================================
-async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: any) {
+async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: any, batch_id: string, scored_at: string) {
   console.error('🔍 scoreSurveyQuestions: STARTING')
   const items: any[] = []
 
@@ -294,17 +332,17 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
   const { data: responses, error: responsesError } = await supabase
     .from('patient_survey_responses')
     .select('question_number, response_text, created_at')
-    .eq('user_id', patient_id)
+    .eq('patient_id', patient_id)
 
   if (responsesError) {
     console.error('❌ scoreSurveyQuestions: Error fetching responses:', responsesError)
-    return items
+    return { items, scoreMapKeys: {} }
   }
 
   console.error(`🔍 scoreSurveyQuestions: Found ${responses?.length || 0} patient responses`)
   if (!responses || responses.length === 0) {
     console.error('⚠️ scoreSurveyQuestions: No responses, returning empty')
-    return items
+    return { items, scoreMapKeys: {} }
   }
 
   // Force numeric conversion then to string for consistent formatting
@@ -325,13 +363,13 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
 
   if (weightsError) {
     console.error('scoreSurveyQuestions: Error fetching weights:', weightsError)
-    return items
+    return { items, scoreMapKeys: {} }
   }
 
   console.log(`Found ${weights?.length || 0} question weights`)
   if (!weights || weights.length === 0) {
     console.log('scoreSurveyQuestions: No weights, returning empty')
-    return items
+    return { items, scoreMapKeys: {} }
   }
 
   // Get response scores - use range() to bypass PostgREST's default 1000-row limit
@@ -344,7 +382,7 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
 
   if (scoresError) {
     console.error('Error loading response scores:', scoresError)
-    return items
+    return { items, scoreMapKeys: {} }
   }
 
   console.log(`Raw responseScores count: ${responseScores?.length || 0}`)
@@ -437,7 +475,7 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
     )
 
     items.push({
-      user_id: patient_id,
+      patient_id: patient_id,
       patient_gender: patient.gender,
       patient_age: patient.age,
       item_type: 'survey_question',
@@ -452,7 +490,9 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
       max_normalized_score_male: w.max_normalized_score_male,
       max_normalized_score_female: w.max_normalized_score_female,
       max_grouping: w.max_grouping,
-      data_collected_at: response?.created_at || null
+      data_collected_at: response?.created_at || null,
+      batch_id: batch_id,
+      scored_at: scored_at
     })
   }
 
@@ -463,14 +503,14 @@ async function scoreSurveyQuestions(supabase: any, patient_id: string, patient: 
 // =====================================================
 // SURVEY FUNCTIONS SCORING
 // =====================================================
-async function scoreSurveyFunctions(supabase: any, patient_id: string, patient: any) {
+async function scoreSurveyFunctions(supabase: any, patient_id: string, patient: any, batch_id: string, scored_at: string) {
   const items: any[] = []
 
   // Get patient responses
   const { data: responseRows } = await supabase
     .from('patient_survey_responses')
     .select('question_number, response_text')
-    .eq('user_id', patient_id)
+    .eq('patient_id', patient_id)
 
   if (!responseRows || responseRows.length === 0) return items
 
@@ -545,7 +585,7 @@ async function scoreSurveyFunctions(supabase: any, patient_id: string, patient: 
     )
 
     items.push({
-      user_id: patient_id,
+      patient_id: patient_id,
       patient_gender: patient.gender,
       patient_age: patient.age,
       item_type: 'survey_function',
@@ -558,7 +598,9 @@ async function scoreSurveyFunctions(supabase: any, patient_id: string, patient: 
       max_normalized_score_male: w.max_normalized_score_male,
       max_normalized_score_female: w.max_normalized_score_female,
       max_grouping: w.max_grouping,
-      function_question_responses: functionQuestionResponses
+      function_question_responses: functionQuestionResponses,
+      batch_id: batch_id,
+      scored_at: scored_at
     })
   }
 
@@ -676,12 +718,13 @@ async function executeSurveyFunction(function_name: string, params: Record<strin
 // =====================================================
 // HELPER: Calculate Pillar Summary
 // =====================================================
-async function calculatePillarSummary(supabase: any, patient_id: string, gender: string) {
-  // Get all scored items
+async function calculatePillarSummary(supabase: any, patient_id: string, gender: string, batch_id: string) {
+  // Get scored items from THIS calculation batch only (avoid double-counting historical items)
   const { data: items } = await supabase
     .from('patient_wellpath_score_items')
     .select('pillar_name, item_type, patient_normalized_score_male, patient_normalized_score_female, max_normalized_score_male, max_normalized_score_female, max_grouping')
-    .eq('user_id', patient_id)
+    .eq('patient_id', patient_id)
+    .eq('batch_id', batch_id)
 
   if (!items) return []
 
@@ -726,4 +769,87 @@ async function calculatePillarSummary(supabase: any, patient_id: string, gender:
   }
 
   return summary
+}
+
+// =====================================================
+// HELPER: Populate Item History
+// =====================================================
+async function populateItemHistory(supabase: any, items: any[], patient_id: string, gender: string, age: number, batch_id: string, scored_at: string) {
+  const historyRecords: any[] = []
+
+  for (const item of items) {
+    // Determine component type based on item type
+    let component_type = ''
+    if (item.item_type === 'biomarker' || item.item_type === 'biometric') {
+      component_type = 'markers'
+    } else if (item.item_type === 'survey_question' || item.item_type === 'survey_function') {
+      component_type = 'behaviors'
+    } else if (item.item_type === 'education') {
+      component_type = 'education'
+    } else {
+      continue // Skip unknown types
+    }
+
+    // Get item name
+    const item_name = item.biomarker_name || item.biometric_name ||
+                     item.question_number?.toString() || item.function_name ||
+                     item.education_module_id || 'Unknown'
+
+    // Calculate scores and contributions
+    const patient_score = gender === 'male' ? (item.patient_normalized_score_male || 0) : (item.patient_normalized_score_female || 0)
+    const max_score = gender === 'male' ? (item.max_normalized_score_male || 0) : (item.max_normalized_score_female || 0)
+    const item_percentage = max_score > 0 ? (patient_score / max_score) * 100 : 0
+
+    historyRecords.push({
+      patient_id: patient_id,
+      batch_id: batch_id,
+      calculated_at: scored_at,
+      pillar_name: item.pillar_name,
+      component_type: component_type,
+      item_type: item.item_type,
+      biomarker_name: item.biomarker_name || null,
+      biometric_name: item.biometric_name || null,
+      question_number: item.question_number || null,
+      function_name: item.function_name || null,
+      education_module_id: item.education_module_id || null,
+      item_name: item_name,
+      item_display_name: item_name, // Can be enhanced later with friendly names
+      patient_value: item.patient_value || null,
+      patient_value_numeric: item.patient_value_numeric || null,
+      patient_gender: gender,
+      patient_age: age,
+      raw_score: item.raw_score || null,
+      normalized_score: item.normalized_score || null,
+      score_band: item.score_band || null,
+      raw_weight: item.raw_weight,
+      item_weight_in_pillar: max_score, // The max_normalized_score is the weight in this pillar
+      patient_score_contribution: patient_score,
+      max_score_contribution: max_score,
+      item_percentage: item_percentage,
+      data_collected_at: item.data_collected_at || null,
+      data_source: item.data_source || null
+    })
+  }
+
+  // Insert all history records
+  console.log(`Attempting to insert ${historyRecords.length} item history records`)
+
+  if (historyRecords.length > 0) {
+    const { data, error } = await supabase
+      .from('patient_item_scores_history')
+      .insert(historyRecords)
+      .select()
+
+    if (error) {
+      console.error('❌ Error inserting item history:', JSON.stringify(error, null, 2))
+      console.error('First record that failed:', JSON.stringify(historyRecords[0], null, 2))
+      // Don't throw - allow scoring to continue even if history fails
+    } else {
+      console.log(`✅ Successfully inserted ${data?.length || historyRecords.length} item history records`)
+    }
+  } else {
+    console.log('⚠️  No history records to insert')
+  }
+
+  return historyRecords
 }

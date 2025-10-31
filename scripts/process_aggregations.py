@@ -49,6 +49,9 @@ def get_period_bounds(period_id, reference_date=None, conn=None):
 
     if period_id == 'daily':
         return reference_date, reference_date
+    elif period_id == 'hourly':
+        # Hourly uses same day for start/end (handled specially in custom processor)
+        return reference_date, reference_date
     elif period_id == 'weekly':
         # Last 7 days including today
         start = reference_date - timedelta(days=6)
@@ -71,6 +74,25 @@ def get_period_bounds(period_id, reference_date=None, conn=None):
 def compute_aggregation(conn, config, user_id, period_id, calc_type):
     """Compute one aggregation for one user, period, and calculation type"""
 
+    # Skip hourly - handled by custom protein aggregations processor
+    if period_id == 'hourly':
+        return None
+
+    # Skip custom-filtered aggregations (require time/type filtering logic)
+    custom_only_aggregations = [
+        'AGG_PROTEIN_BREAKFAST_GRAMS',
+        'AGG_PROTEIN_LUNCH_GRAMS',
+        'AGG_PROTEIN_DINNER_GRAMS',
+        'AGG_PROTEIN_TYPE_PROCESSED_MEAT',
+        'AGG_PROTEIN_TYPE_RED_MEAT',
+        'AGG_PROTEIN_TYPE_FATTY_FISH',
+        'AGG_PROTEIN_TYPE_LEAN_PROTEIN',
+        'AGG_PROTEIN_TYPE_PLANT_BASED',
+        'AGG_PROTEIN_TYPE_SUPPLEMENT',
+    ]
+    if config['agg_id'] in custom_only_aggregations:
+        return None
+
     # Get period bounds using database's current date
     period_start, period_end = get_period_bounds(period_id, conn=conn)
 
@@ -90,7 +112,7 @@ def compute_aggregation(conn, config, user_id, period_id, calc_type):
             source_filter = "source = 'auto_calculated'"
     else:  # data_field
         source_field_id = config['data_entry_field_id']
-        source_filter = "source IN ('manual', 'healthkit', 'import', 'api')"
+        source_filter = "source IN ('manual', 'healthkit', 'import', 'api', 'auto_calculated', 'wellpath_input')"
 
     # Build aggregation SQL based on calc_type
     agg_function = {
@@ -116,7 +138,7 @@ def compute_aggregation(conn, config, user_id, period_id, calc_type):
                 {agg_function} as aggregated_value,
                 COUNT(*) as data_points_count
             FROM patient_data_entries
-            WHERE user_id = %s
+            WHERE patient_id = %s
             AND field_id = %s
             AND {source_filter}
             AND entry_date BETWEEN %s AND %s
@@ -140,9 +162,9 @@ def write_to_cache(conn, user_id, config, period_id, calc_type, result):
     with conn.cursor() as cur:
         cur.execute("""
             INSERT INTO aggregation_results_cache
-            (user_id, agg_metric_id, period_type, calculation_type_id, period_start, period_end, value, data_points_count, last_computed_at, is_stale)
+            (patient_id, agg_metric_id, period_type, calculation_type_id, period_start, period_end, value, data_points_count, last_computed_at, is_stale)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NOW(), false)
-            ON CONFLICT (user_id, agg_metric_id, period_type, calculation_type_id, period_start)
+            ON CONFLICT (patient_id, agg_metric_id, period_type, calculation_type_id, period_start)
             DO UPDATE SET
                 value = EXCLUDED.value,
                 data_points_count = EXCLUDED.data_points_count,
@@ -161,6 +183,8 @@ def write_to_cache(conn, user_id, config, period_id, calc_type, result):
     conn.commit()
 
 def main():
+    import sys
+
     conn = psycopg2.connect(DB_URL)
 
     try:
@@ -171,8 +195,13 @@ def main():
         configs = get_aggregation_configs(conn)
         print(f"\nFound {len(configs)} aggregation configurations")
 
-        # Get test user
-        test_user_id = '02cc8441-5f01-4634-acfc-59e6f6a5705a'
+        # Get patient_id from command line argument or use default
+        if len(sys.argv) > 1:
+            test_user_id = sys.argv[1]
+        else:
+            test_user_id = '02cc8441-5f01-4634-acfc-59e6f6a5705a'
+
+        print(f"Processing for patient: {test_user_id}")
 
         total_computed = 0
         total_skipped = 0

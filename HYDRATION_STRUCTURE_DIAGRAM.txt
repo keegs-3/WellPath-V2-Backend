@@ -1,0 +1,172 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    HYDRATION NUTRITION COMPONENT                           ║
+║                         Database Structure                                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          1. DATA ENTRY LAYER                             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    ┌────────────────────────────────────┐
+    │  field_registry                    │
+    ├────────────────────────────────────┤
+    │ DEF_HYDRATION_OUNCES              │
+    │  • field_name: hydration_ounces   │
+    │  • unit: fluid_ounce              │
+    │  • field_source: user_input       │
+    └────────────────────────────────────┘
+                    ↓
+             (user enters data)
+                    ↓
+    ┌────────────────────────────────────┐
+    │  patient_data_entries             │
+    │  • field_id: DEF_HYDRATION_OUNCES │
+    │  • value: 16.0                    │
+    │  • entry_timestamp: 2025-10-25... │
+    └────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        2. AGGREGATION LAYER                              │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    ┌────────────────────────────────────┐
+    │  aggregation_metrics              │
+    ├────────────────────────────────────┤
+    │ AGG_HYDRATION_TOTAL               │
+    │  • output_unit: fluid_ounce       │
+    │  • display_name: Total Hydration  │
+    └────────────────────────────────────┘
+                    ↑
+         ┌──────────┴──────────┐
+         │                     │
+    ┌─────────────┐    ┌──────────────┐
+    │ Dependencies │    │ Calculation  │
+    │             │    │    Types     │
+    ├─────────────┤    ├──────────────┤
+    │ DEF_        │    │  • SUM       │
+    │ HYDRATION_  │    │  • AVG       │
+    │ OUNCES      │    │              │
+    └─────────────┘    └──────────────┘
+                    
+    ┌────────────────────────────────────┐
+    │  aggregation_metrics_periods      │
+    ├────────────────────────────────────┤
+    │  • hourly    • daily              │
+    │  • weekly    • monthly            │
+    │  • 6month    • yearly             │
+    └────────────────────────────────────┘
+                    ↓
+         (aggregation runs)
+                    ↓
+    ┌────────────────────────────────────┐
+    │  aggregation_results_cache        │
+    │  • agg_metric_id: AGG_HYDRATION.. │
+    │  • period_type: daily             │
+    │  • calculation_type: SUM          │
+    │  • value: 72.0 (fl oz)           │
+    └────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         3. DISPLAY LAYER                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    ┌────────────────────────────────────┐
+    │  display_metrics                  │
+    ├────────────────────────────────────┤
+    │ DISP_HYDRATION                    │
+    │  • chart_type: bar                │
+    │  • is_primary: true               │
+    │  • education_content: {...}       │
+    └────────────────────────────────────┘
+                    ↑
+         ┌──────────┴──────────┐
+         │                     │
+    ┌───────────────────────────────────────┐
+    │ display_metrics_aggregations          │
+    ├───────────────────────────────────────┤
+    │  Period  │  Calc   │  Display Order   │
+    ├──────────┼─────────┼──────────────────┤
+    │  hourly  │  SUM    │        1         │
+    │  daily   │  SUM    │        2         │
+    │  weekly  │  AVG    │        3         │
+    │  monthly │  AVG    │        4         │
+    └───────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          4. SCREEN LAYER                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    ┌────────────────────────────────────┐
+    │  display_screens                  │
+    ├────────────────────────────────────┤
+    │ SCREEN_HYDRATION                  │
+    │  • layout_type: simple            │
+    │  • screen_type: simple            │
+    │  • icon: water                    │
+    │  • default_time_period: D         │
+    └────────────────────────────────────┘
+                    ↓
+    ┌────────────────────────────────────┐
+    │ display_screens_primary_           │
+    │ display_metrics                    │
+    ├────────────────────────────────────┤
+    │  • metric_id: DISP_HYDRATION      │
+    │  • display_order: 1               │
+    │  • context_label: Daily Hydration │
+    └────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                          COMPLETE DATA FLOW                                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+User Input (16 fl oz water at 10:00 AM)
+             ↓
+field_registry (DEF_HYDRATION_OUNCES)
+             ↓
+patient_data_entries (value: 16.0)
+             ↓
+aggregation_metrics (AGG_HYDRATION_TOTAL)
+             ↓
+aggregation_results_cache (daily SUM: 72.0)
+             ↓
+display_metrics (DISP_HYDRATION, bar chart)
+             ↓
+display_screens (SCREEN_HYDRATION)
+             ↓
+Mobile App UI (Bar chart showing 72 oz / 80 oz goal)
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                              KEY FEATURES                                  ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+✅ Single data entry field (fluid ounces)
+✅ Single aggregation metric (total)
+✅ No type breakdown (unlike vegetables, protein)
+✅ No timing breakdown (unlike protein meal timing)
+✅ Simple bar chart visualization
+✅ Primary screen only (no detail view)
+✅ Full period support (hourly → yearly)
+✅ SUM and AVG calculations
+✅ Educational content included
+✅ Mobile-ready screen configuration
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                           COMPARISON TABLE                                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────┬─────────────┬──────────────────────────────┐
+│  Component       │  Fields     │  Aggregations                │
+├──────────────────┼─────────────┼──────────────────────────────┤
+│  Hydration       │      1      │          1                   │
+│  (SIMPLE)        │  (ounces)   │  (total)                     │
+├──────────────────┼─────────────┼──────────────────────────────┤
+│  Protein         │      3      │         20+                  │
+│  (COMPLEX)       │  (grams,    │  (total, 6 types,           │
+│                  │   type,     │   7 timings, per_kg)        │
+│                  │   timing)   │                              │
+├──────────────────┼─────────────┼──────────────────────────────┤
+│  Vegetables      │      2      │         14+                  │
+│  (MEDIUM)        │  (servings, │  (total, 7 types,           │
+│                  │   type)     │   7 timings)                │
+└──────────────────┴─────────────┴──────────────────────────────┘
+
