@@ -1,0 +1,4103 @@
+[
+  {
+    "id": "increase_fiber_intake",
+    "name": "Increase Fiber Intake",
+    "description": "Fiber supports metabolic health, digestive function, and cardiovascular resilience. It helps the body eliminate excess cholesterol, regulates blood sugar, and promotes a healthier gut microbiome. Found in foods like oats, beans, flaxseed, and psyllium, soluble fiber is a foundational component of a longevity-supportive diet.",
+    "agent_goal": "Increase daily fiber intake through whole foods",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI019",
+      "LI020",
+      "LI021"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0001.1",
+      "REC0001.2",
+      "REC0001.3 (i)",
+      "REC0001.3 (ii)",
+      "REC0001.3 (iii)",
+      "REC0001.3 (iv)"
+    ],
+    "variant_count": 6,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0001"
+    }
+  },
+  {
+    "id": "prioritize_healthy_fats_over_saturated_fats",
+    "name": "Prioritize Healthy Fats Over Saturated Fats",
+    "description": "Swapping saturated fats for healthier fats like olive oil, avocados, nuts, and fatty fish supports heart and brain health, lowers systemic inflammation, and promotes metabolic balance. These fats are core components of dietary patterns linked to increased longevity and reduced chronic disease risk.",
+    "agent_goal": "Prioritize healthy fats (olive oil, avocado, nuts, fish) over saturated fats",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "HbA1c",
+      "LDL",
+      "Omega-3 Index",
+      "Total Cholesterol",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HDL",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI016",
+      "LI017",
+      "LI018"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0002.1",
+      "REC0002.2",
+      "REC0002.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0002"
+    }
+  },
+  {
+    "id": "incorporate_zone_2_cardio_for_mitochondrial_and_ca",
+    "name": "Incorporate Zone 2 Cardio for Mitochondrial and Cardiovascular Health",
+    "description": "Zone 2 cardio involves sustained, moderate-intensity aerobic exercise that keeps your heart rate within a range that maximizes fat oxidation and mitochondrial efficiency. Training in this zone improves metabolic flexibility, insulin sensitivity, and cardiovascular resilience. It's foundational for longevity, endurance, and energy metabolism. You should be able to maintain conversation, but feel like you\u2019re working.",
+    "agent_goal": "Perform Zone 2 cardio (moderate intensity, conversational pace) regularly",
+    "pillar": "movement",
+    "recommendation_type": "Activity",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "HDL",
+      "HbA1c",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV",
+      "Resting Heart Rate",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 85,
+    "evidence_ids": [
+      "LI022",
+      "LI023",
+      "LI024"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0003.1",
+      "REC0003.2",
+      "REC0003.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0003"
+    }
+  },
+  {
+    "id": "prioritize_79_hours_of_consistent_sleep_for_recove",
+    "name": "Prioritize 7\u20139 Hours of Consistent Sleep for Recovery and Longevity",
+    "description": "Consistently getting 7\u20139 hours of sleep supports cellular repair, metabolic regulation, hormonal balance, and cognitive performance. Sleep is when your body consolidates memory, clears neural waste, and recalibrates critical systems like immune response and glucose control. Building a foundation of sufficient sleep \u2014 and doing it consistently \u2014 is one of the most powerful longevity levers available.",
+    "agent_goal": "Sleep 7-9 hours consistently each night",
+    "pillar": "sleep",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "Neutrophil/Lymphocyte Ratio"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Free Testosterone",
+      "HDL",
+      "Testosterone",
+      "Triglycerides",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 95,
+    "evidence_ids": [
+      "LI025",
+      "LI026",
+      "LI141",
+      "LI142",
+      "LI143"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0004.1",
+      "REC0004.2",
+      "REC0004.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0004"
+    }
+  },
+  {
+    "id": "reduce_or_eliminate_alcohol_consumption",
+    "name": "Reduce or Eliminate Alcohol Consumption",
+    "description": "Alcohol affects liver health, metabolic function, sleep quality, inflammation, and hormonal balance. For users with elevated GGT, ALT, hsCRP, or disrupted sleep, moderating or removing alcohol intake can lead to significant improvements in biomarker trends and subjective well-being over a 3\u20134 month protocol.",
+    "agent_goal": "Reduce or eliminate alcohol consumption",
+    "pillar": "nutrition",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ALT",
+      "AST",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "GGT",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "HDL",
+      "Testosterone",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "HRV",
+      "Weight"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI027",
+      "LI028",
+      "LI029"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0005.1 (i)",
+      "REC0005.1 (ii)",
+      "REC0005.2",
+      "REC0005.3"
+    ],
+    "variant_count": 4,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0005"
+    }
+  },
+  {
+    "id": "increase_protein_intake",
+    "name": "Increase Protein Intake",
+    "description": "Protein is essential for building and maintaining lean muscle, supporting metabolic health, and promoting satiety. Regularly including high-quality protein sources in your meals enhances recovery, supports healthy aging, and helps maintain energy and body composition.",
+    "agent_goal": "Increase protein intake to support muscle maintenance",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "Albumin",
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "SHBG",
+      "Triglycerides",
+      "Vitamin B12",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Grip Strength",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Grip Strength",
+      "Hip-to-Waist Ratio"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 80,
+    "evidence_ids": [
+      "LI030",
+      "LI031",
+      "LI032"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0006.1",
+      "REC0006.2",
+      "REC0006.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0006"
+    }
+  },
+  {
+    "id": "increase_vegetable_intake",
+    "name": "Increase Vegetable Intake",
+    "description": "Regular vegetable intake supports metabolic health, cardiovascular resilience, and digestive function. Vegetables provide essential micronutrients, fiber, and phytonutrients linked to healthy aging, inflammation reduction, and chronic disease risk reduction.",
+    "agent_goal": "Eat more vegetables daily for micronutrients and fiber",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "Total Cholesterol",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Estradiol",
+      "Fasting Glucose",
+      "Homocysteine",
+      "Magnesium (RBC)",
+      "Potassium",
+      "Triglycerides",
+      "Vitamin B12",
+      "eGFR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 85,
+    "evidence_ids": [
+      "LI033",
+      "LI034",
+      "LI035"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0007.1",
+      "REC0007.2",
+      "REC0007.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0007"
+    }
+  },
+  {
+    "id": "increase_fruit_intake",
+    "name": "Increase Fruit Intake",
+    "description": "Regular fruit intake provides essential vitamins, minerals, antioxidants, and fiber. Eating a variety of fruits supports metabolic health, immune function, healthy aging, and helps lower risk of chronic diseases.",
+    "agent_goal": "Include fruits in daily diet for antioxidants and fiber",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "LDL",
+      "Neutrophil/Lymphocyte Ratio",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Estradiol",
+      "Fasting Glucose",
+      "Homocysteine",
+      "Magnesium (RBC)",
+      "Potassium",
+      "Triglycerides",
+      "Vitamin B12",
+      "eGFR"
+    ],
+    "tertiary_biomarkers": [
+      "Neutrophil/Lymphocyte Ratio"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI036",
+      "LI037",
+      "LI038"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0008.1",
+      "REC0008.2",
+      "REC0008.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0008"
+    }
+  },
+  {
+    "id": "reduce_added_sugar_intake",
+    "name": "Reduce Added Sugar Intake",
+    "description": "Added sugar contributes to metabolic dysfunction, inflammation, and increased chronic disease risk. Reducing daily added sugar improves energy, supports healthy weight, and protects long-term cardiometabolic health. For this recommendation, a serving is any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda). If the item is over 15g, count as 2 servings.",
+    "agent_goal": "Reduce added sugar and refined carbohydrate intake",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ALT",
+      "AST",
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "GGT",
+      "HOMA-IR",
+      "HbA1c",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "Lymphocytes",
+      "Neutrophil/Lymphocyte Ratio",
+      "Neutrophils",
+      "White Blood Cell Count"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 80,
+    "evidence_ids": [
+      "LI039",
+      "LI040",
+      "LI041"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0009.1",
+      "REC0009.2",
+      "REC0009.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0009"
+    }
+  },
+  {
+    "id": "reduce_processed_meat_intake",
+    "name": "Reduce Processed Meat Intake",
+    "description": "High intake of processed meats is linked to increased cancer, cardiovascular, and metabolic disease risk. Reducing processed meat supports longevity and promotes healthier eating.",
+    "agent_goal": "Reduce or eliminate processed meat consumption",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Ferritin",
+      "HDL",
+      "HOMA-IR",
+      "Lymphocytes",
+      "Neutrophil/Lymphocyte Ratio",
+      "Neutrophils",
+      "Triglycerides",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI042",
+      "LI043",
+      "LI044",
+      "LI045",
+      "LI046"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0010.1",
+      "REC0010.2",
+      "REC0010.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0010"
+    }
+  },
+  {
+    "id": "increase_whole_grain_intake",
+    "name": "Increase Whole Grain Intake",
+    "description": "Whole grains are rich in fiber, vitamins, and minerals that support metabolic, digestive, and cardiovascular health. Regular intake is linked to longevity and reduced risk.",
+    "agent_goal": "Choose whole grains over refined grains",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "Total Cholesterol",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "Magnesium (RBC)",
+      "Neutrophil/Lymphocyte Ratio",
+      "Triglycerides",
+      "Vitamin B12"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI047",
+      "LI048",
+      "LI049"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0011.1",
+      "REC0011.2",
+      "REC0011.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0011"
+    }
+  },
+  {
+    "id": "increase_legume_intake",
+    "name": "Increase Legume Intake",
+    "description": "Legumes provide plant-based protein, fiber, and micronutrients that promote metabolic, digestive, and cardiovascular health. Regular intake supports longevity and gut health.",
+    "agent_goal": "Include legumes (beans, lentils) in diet regularly",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "Neutrophil/Lymphocyte Ratio",
+      "Total Cholesterol",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Folate (RBC)",
+      "Folate Serum",
+      "HDL",
+      "HOMA-IR",
+      "Homocysteine",
+      "Triglycerides",
+      "Vitamin B12",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI050",
+      "LI051",
+      "LI052"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0012.1",
+      "REC0012.2",
+      "REC0012.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0012"
+    }
+  },
+  {
+    "id": "reduce_caffeine_intake",
+    "name": "Reduce Caffeine Intake",
+    "description": "High caffeine intake (over 400mg/day) can disrupt sleep, increase anxiety, and impact blood pressure. Reducing intake supports better sleep, energy, and cardiometabolic health. 1 regular cup of coffee \u2248 100mg, 1 espresso \u2248 60\u201380mg, 1 energy drink \u2248 80\u2013120mg, 1 cup of tea \u2248 40mg.",
+    "agent_goal": "Follow reduce caffeine intake recommendation",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ALT",
+      "AST",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Folate (RBC)",
+      "GGT",
+      "HOMA-IR",
+      "HbA1c",
+      "Homocysteine"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "Grip Strength",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 40,
+    "evidence_ids": [
+      "LI053",
+      "LI054",
+      "LI055"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0013.1",
+      "REC0013.2",
+      "REC0013.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0013"
+    }
+  },
+  {
+    "id": "optimize_caffeine_source",
+    "name": "Optimize Caffeine Source",
+    "description": "Certain sources of caffeine\u2014like energy drinks, pre-workout supplements, and high-caffeine sodas\u2014are associated with greater cardiovascular, anxiety, and metabolic risk. Replacing these with coffee or tea provides a gentler, more stable source of caffeine, along with antioxidant and metabolic benefits.",
+    "agent_goal": "Follow optimize caffeine source recommendation",
+    "pillar": "nutrition",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ALT",
+      "AST",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "GGT",
+      "HOMA-IR",
+      "HbA1c",
+      "Magnesium (RBC)"
+    ],
+    "secondary_biomarkers": [],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [
+      "LI059",
+      "LI060",
+      "LI061",
+      "LI062",
+      "LI063"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0014.1",
+      "REC0014.2",
+      "REC0014.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0014"
+    }
+  },
+  {
+    "id": "optimize_caffeine_timing",
+    "name": "Optimize Caffeine Timing",
+    "description": "Consuming caffeine late in the day can disrupt sleep, delay circadian rhythms, and reduce sleep quality. To support optimal sleep and energy, finish all coffee, tea, energy drinks, and other sources of caffeine by 2pm.",
+    "agent_goal": "Follow optimize caffeine timing recommendation",
+    "pillar": "nutrition",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol",
+      "Homocysteine"
+    ],
+    "secondary_biomarkers": [
+      "ALT",
+      "AST",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "GGT",
+      "HOMA-IR",
+      "HbA1c"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI064",
+      "LI065",
+      "LI066"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0015.1",
+      "REC0015.2",
+      "REC0015.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0015"
+    }
+  },
+  {
+    "id": "daily_meal_frequency",
+    "name": "Daily Meal Frequency",
+    "description": "Regular meal frequency supports stable energy, muscle maintenance, metabolic health, and balanced nutrient intake. Eating too few meals can increase fatigue and undernutrition risk.",
+    "agent_goal": "Follow daily meal frequency recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HDL",
+      "HOMA-IR",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Homocysteine"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "Weight"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI067",
+      "LI068",
+      "LI069"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0016.1",
+      "REC0016.2",
+      "REC0016.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0016"
+    }
+  },
+  {
+    "id": "time_restricted_eating",
+    "name": "Time Restricted Eating",
+    "description": "Intermittent fasting with a daily eating window of 10 hours or less (14+ hours fasting) may support metabolic health, weight management, and circadian rhythms.",
+    "agent_goal": "Practice time-restricted eating or intermittent fasting",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "LDL",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Bodyfat"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI070",
+      "LI071",
+      "LI072"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0017.1",
+      "REC0017.2",
+      "REC0017.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0017"
+    }
+  },
+  {
+    "id": "first_meal_timing",
+    "name": "First Meal Timing",
+    "description": "Aligning the timing of your first meal with your natural circadian rhythm may improve metabolic health, energy levels, and blood sugar control. ",
+    "agent_goal": "Follow first meal timing recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI073",
+      "LI074",
+      "LI075"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0018.1",
+      "REC0018.2",
+      "REC0018.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0018"
+    }
+  },
+  {
+    "id": "final_meal_timing",
+    "name": "Final Meal Timing",
+    "description": "Eating your final meal well before bedtime supports digestion, sleep quality, and circadian health. Early final meal timing may improve blood sugar, fat metabolism, and reduce nighttime reflux or discomfort.",
+    "agent_goal": "Follow final meal timing recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "LDL",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "REM Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [
+      "LI076",
+      "LI077",
+      "LI078"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0019.1",
+      "REC0019.2",
+      "REC0019.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0019"
+    }
+  },
+  {
+    "id": "daily_water_intake",
+    "name": "Daily Water Intake",
+    "description": "Adequate hydration supports energy, metabolism, brain function, and healthy skin. Drinking enough water daily can improve mood, cognition, and overall well-being.",
+    "agent_goal": "Follow daily water intake recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "BUN",
+      "Calcium (Ionized)",
+      "Calcium (Serum)",
+      "Cortisol",
+      "Creatinine",
+      "Fasting Glucose",
+      "Sodium",
+      "eGFR"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "Hematocrit",
+      "Hemoglobin",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Resting Heart Rate"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI079",
+      "LI080",
+      "LI081",
+      "LI082"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0020.1",
+      "REC0020.2",
+      "REC0020.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0020"
+    }
+  },
+  {
+    "id": "daily_whole_food_meals",
+    "name": "Daily Whole Food Meals",
+    "description": "Emphasizing whole, minimally processed foods at meals supports metabolic health, lowers inflammation, and improves gut health and satiety.",
+    "agent_goal": "Follow daily whole food meals recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Homocysteine",
+      "LDL",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI083",
+      "LI084",
+      "LI085",
+      "LI086"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0021.1",
+      "REC0021.2",
+      "REC0021.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0021"
+    }
+  },
+  {
+    "id": "daily_ultra_processed_foods",
+    "name": "Daily Ultra-Processed Foods",
+    "description": "Ultra-processed foods (e.g., packaged snacks, sweetened beverages, fast food) increase risk for metabolic disease and inflammation. Reducing intake supports long-term health.",
+    "agent_goal": "Follow daily ultra-processed foods recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "HDL"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI083",
+      "LI086",
+      "LI087",
+      "LI088"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0022.1",
+      "REC0022.2",
+      "REC0022.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0022"
+    }
+  },
+  {
+    "id": "daily_takeoutdelivery_meals",
+    "name": "Daily Takeout/Delivery Meals",
+    "description": "Regular takeout or delivery meals, especially from fast food or chain restaurants, are often higher in calories, sodium, and unhealthy fats. Reducing takeout improves dietary quality and supports health.",
+    "agent_goal": "Follow daily takeout/delivery meals recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "LDL",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "HDL"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [
+      "LI089",
+      "LI090",
+      "LI091",
+      "LI092",
+      "LI093"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0023.1",
+      "REC0023.2",
+      "REC0023.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0023"
+    }
+  },
+  {
+    "id": "daily_plant_based_meals",
+    "name": "Daily Plant-Based Meals",
+    "description": "Plant-based meals support cardiovascular, metabolic, and gut health by increasing fiber, phytonutrients, and healthy fats while lowering inflammation.",
+    "agent_goal": "Follow daily plant-based meals recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Dietary",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Folate (RBC)",
+      "Folate Serum",
+      "HDL",
+      "HOMA-IR",
+      "Homocysteine",
+      "LDL",
+      "Magnesium (RBC)",
+      "Total Cholesterol",
+      "Vitamin B12",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Resting Heart Rate"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI033",
+      "LI035",
+      "LI050",
+      "LI052",
+      "LI084",
+      "LI094",
+      "LI095",
+      "LI096"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0024.1",
+      "REC0024.2",
+      "REC0024.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0024"
+    }
+  },
+  {
+    "id": "zone_2_cardio_sessions",
+    "name": "Zone 2 Cardio Sessions",
+    "description": "Zone 2 cardio\u2014sustained, moderate-intensity aerobic activity\u2014improves metabolic, mitochondrial, and cardiovascular health.",
+    "agent_goal": "Perform Zone 2 cardio (moderate intensity, conversational pace) regularly",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "HDL",
+      "HbA1c",
+      "LDL",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 85,
+    "evidence_ids": [
+      "LI022",
+      "LI023",
+      "LI024",
+      "LI097",
+      "LI098",
+      "LI099",
+      "LI100",
+      "LI101",
+      "LI102",
+      "LI103",
+      "LI106",
+      "LI107",
+      "LI114",
+      "LI115",
+      "LI117",
+      "LI118",
+      "LI119",
+      "LI121"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0025.1",
+      "REC0025.2",
+      "REC0025.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0025"
+    }
+  },
+  {
+    "id": "daily_steps",
+    "name": "Daily Steps",
+    "description": "Daily step count is a simple, powerful marker of physical activity and metabolic health. Increasing steps improves cardiovascular, cognitive, and overall health.",
+    "agent_goal": "Walk daily to improve cardiovascular health",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HDL",
+      "HbA1c",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Resting Heart Rate",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 90,
+    "evidence_ids": [
+      "LI097",
+      "LI098",
+      "LI099",
+      "LI100",
+      "LI101",
+      "LI102",
+      "LI103",
+      "LI104",
+      "LI105",
+      "LI118",
+      "LI119",
+      "LI120",
+      "LI121",
+      "LI122"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0026.1",
+      "REC0026.2",
+      "REC0026.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0026"
+    }
+  },
+  {
+    "id": "strength_training_sessions",
+    "name": "Strength Training Sessions",
+    "description": "Strength training supports muscle, bone, and metabolic health, improves longevity, and reduces injury risk.",
+    "agent_goal": "Perform strength training to maintain muscle mass and bone density",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "Free Testosterone",
+      "HDL",
+      "HOMA-IR",
+      "HbA1c",
+      "Testosterone",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Homocysteine",
+      "Triglycerides",
+      "Vitamin D"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Bodyfat",
+      "Grip Strength",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 90,
+    "evidence_ids": [
+      "LI100",
+      "LI106",
+      "LI107",
+      "LI108",
+      "LI109",
+      "LI110",
+      "LI124"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0027.1",
+      "REC0027.2",
+      "REC0027.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0027"
+    }
+  },
+  {
+    "id": "strength_training_duration",
+    "name": "Strength Training Duration",
+    "description": "The total weekly time spent on strength training is a key driver for muscle adaptation and longevity.",
+    "agent_goal": "Perform strength training to maintain muscle mass and bone density",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "Free Testosterone",
+      "HDL",
+      "HOMA-IR",
+      "HbA1c",
+      "Testosterone",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Homocysteine",
+      "Triglycerides",
+      "Vitamin D"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Bodyfat",
+      "Grip Strength",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI106",
+      "LI107",
+      "LI108",
+      "LI109",
+      "LI110",
+      "LI111",
+      "LI112",
+      "LI113"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0028.1",
+      "REC0028.2",
+      "REC0028.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0028"
+    }
+  },
+  {
+    "id": "hiit_sessions",
+    "name": "HIIT Sessions",
+    "description": "HIIT improves aerobic/anaerobic fitness, insulin sensitivity, and heart health with time-efficient, intense intervals.",
+    "agent_goal": "Follow hiit sessions recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Free Testosterone",
+      "HDL",
+      "HOMA-IR",
+      "HbA1c",
+      "Homocysteine",
+      "LDL",
+      "Testosterone",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "Grip Strength",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Skeletal Muscle Mass to Fat-Free Mass",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI114",
+      "LI115",
+      "LI116",
+      "LI117"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0029.1",
+      "REC0029.2",
+      "REC0029.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0029"
+    }
+  },
+  {
+    "id": "hiit_duration",
+    "name": "HIIT Duration",
+    "description": "Short, focused HIIT bursts provide substantial cardiovascular and metabolic benefits.",
+    "agent_goal": "Follow hiit duration recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "HDL",
+      "HbA1c",
+      "LDL"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI114",
+      "LI115",
+      "LI116",
+      "LI117"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0030.1",
+      "REC0030.2",
+      "REC0030.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0030"
+    }
+  },
+  {
+    "id": "daily_active_time",
+    "name": "Daily Active Time",
+    "description": "Building more daily movement boosts mood, metabolism, heart health, and helps maintain a healthy weight. Active time is a core pillar of physical and mental resilience.",
+    "agent_goal": "Follow daily active time recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HDL",
+      "HbA1c",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Resting Heart Rate",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI118",
+      "LI119",
+      "LI120",
+      "LI121",
+      "LI122"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0031.1",
+      "REC0031.2",
+      "REC0031.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0031"
+    }
+  },
+  {
+    "id": "sedentary_time",
+    "name": "Sedentary Time",
+    "description": "Reducing prolonged sitting lowers cardiometabolic and cognitive risk, improves posture, and supports more sustained energy throughout the day.",
+    "agent_goal": "Follow sedentary time recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HDL",
+      "HbA1c",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Resting Heart Rate",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Deep Sleep",
+      "HRV",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 75,
+    "evidence_ids": [
+      "LI118",
+      "LI121"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0032.1",
+      "REC0032.2",
+      "REC0032.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0032"
+    }
+  },
+  {
+    "id": "weekly_mobility_sessions",
+    "name": "Weekly Mobility Sessions",
+    "description": "Regular mobility sessions improve flexibility, joint health, and recovery\u2014helping you move better and reduce injury risk as you get stronger.",
+    "agent_goal": "Follow weekly mobility sessions recommendation",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "REM Sleep",
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI123",
+      "LI124",
+      "LI125",
+      "LI126"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0033.1",
+      "REC0033.2",
+      "REC0033.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0033"
+    }
+  },
+  {
+    "id": "weekly_mobility_minutes",
+    "name": "Weekly Mobility Minutes",
+    "description": "Short, frequent mobility work helps restore movement patterns, prevent stiffness, and builds a foundation for lifelong resilience.",
+    "agent_goal": "Follow weekly mobility minutes recommendation",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Homocysteine"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [
+      "LI123",
+      "LI124",
+      "LI125",
+      "LI126"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0034.1",
+      "REC0034.2",
+      "REC0034.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0034"
+    }
+  },
+  {
+    "id": "weekly_post_meal_activity_minutes",
+    "name": "Weekly Post-Meal Activity Minutes",
+    "description": "Moving after meals improves blood sugar control, supports digestion, and can reduce cardiometabolic risk\u2014especially when made a regular habit.",
+    "agent_goal": "Follow weekly post-meal activity minutes recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "HOMA-IR",
+      "HbA1c",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI120",
+      "LI122",
+      "LI127",
+      "LI128",
+      "LI129",
+      "LI130",
+      "LI131"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0035.1",
+      "REC0035.2",
+      "REC0035.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0035"
+    }
+  },
+  {
+    "id": "weekly_post_meal_activity_sessions",
+    "name": "Weekly Post-Meal Activity Sessions",
+    "description": "Frequent post-meal movement supports digestion and helps stabilize glucose\u2014just a few sessions per week makes a difference.",
+    "agent_goal": "Follow weekly post-meal activity sessions recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "HOMA-IR",
+      "HbA1c",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI127",
+      "LI128",
+      "LI129",
+      "LI130",
+      "LI131"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0036.1",
+      "REC0036.2",
+      "REC0036.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0036"
+    }
+  },
+  {
+    "id": "weekly_exercise_snacks",
+    "name": "Weekly Exercise Snacks",
+    "description": "\u201cExercise snacks\u201d\u2014short bursts of movement\u2014improve metabolic health, mood, and energy, and make movement more achievable in busy schedules.",
+    "agent_goal": "Follow weekly exercise snacks recommendation",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "Triglycerides",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI132",
+      "LI133",
+      "LI134"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0037.1",
+      "REC0037.2",
+      "REC0037.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0037"
+    }
+  },
+  {
+    "id": "sleep_timing_consistency",
+    "name": "Sleep Timing Consistency",
+    "description": "Consistent bedtimes strengthen circadian rhythm, improve rest quality, and make mornings more predictable\u2014key for resilience.",
+    "agent_goal": "Follow sleep timing consistency recommendation",
+    "pillar": "sleep",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "HOMA-IR",
+      "Neutrophil/Lymphocyte Ratio",
+      "SHBG",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "HDL",
+      "HbA1c",
+      "LDL",
+      "RDW",
+      "Testosterone",
+      "Triglycerides",
+      "Vitamin B12"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Skeletal Muscle Mass to Fat-Free Mass",
+      "VO2 Max"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI138",
+      "LI139",
+      "LI140",
+      "LI141",
+      "LI142",
+      "LI143"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0039.1",
+      "REC0039.2",
+      "REC0039.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0039"
+    }
+  },
+  {
+    "id": "wake_time_consistency",
+    "name": "Wake Time Consistency",
+    "description": "Consistent wake times anchor the circadian clock, support better sleep quality, and improve daily energy patterns.",
+    "agent_goal": "Follow wake time consistency recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "HOMA-IR",
+      "Neutrophil/Lymphocyte Ratio",
+      "SHBG",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "HDL",
+      "HbA1c",
+      "LDL",
+      "RDW",
+      "Testosterone",
+      "Triglycerides",
+      "Vitamin B12"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Skeletal Muscle Mass to Fat-Free Mass",
+      "VO2 Max"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI058",
+      "LI138",
+      "LI139",
+      "LI140",
+      "LI141",
+      "LI142",
+      "LI143"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0040.1",
+      "REC0040.2",
+      "REC0040.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0040"
+    }
+  },
+  {
+    "id": "daily_early_morning_natural_light_exposure",
+    "name": "Daily Early Morning Natural Light Exposure",
+    "description": "Early natural light helps regulate your body clock, boost mood, and support healthy sleep.",
+    "agent_goal": "Follow daily early morning natural light exposure recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Vitamin D"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "HOMA-IR",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI144",
+      "LI145",
+      "LI146"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0041.1",
+      "REC0041.2",
+      "REC0041.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0041"
+    }
+  },
+  {
+    "id": "large_meals_3_hours_before_bed",
+    "name": "Large Meals \u22643 Hours Before Bed",
+    "description": "Reducing late large meals helps support digestion, sleep quality, and metabolic health.",
+    "agent_goal": "Follow large meals \u22643 hours before bed recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "LDL",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Bodyfat"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI147",
+      "LI148",
+      "LI149"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0042.1",
+      "REC0042.2",
+      "REC0042.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0042"
+    }
+  },
+  {
+    "id": "food_intake_2_hours_before_bed",
+    "name": "Food Intake \u22642 Hours Before Bed",
+    "description": "Avoiding all food close to bedtime supports restful sleep, digestion, and overnight recovery.",
+    "agent_goal": "Follow food intake \u22642 hours before bed recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "hsCRP"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "LDL",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "BMI",
+      "Bodyfat"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat",
+      "Deep Sleep",
+      "Hip-to-Waist Ratio",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI147",
+      "LI148",
+      "LI149"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0043.1",
+      "REC0043.2",
+      "REC0043.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0043"
+    }
+  },
+  {
+    "id": "alcohol_intake_3_4_hours_before_bed",
+    "name": "Alcohol Intake \u22643-4 Hours Before Bed",
+    "description": "Limiting alcohol before bed improves sleep quality, supports healthy metabolism, and reduces next-day grogginess.",
+    "agent_goal": "Follow alcohol intake \u22643-4 hours before bed recommendation",
+    "pillar": "nutrition",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "HOMA-IR",
+      "HbA1c",
+      "Triglycerides"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI150",
+      "LI153"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0044.1",
+      "REC0044.2",
+      "REC0044.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0044"
+    }
+  },
+  {
+    "id": "digital_device_time_2_hours_before_bed",
+    "name": "Digital Device Time \u22642 Hours Before Bed",
+    "description": "Reducing screen time before bed supports melatonin production, sleep onset, and better nightly rest.",
+    "agent_goal": "Follow digital device time \u22642 hours before bed recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "ApoB",
+      "Free Testosterone",
+      "HDL",
+      "Testosterone",
+      "Triglycerides",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 50,
+    "evidence_ids": [
+      "LI151",
+      "LI152"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0045.1",
+      "REC0045.2",
+      "REC0045.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0045"
+    }
+  },
+  {
+    "id": "breathwork_or_mindfulness_sessions",
+    "name": "Breathwork or Mindfulness Sessions",
+    "description": "Breathwork and mindfulness can lower stress, support emotional health, and improve focus.",
+    "agent_goal": "Practice mindfulness or meditation regularly",
+    "pillar": "stress",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "HbA1c",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI154",
+      "LI155",
+      "LI156"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0046.1",
+      "REC0046.2",
+      "REC0046.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0046"
+    }
+  },
+  {
+    "id": "social_interaction_events",
+    "name": "Social Interaction Events",
+    "description": "Social events help strengthen relationships, build connection, and boost overall mental health.",
+    "agent_goal": "Engage in regular social interaction",
+    "pillar": "connection",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Homocysteine",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 70,
+    "evidence_ids": [
+      "LI157",
+      "LI158",
+      "LI159",
+      "LI160"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0047.1",
+      "REC0047.2",
+      "REC0047.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0047"
+    }
+  },
+  {
+    "id": "gratitude_practice",
+    "name": "Gratitude Practice",
+    "description": "Gratitude practice builds resilience, positivity, and supports emotional well-being.",
+    "agent_goal": "Follow gratitude practice recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI161",
+      "LI162",
+      "LI163",
+      "LI166"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0048.1",
+      "REC0048.2",
+      "REC0048.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0048"
+    }
+  },
+  {
+    "id": "journaling_or_reflection_sessions",
+    "name": "Journaling or Reflection Sessions",
+    "description": "Journaling or reflection helps process emotions, clarify goals, and reduce stress.",
+    "agent_goal": "Follow journaling or reflection sessions recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 40,
+    "evidence_ids": [
+      "LI164",
+      "LI165",
+      "LI166"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0049.1",
+      "REC0049.2",
+      "REC0049.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0049"
+    }
+  },
+  {
+    "id": "outdoor_time_minutes",
+    "name": "Outdoor Time (minutes)",
+    "description": "Outdoor time improves mood, focus, vitamin D, and overall well-being.",
+    "agent_goal": "Follow outdoor time (minutes) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Homocysteine",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [
+      "LI167",
+      "LI168",
+      "LI169",
+      "LI170",
+      "LI177"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0050.1",
+      "REC0050.2",
+      "REC0050.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0050"
+    }
+  },
+  {
+    "id": "morning_outdoor_time_minutes",
+    "name": "Morning Outdoor Time (minutes)",
+    "description": "Morning outdoor time supports circadian rhythm, energy, and mood.",
+    "agent_goal": "Follow morning outdoor time (minutes) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Homocysteine",
+      "Vitamin D"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI171",
+      "LI172",
+      "LI173",
+      "LI174",
+      "LI175",
+      "LI176",
+      "LI177"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0051.1",
+      "REC0051.2",
+      "REC0051.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0051"
+    }
+  },
+  {
+    "id": "digital_device_time_minutes",
+    "name": "Digital Device Time (minutes)",
+    "description": "Reducing non-work screen time supports better focus, healthier sleep patterns, and improved mental well-being. Non-work screen time refers to recreational or passive use of digital devices outside of job-related responsibilities\u2014such as watching videos, scrolling social media, playing games, or browsing aimlessly.",
+    "agent_goal": "Follow digital device time (minutes) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Homocysteine",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 45,
+    "evidence_ids": [
+      "LI178",
+      "LI179",
+      "LI180"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0052.1",
+      "REC0052.2",
+      "REC0052.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0052"
+    }
+  },
+  {
+    "id": "brain_training_activity_minutes",
+    "name": "Brain Training Activity (minutes)",
+    "description": "Brain training supports cognitive health, focus, and lifelong learning.",
+    "agent_goal": "Follow brain training activity (minutes) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 40,
+    "evidence_ids": [
+      "LI181",
+      "LI182",
+      "LI183"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0053.1",
+      "REC0053.2",
+      "REC0053.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0053"
+    }
+  },
+  {
+    "id": "daily_social_interaction_time_minutes",
+    "name": "Daily Social Interaction Time (minutes)",
+    "description": "Daily social connection boosts mood, resilience, and cognitive health.",
+    "agent_goal": "Engage in regular social interaction",
+    "pillar": "connection",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Homocysteine",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI184",
+      "LI185",
+      "LI186",
+      "LI187",
+      "LI188",
+      "LI189",
+      "LI190"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0054.1",
+      "REC0054.2",
+      "REC0054.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0054"
+    }
+  },
+  {
+    "id": "daily_smoking_cigarettes",
+    "name": "Daily Smoking (cigarettes)",
+    "description": "Reducing smoking immediately improves cardiovascular and lung health.",
+    "agent_goal": "Follow daily smoking (cigarettes) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "Homocysteine",
+      "Triglycerides",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 100,
+    "evidence_ids": [
+      "LI191",
+      "LI192",
+      "LI193",
+      "LI194",
+      "LI195"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0055.1",
+      "REC0055.2",
+      "REC0055.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0055"
+    }
+  },
+  {
+    "id": "daily_brushing_timesday",
+    "name": "Daily Brushing (times/day)",
+    "description": "Brushing daily is foundational for oral health, reducing risk of cavities and gum disease.",
+    "agent_goal": "Follow daily brushing (times/day) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [
+      "LI196",
+      "LI197",
+      "LI198",
+      "LI199",
+      "LI200"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0056.1",
+      "REC0056.2",
+      "REC0056.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0056"
+    }
+  },
+  {
+    "id": "daily_flossing",
+    "name": "Daily Flossing",
+    "description": "Regular flossing removes plaque and supports healthy gums, lowering long-term oral health risks.",
+    "agent_goal": "Follow daily flossing recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB",
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [
+      "LI199"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0057.1",
+      "REC0057.2",
+      "REC0057.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0057"
+    }
+  },
+  {
+    "id": "daily_skincare_routine",
+    "name": "Daily Skincare Routine",
+    "description": "Consistent skincare protects the skin barrier, supports appearance, and reduces long-term damage.",
+    "agent_goal": "Follow daily skincare routine recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 30,
+    "evidence_ids": [
+      "LI203",
+      "LI204"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0058.1",
+      "REC0058.2",
+      "REC0058.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0058"
+    }
+  },
+  {
+    "id": "daily_sunscreen_use",
+    "name": "Daily Sunscreen Use",
+    "description": "Daily sunscreen use protects against sunburn, premature aging, and reduces skin cancer risk.",
+    "agent_goal": "Follow daily sunscreen use recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [
+      "LI201",
+      "LI202"
+    ],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0059.1",
+      "REC0059.2",
+      "REC0059.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0059"
+    }
+  },
+  {
+    "id": "autologous_stem_cell_therapy",
+    "name": "Autologous Stem Cell Therapy",
+    "description": "Stem cell therapies use a person\u2019s own or donor-derived stem cells to promote tissue regeneration, immune modulation, and may slow aspects of aging. Early human studies show benefit for orthopedic, cardiovascular, and immune function, but protocols are experimental and not widely regulated.",
+    "agent_goal": "Follow autologous stem cell therapy recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 30,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0164.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0164"
+    }
+  },
+  {
+    "id": "platelet_rich_plasma_prp_injections",
+    "name": "Platelet-Rich Plasma (PRP) Injections",
+    "description": "PRP therapy involves concentrating your own platelets and injecting them into tissues to accelerate repair and reduce inflammation. Used for joints, tendons, hair regrowth, and skin rejuvenation. Data are strongest for orthopedic injury, with early research in anti-aging.",
+    "agent_goal": "Follow platelet-rich plasma (prp) injections recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Albumin",
+      "Creatine Kinase",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Bodyfat",
+      "Grip Strength"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 20,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0165.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0165"
+    }
+  },
+  {
+    "id": "fecal_microbiota_transplantation_fmt",
+    "name": "Fecal Microbiota Transplantation (FMT)",
+    "description": "FMT introduces healthy donor gut bacteria into the colon to restore microbiome diversity. Clinically validated for C. difficile infection; under research for metabolic, immune, and neurodegenerative diseases.",
+    "agent_goal": "Follow fecal microbiota transplantation (fmt) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Creatine Kinase",
+      "Platelet Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Grip Strength"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 15,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0166.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0166"
+    }
+  },
+  {
+    "id": "exosome_therapy",
+    "name": "Exosome Therapy",
+    "description": "Exosomes are cell-derived vesicles thought to mediate many benefits of stem cells\u2014anti-inflammatory, tissue repair, and cellular communication. Mostly experimental, with pilot evidence for arthritis, skin, and neurological conditions.",
+    "agent_goal": "Follow exosome therapy recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Albumin",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "BMI",
+      "HRV"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 20,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0167.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0167"
+    }
+  },
+  {
+    "id": "young_plasma_exchange_plasma_dilution",
+    "name": "Young Plasma Exchange / Plasma Dilution",
+    "description": "\u201cYoung blood\u201d or plasma dilution therapies aim to remove pro-aging factors from the blood. Inspired by animal studies, early trials in humans show some improvements in biomarkers, but long-term safety and benefits remain unproven.",
+    "agent_goal": "Follow young plasma exchange / plasma dilution recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "ApoB"
+    ],
+    "secondary_biomarkers": [
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 15,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0168.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0168"
+    }
+  },
+  {
+    "id": "senolytic_drug_protocol_dasatinib_quercetin_fiseti",
+    "name": "Senolytic Drug Protocol (Dasatinib + Quercetin, Fisetin, Navitoclax, etc.)",
+    "description": "Senolytics are agents that selectively destroy senescent (\u201czombie\u201d) cells. Dasatinib + quercetin, fisetin, and navitoclax have been studied in animals and early-phase human trials for reducing markers of aging, improving physical function, and organ health.",
+    "agent_goal": "Follow senolytic drug protocol (dasatinib + quercetin, fisetin, navitoclax, etc.) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Albumin",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 15,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0169.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0169"
+    }
+  },
+  {
+    "id": "whole_body_cryotherapy",
+    "name": "Whole-Body Cryotherapy",
+    "description": "Cryotherapy involves brief exposure to very cold temperatures to reduce inflammation, support recovery, and possibly improve mood/metabolic health. Data strongest for pain/recovery; anti-aging effects are speculative.",
+    "agent_goal": "Follow whole-body cryotherapy recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Homocysteine",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0170.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0170"
+    }
+  },
+  {
+    "id": "hyperbaric_oxygen_therapy_hbot",
+    "name": "Hyperbaric Oxygen Therapy (HBOT)",
+    "description": "HBOT exposes the body to pure oxygen at high pressure, promoting tissue repair, stem cell release, and (in small studies) telomere lengthening and improved cognition in aging adults.",
+    "agent_goal": "Follow hyperbaric oxygen therapy (hbot) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Creatine Kinase",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 20,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0171.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0171"
+    }
+  },
+  {
+    "id": "photobiomodulation_rednir_light_therapy",
+    "name": "Photobiomodulation (Red/NIR Light Therapy)",
+    "description": "Red and near-infrared light exposure is thought to improve mitochondrial function, reduce inflammation, support skin/brain health, and possibly slow aging processes. Data are mixed but growing for cognitive, mood, and skin outcomes.",
+    "agent_goal": "Follow photobiomodulation (red/nir light therapy) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Hemoglobin",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0172.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0172"
+    }
+  },
+  {
+    "id": "autophagyparabiosis_protocol_fasting_mimetic_drugs",
+    "name": "Autophagy/Parabiosis Protocol (fasting-mimetic drugs, plasma exchange, etc.)",
+    "description": "These protocols seek to stimulate autophagy (cellular recycling), reduce senescent factors, and rejuvenate tissue health. Most are investigational, with benefit/risk still under study.",
+    "agent_goal": "Practice time-restricted eating or intermittent fasting",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Creatine Kinase",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0173.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0173"
+    }
+  },
+  {
+    "id": "continuous_glucose_monitor_cgm",
+    "name": "Continuous Glucose Monitor (CGM)",
+    "description": "CGMs provide real-time blood sugar data in response to food, exercise, sleep, and stress\u2014empowering personalized optimization and early detection of metabolic risk.",
+    "agent_goal": "Follow continuous glucose monitor (cgm) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "HOMA-IR",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Bodyfat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 20,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0174.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0174"
+    }
+  },
+  {
+    "id": "sleep_tracker",
+    "name": "Sleep Tracker",
+    "description": "Sleep trackers (Oura, WHOOP, Apple Watch, etc.) monitor sleep duration, stages, and variability\u2014enabling targeted sleep routines and nudges for recovery.",
+    "agent_goal": "Follow sleep tracker recommendation",
+    "pillar": "sleep",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "Fasting Glucose",
+      "Fasting Insulin",
+      "HOMA-IR"
+    ],
+    "tertiary_biomarkers": [
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0175.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0175"
+    }
+  },
+  {
+    "id": "movement_activity_tracker",
+    "name": "Movement & Activity Tracker",
+    "description": "Activity trackers (Fitbit, Garmin, Apple, etc.) provide insight on daily steps, activity minutes, heart rate, and support adherence to movement goals.",
+    "agent_goal": "Follow movement & activity tracker recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Testosterone",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Total Sleep"
+    ],
+    "secondary_biometrics": [
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 30,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0176.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0176"
+    }
+  },
+  {
+    "id": "heart_rate_hrv_monitor",
+    "name": "Heart Rate & HRV Monitor",
+    "description": "Devices that track HR and HRV (Oura, WHOOP, chest straps) help gauge fitness, recovery, and stress response\u2014guiding readiness and recovery protocols.",
+    "agent_goal": "Follow heart rate & hrv monitor recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "HbA1c"
+    ],
+    "secondary_biomarkers": [
+      "HDL",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV",
+      "VO2 Max"
+    ],
+    "secondary_biometrics": [
+      "Resting Heart Rate",
+      "Steps/Day"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0177.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0177"
+    }
+  },
+  {
+    "id": "blood_pressure_monitor_home",
+    "name": "Blood Pressure Monitor (Home)",
+    "description": "Home BP monitoring enables early detection of hypertension, tracking trends, and medication adjustment outside clinic visits.",
+    "agent_goal": "Follow blood pressure monitor (home) recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Systolic)",
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0178.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0178"
+    }
+  },
+  {
+    "id": "body_composition_analyzer",
+    "name": "Body Composition Analyzer",
+    "description": "Smart scales and impedance devices help monitor progress in muscle gain, fat loss, and metabolic health for ongoing adjustment.",
+    "agent_goal": "Follow body composition analyzer recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Homocysteine",
+      "Uric Acid",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0179.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0179"
+    }
+  },
+  {
+    "id": "stress_tracker",
+    "name": "Stress Tracker",
+    "description": "Wearables and apps estimate stress via HRV, skin conductance, or sleep/activity patterns\u2014surfacing trends and supporting behavioral change.",
+    "agent_goal": "Implement stress management practices",
+    "pillar": "stress",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Fasting Insulin",
+      "Testosterone",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [],
+    "secondary_biometrics": [
+      "BMI",
+      "Bodyfat",
+      "Hip-to-Waist Ratio",
+      "Skeletal Muscle Mass to Fat-Free Mass",
+      "Visceral Fat"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0180.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0180"
+    }
+  },
+  {
+    "id": "grip_strength_dynamometer",
+    "name": "Grip Strength Dynamometer",
+    "description": "Grip strength is a powerful predictor of frailty, resilience, and longevity. Tracking monthly identifies early loss and guides strength recs.",
+    "agent_goal": "Perform strength training to maintain muscle mass and bone density",
+    "pillar": "movement",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "DHEA-S",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Systolic)",
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0181.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0181"
+    }
+  },
+  {
+    "id": "smart_pill_dispensermedication_tracker",
+    "name": "Smart Pill Dispenser/Medication Tracker",
+    "description": "Medication trackers help reduce missed doses, ensure therapy success, and provide reminders for prescription or supplement protocols.",
+    "agent_goal": "Follow smart pill dispenser/medication tracker recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Albumin",
+      "Testosterone",
+      "Vitamin D"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Grip Strength"
+    ],
+    "secondary_biometrics": [
+      "Bodyfat",
+      "Skeletal Muscle Mass to Fat-Free Mass"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 25,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0182.1"
+    ],
+    "variant_count": 1,
+    "agent_context": {
+      "has_difficulty_levels": false,
+      "source_base_id": "REC0182"
+    }
+  },
+  {
+    "id": "sauna_therapy",
+    "name": "Sauna Therapy",
+    "description": "Sauna bathing is linked to reduced cardiovascular, dementia, and all-cause mortality risk\u2014possibly via hormesis, improved vascular function, and stress reduction.",
+    "agent_goal": "Use sauna therapy for cardiovascular and longevity benefits",
+    "pillar": "optimization",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "LDL"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "HDL",
+      "Magnesium (RBC)",
+      "Total Cholesterol",
+      "Vitamin B12",
+      "Vitamin D",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 20,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0183.1",
+      "REC0183.2",
+      "REC0183.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0183"
+    }
+  },
+  {
+    "id": "cold_exposure_cold_plunge",
+    "name": "Cold Exposure / Cold Plunge",
+    "description": "Cold exposure activates brown fat, boosts mood, may support immune health, and builds resilience via hormesis.",
+    "agent_goal": "Practice cold exposure therapy",
+    "pillar": "optimization",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [
+      "LDL"
+    ],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "HDL",
+      "Neutrophils",
+      "Total Cholesterol",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "Resting Heart Rate"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 40,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0184.1",
+      "REC0184.2",
+      "REC0184.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0184"
+    }
+  },
+  {
+    "id": "hepa_air_purifier_use",
+    "name": "HEPA Air Purifier Use",
+    "description": "Clean indoor air reduces exposure to allergens, pollutants, and improves lung and cognitive health\u2014especially in urban environments.",
+    "agent_goal": "Follow hepa air purifier use recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Eosinophils",
+      "Neutrophils",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Systolic)",
+      "HRV",
+      "Resting Heart Rate",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0185.1",
+      "REC0185.2",
+      "REC0185.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0185"
+    }
+  },
+  {
+    "id": "blue_light_blocking_protocol",
+    "name": "Blue Light Blocking Protocol",
+    "description": "Reducing blue light at night supports melatonin production, circadian rhythm, and sleep quality.",
+    "agent_goal": "Follow blue light blocking protocol recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Eosinophils",
+      "Magnesium (RBC)",
+      "TSH",
+      "White Blood Cell Count",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Blood Pressure (Systolic)",
+      "Deep Sleep",
+      "HRV",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0186.1",
+      "REC0186.2",
+      "REC0186.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0186"
+    }
+  },
+  {
+    "id": "professional_therapy",
+    "name": "Professional Therapy",
+    "description": "Working with a licensed therapist helps improve emotional health, reduce stress, and build long-term psychological resilience.",
+    "agent_goal": "Follow professional therapy recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "DHEA-S",
+      "Magnesium (RBC)",
+      "TSH",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Deep Sleep",
+      "REM Sleep",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0187.1",
+      "REC0187.2",
+      "REC0187.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0187"
+    }
+  },
+  {
+    "id": "psychedelic_assisted_therapy",
+    "name": "Psychedelic-Assisted Therapy",
+    "description": "Psychedelic-assisted therapy (e.g., ketamine, psilocybin) may promote deep psychological breakthroughs, reduce depression, and support emotional healing.",
+    "agent_goal": "Follow psychedelic-assisted therapy recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "DHEA-S",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 65,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0188.1",
+      "REC0188.2",
+      "REC0188.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0188"
+    }
+  },
+  {
+    "id": "digital_mental_health_tools",
+    "name": "Digital Mental Health Tools",
+    "description": "Digital mental health apps offer guided support for mood, focus, anxiety, and self-reflection. They expand access to structured tools outside of therapy.",
+    "agent_goal": "Follow digital mental health tools recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 35,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0189.1",
+      "REC0189.2",
+      "REC0189.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0189"
+    }
+  },
+  {
+    "id": "community_engagement",
+    "name": "Community Engagement",
+    "description": "Meaningful connection to community\u2014through clubs, faith groups, volunteering, or shared hobbies\u2014supports emotional health, purpose, and even longevity.",
+    "agent_goal": "Follow community engagement recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 30,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0190.1",
+      "REC0190.2",
+      "REC0190.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0190"
+    }
+  },
+  {
+    "id": "purpose_meaning_work",
+    "name": "Purpose & Meaning Work",
+    "description": "A clear sense of purpose has been linked to better physical and mental health, greater life satisfaction, and lower mortality risk\u2014especially when integrated daily.",
+    "agent_goal": "Follow purpose & meaning work recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "DHEA-S",
+      "Homocysteine",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [],
+    "primary_biometrics": [
+      "Blood Pressure (Diastolic)",
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "HRV",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 60,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0191.1",
+      "REC0191.2",
+      "REC0191.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0191"
+    }
+  },
+  {
+    "id": "financial_wellness_habits",
+    "name": "Financial Wellness Habits",
+    "description": "Financial stress negatively impacts mental and physical health. Basic money tracking builds control, reduces anxiety, and enables long-term wellbeing and security.",
+    "agent_goal": "Follow financial wellness habits recommendation",
+    "pillar": "lifestyle",
+    "recommendation_type": "Behavior",
+    "primary_biomarkers": [],
+    "secondary_biomarkers": [
+      "Cortisol",
+      "DHEA-S",
+      "hsCRP"
+    ],
+    "tertiary_biomarkers": [
+      "Fasting Insulin",
+      "HOMA-IR",
+      "Lp(a)",
+      "Omega-3 Index"
+    ],
+    "primary_biometrics": [
+      "Blood Pressure (Systolic)",
+      "HRV"
+    ],
+    "secondary_biometrics": [
+      "BMI",
+      "HRV",
+      "Total Sleep"
+    ],
+    "tertiary_biometrics": [],
+    "raw_impact": 55,
+    "evidence_ids": [],
+    "contraindications": "",
+    "source_rec_ids": [
+      "REC0192.1",
+      "REC0192.2",
+      "REC0192.3"
+    ],
+    "variant_count": 3,
+    "agent_context": {
+      "has_difficulty_levels": true,
+      "source_base_id": "REC0192"
+    }
+  }
+]

@@ -32,7 +32,7 @@ class CalculateScoresResponse(BaseModel):
     patient_id: str
     score_date: str
     overall_score: float
-    pillar_scores: Dict[str, Any]
+    pillar_scores: List[Dict[str, Any]]  # List of pillar score dicts
     active_recommendations: int
     recommendations_scored: int
     execution_time_seconds: float

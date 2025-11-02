@@ -178,6 +178,9 @@ def generate_sleep_data(conn, days=30):
     start_date = datetime.now() - timedelta(days=days)
     total_entries = 0
 
+    # Pick ONE random day for the nap
+    nap_day = random.randint(5, days - 5)
+
     for day_offset in range(days):
         current_date = start_date + timedelta(days=day_offset)
 
@@ -210,6 +213,26 @@ def generate_sleep_data(conn, days=30):
         # Count entries
         entries_for_night = len(stages) * 2  # start + end for each stage
         total_entries += entries_for_night
+
+        # Add a nap on the selected random day
+        if day_offset == nap_day:
+            nap_start_hour = random.randint(11, 13)
+            nap_start = current_date.replace(hour=nap_start_hour, minute=0, second=0, microsecond=0)
+            nap_duration_mins = random.randint(60, 120)  # 1-2 hour nap
+            nap_end = nap_start + timedelta(minutes=nap_duration_mins)
+
+            # Simple nap: mostly core sleep with some REM
+            core_mins = int(nap_duration_mins * 0.7)
+            rem_mins = nap_duration_mins - core_mins
+
+            nap_stages = [
+                {'stage': 'core', 'start': nap_start, 'end': nap_start + timedelta(minutes=core_mins)},
+                {'stage': 'rem', 'start': nap_start + timedelta(minutes=core_mins), 'end': nap_end}
+            ]
+
+            insert_sleep_stages(conn, current_date.date(), nap_stages)
+            total_entries += len(nap_stages) * 2
+            print(f"    ✨ Added {nap_duration_mins}-min nap at {nap_start_hour}:00")
 
         # Calculate sleep stats for this night
         deep_mins = sum((s['end'] - s['start']).total_seconds() / 60 for s in stages if s['stage'] == 'deep')

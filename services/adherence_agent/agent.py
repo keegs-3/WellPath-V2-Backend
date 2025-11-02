@@ -326,98 +326,70 @@ Be concise but thorough. Focus on facts and data."""
         score_date: date
     ) -> Dict[str, Any]:
         """
-        Retrieve all patient data available for a specific date.
-        This includes behavioral values, biometric readings, events, etc.
+        Retrieve all patient data from WellPath's aggregation system.
+
+        Queries:
+        - aggregation_results_cache: Aggregated metrics (steps, sleep, nutrition, etc.)
+        - patient_data_entries: Raw instance data
         """
         data = {
             "date": score_date.isoformat(),
-            "behavioral_values": [],
-            "biometric_readings": [],
-            "events": [],
-            "workouts": [],
-            "sleep": []
+            "aggregated_metrics": {},
+            "raw_entries": []
         }
 
-        # Behavioral values (tracked metrics)
-        query_behavioral = """
-        SELECT biometric_name, value, recorded_at, unit
-        FROM patient_behavioral_values
+        # Get aggregated data for this date
+        query_aggregations = """
+        SELECT
+            agg_metric_id,
+            period_type,
+            calculation_type_id,
+            value,
+            data_points_count
+        FROM aggregation_results_cache
         WHERE patient_id = %s
-          AND DATE(recorded_at) = %s
-        ORDER BY recorded_at
+          AND period_start::date <= %s
+          AND period_end::date >= %s
+          AND is_stale = false
+        ORDER BY agg_metric_id, period_type
         """
 
         with self.db.cursor() as cursor:
-            cursor.execute(query_behavioral, (patient_id, score_date))
+            cursor.execute(query_aggregations, (str(patient_id), score_date, score_date))
             for row in cursor.fetchall():
-                data['behavioral_values'].append({
+                metric_key = f"{row[0]}_{row[1]}_{row[2]}"
+                data['aggregated_metrics'][metric_key] = {
                     "metric": row[0],
-                    "value": float(row[1]) if row[1] else None,
-                    "time": row[2].isoformat() if row[2] else None,
-                    "unit": row[3]
-                })
+                    "period": row[1],
+                    "calc_type": row[2],
+                    "value": float(row[3]) if row[3] else None,
+                    "data_points": row[4]
+                }
 
-        # Biometric readings
-        query_biometric = """
-        SELECT biometric_name, value, unit, recorded_at
-        FROM patient_biometric_readings
+        # Get raw data entries for this date
+        query_entries = """
+        SELECT
+            field_id,
+            value_quantity,
+            value_text,
+            value_category,
+            entry_timestamp
+        FROM patient_data_entries
         WHERE patient_id = %s
-          AND DATE(recorded_at) = %s
-        ORDER BY recorded_at
+          AND entry_date = %s
+        ORDER BY entry_timestamp
         """
 
         with self.db.cursor() as cursor:
-            cursor.execute(query_biometric, (patient_id, score_date))
+            cursor.execute(query_entries, (str(patient_id), score_date))
             for row in cursor.fetchall():
-                data['biometric_readings'].append({
-                    "metric": row[0],
-                    "value": float(row[1]) if row[1] else None,
-                    "unit": row[2],
-                    "time": row[3].isoformat() if row[3] else None
+                data['raw_entries'].append({
+                    "field": row[0],
+                    "quantity": float(row[1]) if row[1] else None,
+                    "text": row[2],
+                    "category": row[3],
+                    "time": row[4].isoformat() if row[4] else None
                 })
-
-        # Patient events
-        query_events = """
-        SELECT event_type, event_data, recorded_at
-        FROM patient_events
-        WHERE patient_id = %s
-          AND DATE(recorded_at) = %s
-        ORDER BY recorded_at
-        """
-
-        try:
-            with self.db.cursor() as cursor:
-                cursor.execute(query_events, (patient_id, score_date))
-                for row in cursor.fetchall():
-                    data['events'].append({
-                        "type": row[0],
-                        "data": row[1],
-                        "time": row[2].isoformat() if row[2] else None
-                    })
-        except Exception as e:
-            logger.warning(f"Could not fetch events: {str(e)}")
-
-        # Sleep data
-        query_sleep = """
-        SELECT sleep_start, sleep_end, total_sleep_minutes, deep_sleep_minutes, rem_sleep_minutes
-        FROM patient_sleep_periods
-        WHERE patient_id = %s
-          AND DATE(sleep_start) = %s
-        """
-
-        try:
-            with self.db.cursor() as cursor:
-                cursor.execute(query_sleep, (patient_id, score_date))
-                for row in cursor.fetchall():
-                    data['sleep'].append({
-                        "start": row[0].isoformat() if row[0] else None,
-                        "end": row[1].isoformat() if row[1] else None,
-                        "total_minutes": row[2],
-                        "deep_minutes": row[3],
-                        "rem_minutes": row[4]
-                    })
-        except Exception as e:
-            logger.warning(f"Could not fetch sleep data: {str(e)}")
 
         return data
 
@@ -607,8 +579,8 @@ Be concise but thorough. Focus on facts and data."""
 
         with self.db.cursor() as cursor:
             cursor.execute(query, (
-                UUID(score['patient_id']),
-                UUID(score['patient_recommendation_id']),
+                score['patient_id'],
+                score['patient_recommendation_id'],
                 rec_uuid,
                 score['score_date'],
                 score['adherence_percentage'],
@@ -642,7 +614,7 @@ Be concise but thorough. Focus on facts and data."""
 
         with self.db.cursor() as cursor:
             cursor.execute(query, (
-                patient_id,
+                str(patient_id),
                 pillar_uuid,
                 score_date,
                 pillar_score['adherence_percentage'],
@@ -682,7 +654,7 @@ Be concise but thorough. Focus on facts and data."""
 
         with self.db.cursor() as cursor:
             cursor.execute(query, (
-                patient_id,
+                str(patient_id),
                 score_date,
                 overall_score['adherence_percentage'],
                 overall_score['active_recommendations'],
@@ -728,7 +700,7 @@ Be concise but thorough. Focus on facts and data."""
         try:
             with self.db.cursor() as cursor:
                 cursor.execute(query, (
-                    patient_id,
+                    str(patient_id),
                     agent_type,
                     duration_ms,
                     status,

@@ -84,68 +84,42 @@ class ContextBuilder:
         Returns most recent readings within lookback period.
         """
         query = """
-        SELECT
+        SELECT DISTINCT ON (pbr.biomarker_name)
             pbr.biomarker_name,
             pbr.value,
-            pbr.units,
-            pbr.reading_date,
-            bb.category,
-            bd.optimal_min,
-            bd.optimal_max,
-            bd.reference_min,
-            bd.reference_max
+            pbr.unit,
+            pbr.test_date,
+            bb.category
         FROM patient_biomarker_readings pbr
         JOIN biomarkers_base bb ON pbr.biomarker_name = bb.biomarker_name
-        LEFT JOIN biomarkers_detail bd ON bb.biomarker_name = bd.biomarker
         WHERE pbr.patient_id = %s
-          AND pbr.reading_date >= %s
-          AND pbr.reading_date <= %s
-        ORDER BY pbr.biomarker_name, pbr.reading_date DESC
+          AND pbr.test_date >= %s
+          AND pbr.test_date <= %s
+        ORDER BY pbr.biomarker_name, pbr.test_date DESC
         """
 
         start_date = as_of_date - timedelta(days=lookback_days)
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, start_date, as_of_date))
+            cursor.execute(query, (str(patient_id), start_date, as_of_date))
             rows = cursor.fetchall()
 
-        # Group by biomarker, taking most recent reading
+        # Group by biomarker
         biomarkers = {}
-        out_of_range = []
 
         for row in rows:
             biomarker_name = row[0]
-            if biomarker_name not in biomarkers:
-                value = float(row[1]) if row[1] is not None else None
-                optimal_min = float(row[6]) if row[6] is not None else None
-                optimal_max = float(row[7]) if row[7] is not None else None
+            value = float(row[1]) if row[1] is not None else None
 
-                biomarkers[biomarker_name] = {
-                    "value": value,
-                    "units": row[2],
-                    "reading_date": row[3].isoformat() if row[3] else None,
-                    "category": row[4],
-                    "optimal_range": {
-                        "min": optimal_min,
-                        "max": optimal_max
-                    }
-                }
-
-                # Check if out of optimal range
-                if value is not None and optimal_min is not None and optimal_max is not None:
-                    if value < optimal_min or value > optimal_max:
-                        deviation = "low" if value < optimal_min else "high"
-                        out_of_range.append({
-                            "biomarker": biomarker_name,
-                            "value": value,
-                            "optimal_range": f"{optimal_min}-{optimal_max}",
-                            "deviation": deviation,
-                            "category": row[4]
-                        })
+            biomarkers[biomarker_name] = {
+                "value": value,
+                "unit": row[2],
+                "test_date": row[3].isoformat() if row[3] else None,
+                "category": row[4]
+            }
 
         return {
             "readings": biomarkers,
-            "out_of_range": out_of_range,
             "reading_count": len(biomarkers)
         }
 
@@ -176,7 +150,7 @@ class ContextBuilder:
         start_date = as_of_date - timedelta(days=lookback_days)
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, start_date, as_of_date))
+            cursor.execute(query, (str(patient_id), start_date, as_of_date))
             rows = cursor.fetchall()
 
         # Group by biometric, taking most recent
@@ -212,7 +186,6 @@ class ContextBuilder:
             rb.overview,
             rb.agent_goal,
             rb.agent_context,
-            rb.pillar,
             rb.recommendation_type,
             rb.primary_biomarkers,
             rb.secondary_biomarkers,
@@ -233,7 +206,7 @@ class ContextBuilder:
         """
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, as_of_date))
+            cursor.execute(query, (str(patient_id), as_of_date))
             rows = cursor.fetchall()
 
         recommendations = []
@@ -247,21 +220,21 @@ class ContextBuilder:
                 "overview": row[3],
                 "agent_goal": row[4],
                 "agent_context": row[5],
-                "pillar": row[6],
-                "recommendation_type": row[7],
-                "primary_biomarkers": row[8].split(',') if row[8] else [],
-                "secondary_biomarkers": row[9].split(',') if row[9] else [],
-                "primary_biometrics": row[10].split(',') if row[10] else [],
-                "secondary_biometrics": row[11].split(',') if row[11] else [],
-                "status": row[12],
-                "assigned_date": row[13].isoformat() if row[13] else None,
-                "start_date": row[14].isoformat() if row[14] else None,
-                "personal_target": row[15],
-                "agent_notes": row[16],
-                "last_evaluated": row[17].isoformat() if row[17] else None
+                "recommendation_type": row[6],
+                "primary_biomarkers": row[7].split(',') if row[7] else [],
+                "secondary_biomarkers": row[8].split(',') if row[8] else [],
+                "primary_biometrics": row[9].split(',') if row[9] else [],
+                "secondary_biometrics": row[10].split(',') if row[10] else [],
+                "status": row[11],
+                "assigned_date": row[12].isoformat() if row[12] else None,
+                "start_date": row[13].isoformat() if row[13] else None,
+                "personal_target": row[14],
+                "agent_notes": row[15],
+                "last_evaluated": row[16].isoformat() if row[16] else None,
+                "pillar": "unknown"  # Can be inferred from title if needed
             }
             recommendations.append(rec)
-            pillars.add(row[6])
+            pillars.add("unknown")
 
         return {
             "active_recommendations": recommendations,
@@ -276,44 +249,49 @@ class ContextBuilder:
         lookback_days: int = 30
     ) -> Dict[str, Any]:
         """
-        Get patient's behavioral data from tracked metrics.
+        Get patient's aggregated metrics from aggregation_results_cache.
         """
         query = """
         SELECT
-            pbv.biometric_name,
-            pbv.value,
-            pbv.recorded_at,
-            bb.category
-        FROM patient_behavioral_values pbv
-        JOIN biometrics_base bb ON pbv.biometric_name = bb.biometric_name
-        WHERE pbv.patient_id = %s
-          AND DATE(pbv.recorded_at) >= %s
-          AND DATE(pbv.recorded_at) <= %s
-        ORDER BY pbv.biometric_name, pbv.recorded_at DESC
+            agg_metric_id,
+            period_type,
+            calculation_type_id,
+            value,
+            period_start,
+            period_end
+        FROM aggregation_results_cache
+        WHERE patient_id = %s
+          AND period_start::date <= %s
+          AND period_end::date >= %s
+          AND is_stale = false
+        ORDER BY agg_metric_id, period_type, calculation_type_id
         """
 
         start_date = as_of_date - timedelta(days=lookback_days)
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, start_date, as_of_date))
+            cursor.execute(query, (str(patient_id), as_of_date, start_date))
             rows = cursor.fetchall()
 
-        # Aggregate behavioral data
-        behaviors = {}
+        # Group by metric
+        metrics = {}
         for row in rows:
-            behavior_name = row[0]
-            if behavior_name not in behaviors:
-                behaviors[behavior_name] = []
+            metric_id = row[0]
+            if metric_id not in metrics:
+                metrics[metric_id] = []
 
-            behaviors[behavior_name].append({
-                "value": float(row[1]) if row[1] is not None else None,
-                "recorded_at": row[2].isoformat() if row[2] else None
+            metrics[metric_id].append({
+                "period": row[1],
+                "calc_type": row[2],
+                "value": float(row[3]) if row[3] is not None else None,
+                "period_start": row[4].isoformat() if row[4] else None,
+                "period_end": row[5].isoformat() if row[5] else None
             })
 
         return {
-            "tracked_behaviors": behaviors,
-            "behavior_count": len(behaviors),
-            "total_entries": sum(len(v) for v in behaviors.values())
+            "aggregated_metrics": metrics,
+            "metric_count": len(metrics),
+            "total_aggregations": len(rows)
         }
 
     async def get_active_modes(
@@ -341,7 +319,7 @@ class ContextBuilder:
         """
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, as_of_date, as_of_date))
+            cursor.execute(query, (str(patient_id), as_of_date, as_of_date))
             rows = cursor.fetchall()
 
         modes = []
@@ -383,7 +361,7 @@ class ContextBuilder:
         start_date = as_of_date - timedelta(days=lookback_days)
 
         with self.db.cursor() as cursor:
-            cursor.execute(query, (patient_id, start_date, as_of_date))
+            cursor.execute(query, (str(patient_id), start_date, as_of_date))
             rows = cursor.fetchall()
 
         if not rows:

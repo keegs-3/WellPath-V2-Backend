@@ -713,8 +713,21 @@ async function executeCalculateDuration(
   console.log(`Duration: ${startTime} to ${endTime} = ${durationMinutes} minutes`)
 
   // Get timestamp from source entry
-  const entry_date = startEntry.entry_date
+  let entry_date = startEntry.entry_date
   const entry_timestamp = startEntry.entry_timestamp
+
+  // For SLEEP fields, use calculate_sleep_date() for correct 6PM-6PM window assignment
+  if (config.output_field && config.output_field.includes('SLEEP')) {
+    const { data: sleepDate, error: dateError } = await supabase
+      .rpc('calculate_sleep_date', { p_event_instance_id: event_instance_id })
+
+    if (!dateError && sleepDate) {
+      entry_date = sleepDate
+      console.log(`✅ Using calculated sleep date: ${sleepDate} (6PM-6PM window)`)
+    } else {
+      console.warn('Could not calculate sleep date, using source entry_date')
+    }
+  }
 
   // Always write the generic output field
   const results = [{
